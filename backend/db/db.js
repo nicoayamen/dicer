@@ -10,4 +10,4 @@ const pool = new Pool({
 
 module.exports = pool;
 
-// use this to import into files: const pool = require('./db/db');
+// use this to import into files: const pool = require('.backend/db/db');
