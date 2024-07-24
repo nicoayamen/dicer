@@ -8,10 +8,17 @@
   port: 5432, // can be changed to match whichever port we use
 
 
+## Setting up Your Database Access
+Run the following in your terminal:
+
+  psql -U labber
+  CREATE ROLE dicer WITH LOGIN password 'dicer';
+  CREATE DATABASE finals OWNER dicer;
+
 ## Accessing Database via the Terminal:
 Type the following commands into your terminal:
 
-  psql -U development 
+  psql -U labber
   \c finals
 
 
