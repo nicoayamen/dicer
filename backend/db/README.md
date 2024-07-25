@@ -40,11 +40,10 @@ CREATE DATABASE finals OWNER dicer;
 3. DB reset: ```npm run db:reset```
 
 
-
 # Accessing and Resetting the Database
 
 ## Accessing the Database
-Type the following commands into your terminal:
+Type the following commands into the terminal:
 
 ```
 psql -U labber
