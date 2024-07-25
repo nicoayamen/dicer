@@ -2,6 +2,7 @@ import './App.css';
 
 //Components
 import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
   return (
