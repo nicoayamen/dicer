@@ -5,13 +5,35 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [id, setid] = useState("");
   const [login, setLogin] = useState(false);
+  //const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email, id);
-    setLogin(true);
-    setEmail('');
-    setid('');
+
+    try {
+      const body = { email, id };
+      console.log(body);
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setLogin(true);
+      setEmail('');
+      setid('');
+      
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
