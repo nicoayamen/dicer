@@ -127,3 +127,4 @@ Run the seed files:
 \i 04_users_seeds.sql
 \i 05_user_parties_seeds.sql
 ```
+dh
