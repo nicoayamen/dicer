@@ -77,7 +77,7 @@ SELECT * FROM user_parties;
 
 
 ## Importing Database into Other Files
-Use this to import into files: 
+Use this to import into files:
 
   const pool = require('./backend/db/db');
 
