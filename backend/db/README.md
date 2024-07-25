@@ -40,11 +40,10 @@ CREATE DATABASE finals OWNER dicer;
 3. DB reset: ```npm run db:reset```
 
 
-
 # Accessing and Resetting the Database
 
 ## Accessing the Database
-Type the following commands into your terminal:
+Type the following commands into the terminal:
 
 ```
 psql -U labber
@@ -78,7 +77,7 @@ SELECT * FROM user_parties;
 
 
 ## Importing Database into Other Files
-Use this to import into files: 
+Use this to import into files:
 
   const pool = require('./backend/db/db');
 
@@ -127,3 +126,4 @@ Run the seed files:
 \i 04_users_seeds.sql
 \i 05_user_parties_seeds.sql
 ```
+dh
