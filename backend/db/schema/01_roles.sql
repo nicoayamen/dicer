@@ -1,5 +1,10 @@
+-- Drop the roles table if it exists
+DROP TABLE IF EXISTS roles CASCADE;
+
+-- Drop the enum type if it exists
+DROP TYPE IF EXISTS class_type CASCADE;
+
 -- Create enum type for character classes
-DROP TYPE IF EXISTS class_type;
 CREATE TYPE class_type AS ENUM (
   'Barbarian',
   'Bard',
@@ -16,8 +21,7 @@ CREATE TYPE class_type AS ENUM (
   'Wizard'
 );
 
--- Drop and recreate roles table
-DROP TABLE IF EXISTS roles CASCADE;
+-- Recreate the roles table
 CREATE TABLE roles (
   id SERIAL PRIMARY KEY NOT NULL,
   is_DM BOOLEAN,
