@@ -5,13 +5,17 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const http = require('http').Server(app);
+const socketIO = require('socket.io')(http, {
+  cors: {
+    origin: `http://localhost:3000`
+  }
+});
 
-// Load the logger first so all (static) HTTP requests are logged to STDOUT
-// 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -19,29 +23,42 @@ app.use(
   sassMiddleware({
     source: __dirname + '/styles',
     destination: __dirname + '/public/styles',
-    isSass: false, // false => scss, true => sass
+    isSass: false,
   })
 );
-app.use(express.static('public'));
+app.use(cors());
 
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
+let users = [];
 
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
-// Note: mount other resources here, using the same pattern above
+socketIO.on('connection', (socket) => {
+  console.log(`⚡: ${socket.id} user just connected!`)  
+  socket.on("message", data => {
+    socketIO.emit("messageResponse", data)
+  })
 
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
+  socket.on("typing", data => (
+    socket.broadcast.emit("typingResponse", data)
+  ))
 
-app.listen(PORT, () => {
+  socket.on("newUser", data => {
+    users.push(data)
+    socketIO.emit("newUserResponse", users)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('🔥: A user disconnected');
+    users = users.filter(user => user.socketID !== socket.id)
+    socketIO.emit("newUserResponse", users)
+    socket.disconnect()
+  });
+});
+
+app.get('/api', (req, res) => {
+  res.json({
+    message: "Hello World!",
+  });
+});
+
+http.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
