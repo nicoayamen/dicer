@@ -21,27 +21,23 @@ const Signup = () => {
     e.preventDefault();
 
     console.log("form submitted!", formData)
-    console.log("first name", formData.firstName)
-    console.log("last name", formData.lastName)
-    console.log("email", formData.email)
-    console.log("password", formData.password)
 
-    // fetch('http://localhost:8080/signup', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(formData)
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log('User signed up successfully:', data);
-    //     // Handle successful signup (redirect to user profile)
-    //   })
-    //   .catch(error => {
-    //     console.error('There was an error signing up:', error);
-    //     // Handle error 
-    //   });
+    fetch('http://localhost:8080/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('User signed up successfully:', data);
+        // Handle successful signup (redirect to user profile)
+      })
+      .catch(error => {
+        console.error('There was an error signing up:', error);
+        // Handle error 
+      });
     
   };
 
