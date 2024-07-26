@@ -7,7 +7,7 @@ import '../styles/login.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [id, setid] = useState("");
+  const [password, setpassword] = useState("");
   const [login, setLogin] = useState(false);
   //const [error, setError] = useState("");
   const [type, setType] = useState('password');
@@ -29,10 +29,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, id);
+    console.log(email, password);
 
     try {
-      const body = { email, id };
+      const body = { email, password };
       console.log(body);
       const response = await fetch('/login', {
         method: 'POST',
@@ -49,7 +49,7 @@ const Login = () => {
       console.log(data);
       setLogin(true);
       setEmail('');
-      setid('');
+      setpassword('');
 
     } catch (err) {
       console.error(err.message);
@@ -93,8 +93,8 @@ const Login = () => {
                     className='login-input'
                     type={type}
                     placeholder=' '
-                    value={id}
-                    onChange={(e) => setid(e.target.value)}
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
                     required />
                   <label htmlFor='' className='login-label'>Password</label>
                   <span onClick={handleToggle}>{icon}</span>
