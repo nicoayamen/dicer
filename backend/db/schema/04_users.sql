@@ -7,5 +7,6 @@ CREATE TABLE users (
   photo VARCHAR(255),
   availability_id INTEGER REFERENCES availabilities(id),
   role_id INTEGER REFERENCES roles(id),
-  email VARCHAR(255) UNIQUE NOT NULL
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
 );
