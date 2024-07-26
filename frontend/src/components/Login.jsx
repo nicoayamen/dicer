@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import '../styles/login.css';
+
+//Components
 import IconEye from './IconEye';
 import IconEyeSlash from './IconEyeSlash';
 import IconBxsUser from './IconBxsUser';
 import IconBxsLockAlt from './IconBxsLockAlt';
-import '../styles/login.css';
+
 
 const Login = (props) => {
   const {login, loggedIn, email, setEmail, password, setpassword} = props;
@@ -79,13 +82,13 @@ const Login = (props) => {
                 </div>
 
                 <button className='login-button'>Login</button>
-
+{/* 
                 <div className='sign-up'>
                   <p>Don't have an account? <a href='#'>Sign Up!</a></p>
-                </div>
+                </div> */}
 
               </div>
-              
+
             </div>
 
           </form>

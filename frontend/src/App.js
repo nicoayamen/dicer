@@ -1,14 +1,16 @@
-import './App.css';
+import { BrowserRouter, Routes, Route, Router, Link } from 'react-router-dom';
 import { useState } from 'react';
+import './App.css';
 
 //Components
-import Login from './components/Login';
+import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
+
 
 function App() {
   const [login, setLogin] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
+  const [password, setPassword] = useState("");
 
   //Handle login state
   const loggedIn = async (e) => {
@@ -33,18 +35,23 @@ function App() {
       console.log(data);
       setLogin(true);
       setEmail('');
-      setpassword('');
+      setPassword('');
 
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  return (
-    <div className="App">      
-      < Login login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setpassword={setpassword} />
 
-    </div>
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LoginPage login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
