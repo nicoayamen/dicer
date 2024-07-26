@@ -3,6 +3,7 @@ import IconEye from './IconEye';
 import IconEyeSlash from './IconEyeSlash';
 import IconBxsUser from './IconBxsUser';
 import IconBxsLockAlt from './IconBxsLockAlt';
+import '../styles/login.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ const Login = () => {
 
   const handleLogOut = () => {
     setLogin(false);
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,12 +68,13 @@ const Login = () => {
         </div>
       ) :
         (
+          <div className='login'>
           <form onSubmit={handleSubmit} className='login-form'>
-            <div className='login-content'>
 
+            <div className='login-content'>
               <div className='login-box'>
-                <IconBxsUser />
-                <div className='login--box-input'>
+              <IconBxsUser />
+                <div className='login--box-input'>                  
                   <input
                     className='login-input'
                     type='email'
@@ -85,8 +87,8 @@ const Login = () => {
               </div>
 
               <div className='login-box'>
-                <IconBxsLockAlt />
-                <div className='login-box-input'>
+              <IconBxsLockAlt />
+                <div className='login-box-input'>                  
                   <input
                     className='login-input'
                     type={type}
@@ -95,21 +97,21 @@ const Login = () => {
                     onChange={(e) => setid(e.target.value)}
                     required />
                   <label htmlFor='' className='login-label'>Password</label>
-
                   <span onClick={handleToggle}>{icon}</span>
-
                 </div>
 
-                <button>Login</button>
+                <button className='login-button'>Login</button>
 
-                <div className=''>
+                <div className='sign-up'>
                   <p>Don't have an account? <a href='#'>Sign Up!</a></p>
                 </div>
+
               </div>
 
             </div>
 
           </form>
+          </div>
 
         )}
 
