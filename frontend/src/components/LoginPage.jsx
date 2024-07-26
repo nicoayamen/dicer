@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import Login from './Login';
 
 const LoginPage = (props) => {
-  const { login, loggedIn, email, setEmail, password, setPassword } = props;
+  const { login, loggedIn, email, setEmail, password, setPassword, error } = props;
 
   return (
     <div>
-      <Login login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
+      <Login login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error}/>
 
       <div className='sign-up'>
         <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
