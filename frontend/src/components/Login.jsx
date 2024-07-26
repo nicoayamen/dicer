@@ -25,11 +25,12 @@ const Login = (props) => {
   };
 
   const handleLogin = (e) => {
+    e.preventDefault();
     loggedIn(e);
   }
 
   const handleLogOut = () => {
-    loggedIn(false);
+    loggedIn(null);
   };
 
 
@@ -83,10 +84,6 @@ const Login = (props) => {
 
                 <button className='login-button'>Login</button>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-{/* 
-                <div className='sign-up'>
-                  <p>Don't have an account? <a href='#'>Sign Up!</a></p>
-                </div> */}
 
               </div>
 
