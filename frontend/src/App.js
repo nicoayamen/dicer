@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 
 function App() {
   const [login, setLogin] = useState(false);
+  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -39,6 +40,7 @@ function App() {
 
     } catch (err) {
       console.error(err.message);
+      setError(err.message);
     }
   };
 
@@ -47,7 +49,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<LoginPage login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />} />
+          <Route path="/" element={<LoginPage login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
