@@ -1,11 +1,11 @@
 const db = require('../connection');
 
-const getLogin = (email, id) => {
-  const queryString = `SELECT email, id FROM users
+const getLogin = (email, password) => {
+  const queryString = `SELECT email, password FROM users
   WHERE email = $1
-  AND id = $2;
+  AND password = $2;
   `;
-  const values = [email, id];
+  const values = [email, password];
 
   return db.query(queryString, values)
     .then(data => {
