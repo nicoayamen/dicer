@@ -56,7 +56,12 @@ const Login = () => {
 
       <h1>Dicer</h1>
 
-      {login ? <h2>Welcome!</h2> :
+      {login ? (
+        <div>
+          <h2>Welcome!</h2>
+          <button>Logout</button>
+        </div>
+      ) :
         (
           <form onSubmit={handleSubmit} className='login-form'>
             <div className='login-content'>
