@@ -5,11 +5,9 @@ import IconBxsUser from './IconBxsUser';
 import IconBxsLockAlt from './IconBxsLockAlt';
 import '../styles/login.css';
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
-  const [login, setLogin] = useState(false);
-  //const [error, setError] = useState("");
+const Login = (props) => {
+  const {login, loggedIn, email, setEmail, password, setpassword} = props;
+
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(<IconEyeSlash />);
 
@@ -23,38 +21,14 @@ const Login = () => {
     }
   };
 
+  const handleLogin = (e) => {
+    loggedIn(e);
+  }
+
   const handleLogOut = () => {
-    setLogin(false);
+    loggedIn(false);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(email, password);
-
-    try {
-      const body = { email, password };
-      console.log(body);
-      const response = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error);
-      }
-
-      const data = await response.json();
-      console.log(data);
-      setLogin(true);
-      setEmail('');
-      setpassword('');
-
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
 
   return (
     <div>
@@ -69,11 +43,13 @@ const Login = () => {
       ) :
         (
           <div className='login'>
-          <form onSubmit={handleSubmit} className='login-form'>
+          <form onSubmit={handleLogin} className='login-form'>
 
             <div className='login-content'>
+
               <div className='login-box'>
               <IconBxsUser />
+
                 <div className='login--box-input'>                  
                   <input
                     className='login-input'
@@ -84,10 +60,12 @@ const Login = () => {
                     required />
                   <label htmlFor='' className='login-label'>Email</label>
                 </div>
+
               </div>
 
               <div className='login-box'>
               <IconBxsLockAlt />
+
                 <div className='login-box-input'>                  
                   <input
                     className='login-input'
@@ -107,7 +85,7 @@ const Login = () => {
                 </div>
 
               </div>
-
+              
             </div>
 
           </form>
