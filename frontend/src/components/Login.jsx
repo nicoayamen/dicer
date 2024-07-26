@@ -22,6 +22,10 @@ const Login = () => {
     }
   };
 
+  const handleLogOut = () => {
+    setLogin(false);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email, id);
@@ -59,7 +63,7 @@ const Login = () => {
       {login ? (
         <div>
           <h2>Welcome!</h2>
-          <button>Logout</button>
+          <button onClick={handleLogOut}>Logout</button>
         </div>
       ) :
         (
@@ -76,7 +80,7 @@ const Login = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required />
-                  <label for='' className='login-label'>Email</label>
+                  <label htmlFor='' className='login-label'>Email</label>
                 </div>
               </div>
 
@@ -90,7 +94,7 @@ const Login = () => {
                     value={id}
                     onChange={(e) => setid(e.target.value)}
                     required />
-                  <label for='' className='login-label'>Password</label>
+                  <label htmlFor='' className='login-label'>Password</label>
 
                   <span onClick={handleToggle}>{icon}</span>
 
