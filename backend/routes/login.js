@@ -10,7 +10,7 @@ router.post('/login', (req, res) => {
   userQueries.getLogin(email, password)
     .then(user => {
       if (!user || user.length === 0) {
-        return res.status(401).send({ error: "Can't log in" });
+        return res.status(401).send({ error: "Email and password do not match" });
       }
       res.json({ success: true, user });
     })
