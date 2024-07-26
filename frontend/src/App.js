@@ -15,6 +15,11 @@ function App() {
 
   //Handle login state
   const loggedIn = async (e) => {
+    if (e === null) {
+      setLogin(false);
+      return;
+    }
+    
     e.preventDefault();
     console.log(email, password);
 
