@@ -9,7 +9,7 @@ import IconBxsLockAlt from './IconBxsLockAlt';
 
 
 const Login = (props) => {
-  const {login, loggedIn, email, setEmail, password, setPassword, error} = props;
+  const { login, loggedIn, email, setEmail, password, setPassword, error } = props;
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(<IconEyeSlash />);
@@ -27,7 +27,7 @@ const Login = (props) => {
   const handleLogin = (e) => {
     e.preventDefault();
     loggedIn(e);
-  }
+  };
 
   const handleLogOut = () => {
     loggedIn(null);
@@ -35,8 +35,7 @@ const Login = (props) => {
 
 
   return (
-    <div>
-
+    <div className='login'>
       <h1>Dicer</h1>
 
       {login ? (
@@ -46,54 +45,46 @@ const Login = (props) => {
         </div>
       ) :
         (
-          <div className='login'>
           <form onSubmit={handleLogin} className='login-form'>
 
             <div className='login-content'>
 
               <div className='login-box'>
-              <IconBxsUser />
+                <IconBxsUser />
 
-                <div className='login--box-input'>                  
+                <div className='login--box-input'>
                   <input
                     className='login-input'
                     type='email'
-                    placeholder=' '
+                    placeholder='Email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required />
-                  <label htmlFor='' className='login-label'>Email</label>
                 </div>
 
               </div>
 
               <div className='login-box'>
-              <IconBxsLockAlt />
+                <IconBxsLockAlt />
 
-                <div className='login-box-input'>                  
+                <div className='login-box-input'>
                   <input
                     className='login-input'
                     type={type}
-                    placeholder=' '
+                    placeholder='Password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required />
-                  <label htmlFor='' className='login-label'>Password</label>
-                  <span onClick={handleToggle}>{icon}</span>
+                    required />                  
                 </div>
-
-                <button className='login-button'>Login</button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-
+                <span onClick={handleToggle}>{icon}</span>
               </div>
 
             </div>
+            <button className='login-button'>Login</button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
 
           </form>
-          </div>
-
         )}
-
     </div>
   );
 };
