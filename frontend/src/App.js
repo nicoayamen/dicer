@@ -19,7 +19,7 @@ function App() {
       setLogin(false);
       return;
     }
-    
+
     e.preventDefault();
     console.log(email, password);
 
@@ -56,8 +56,25 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<LoginPage login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/"
+            element={
+            <LoginPage
+              login={login}
+              loggedIn={loggedIn}
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              error={error}
+              setError={setError}
+            />} />
+
+          <Route path="/signup"
+            element={
+            <Signup
+              login={login}
+              loggedIn={loggedIn}
+            />} />
         </Routes>
       </div>
     </BrowserRouter>
