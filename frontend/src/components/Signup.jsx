@@ -13,7 +13,7 @@ const Signup = (props) => {
 
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
+  
 
   //update values as user types
   const handleChange = (e) => {
@@ -46,6 +46,7 @@ const Signup = (props) => {
       const data = await response.json();
       console.log('User signed up successfully:', data);
       setLogin(true);
+      window.localStorage.setItem('userid', data.userid);
       navigate("/profile")
 
     } catch (error) {
