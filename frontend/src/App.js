@@ -74,12 +74,7 @@ function App() {
                   />}
               />
           }
-          <Route path="/signup"
-            element={
-              <Signup
-                setLogin={setLogin}
-              />}
-          />
+          <Route path="/signup" element={<Signup setLogin={setLogin} />} />
 
         </Routes>
       </div>

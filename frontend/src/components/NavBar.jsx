@@ -4,13 +4,13 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const NavBar = (props) => {
   const { login, loggedIn } = props;
 
+  const navigate = useNavigate()
+
   //Change login state to logged out
   const handleLogOut = () => {
     loggedIn(null);
-    navigate("/")
+    navigate("/");
   };
-
-  const navigate = useNavigate()
 
   return (
     <div className='nav-bar'>
