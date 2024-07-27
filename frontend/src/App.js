@@ -42,10 +42,12 @@ function App() {
       setLogin(true);
       setEmail('');
       setPassword('');
-
+      setError('');
     } catch (err) {
       console.error(err.message);
       setError(err.message);
+      setEmail('');
+      setPassword('');
     }
   };
 
@@ -54,7 +56,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<LoginPage login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} />} />
+          <Route path="/" element={<LoginPage login={login} loggedIn={loggedIn} email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>

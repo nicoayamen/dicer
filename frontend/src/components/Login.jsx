@@ -9,7 +9,7 @@ import IconBxsLockAlt from './IconBxsLockAlt';
 
 
 const Login = (props) => {
-  const { login, loggedIn, email, setEmail, password, setPassword, error } = props;
+  const { login, loggedIn, email, setEmail, password, setPassword, error, setError } = props;
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(<IconEyeSlash />);
@@ -74,13 +74,15 @@ const Login = (props) => {
                     placeholder='Password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    required />                  
+                    required />
                 </div>
                 <span onClick={handleToggle}>{icon}</span>
               </div>
 
             </div>
+
             <button className='login-button'>Login</button>
+
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
           </form>
