@@ -29,22 +29,21 @@ const Login = (props) => {
     loggedIn(e);
   };
 
-  const handleLogOut = () => {
-    loggedIn(null);
-  };
+  // const handleLogOut = () => {
+  //   loggedIn(null);
+  // };
 
 
   return (
     <div className='login'>
-      <h1>Dicer</h1>
 
-      {login ? (
+      {/* {login ? (
         <div>
           <h2>Welcome!</h2>
           <button onClick={handleLogOut}>Logout</button>
         </div>
       ) :
-        (
+        ( */}
           <form onSubmit={handleLogin} className='login-form'>
 
             <div className='login-content'>
@@ -86,7 +85,7 @@ const Login = (props) => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
           </form>
-        )}
+        {/* )} */}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import './App.css';
 //Components
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
+import NavBar from './components/NavBar';
 
 
 function App() {
@@ -50,11 +51,24 @@ function App() {
       setPassword('');
     }
   };
-
+  //Change login state to logged out
+  const handleLogOut = () => {
+    loggedIn(null);
+  };
 
   return (
     <BrowserRouter>
       <div className="App">
+
+      <NavBar login={login} loggedIn={loggedIn} />
+
+        {login ? 
+          <div>
+            <h2>Welcome!</h2>
+            <button onClick={handleLogOut}>Logout</button>
+          </div>
+        : 
+
         <Routes>
           <Route path="/"
             element={
@@ -67,15 +81,18 @@ function App() {
               setPassword={setPassword}
               error={error}
               setError={setError}
-            />} />
+            />} 
+          />
 
           <Route path="/signup"
             element={
-            <Signup
-              login={login}
-              loggedIn={loggedIn}
-            />} />
+              <Signup
+                login={login}
+                loggedIn={loggedIn}
+              />}
+          />
         </Routes>
+        }
       </div>
     </BrowserRouter>
   );

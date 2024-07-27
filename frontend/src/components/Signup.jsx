@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = (props) => {
+  const {login, loggedIn} = props;
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
