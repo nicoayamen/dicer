@@ -9,7 +9,7 @@ import IconBxsLockAlt from './IconBxsLockAlt';
 
 
 const Login = (props) => {
-  const { login, loggedIn, email, setEmail, password, setPassword, error, setError } = props;
+  const { loggedIn, email, setEmail, password, setPassword, error } = props;
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(<IconEyeSlash />);
@@ -29,63 +29,50 @@ const Login = (props) => {
     loggedIn(e);
   };
 
-  // const handleLogOut = () => {
-  //   loggedIn(null);
-  // };
-
 
   return (
     <div className='login'>
+      <form onSubmit={handleLogin} className='login-form'>
 
-      {/* {login ? (
-        <div>
-          <h2>Welcome!</h2>
-          <button onClick={handleLogOut}>Logout</button>
-        </div>
-      ) :
-        ( */}
-          <form onSubmit={handleLogin} className='login-form'>
+        <div className='login-content'>
 
-            <div className='login-content'>
+          <div className='login-box'>
+            <IconBxsUser />
 
-              <div className='login-box'>
-                <IconBxsUser />
-
-                <div className='login--box-input'>
-                  <input
-                    className='login-input'
-                    type='email'
-                    placeholder='Email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required />
-                </div>
-
-              </div>
-
-              <div className='login-box'>
-                <IconBxsLockAlt />
-
-                <div className='login-box-input'>
-                  <input
-                    className='login-input'
-                    type={type}
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required />
-                </div>
-                <span onClick={handleToggle}>{icon}</span>
-              </div>
-
+            <div className='login--box-input'>
+              <input
+                className='login-input'
+                type='email'
+                placeholder='Email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required />
             </div>
 
-            <button className='login-button'>Login</button>
+          </div>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+          <div className='login-box'>
+            <IconBxsLockAlt />
 
-          </form>
-        {/* )} */}
+            <div className='login-box-input'>
+              <input
+                className='login-input'
+                type={type}
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required />
+            </div>
+            <span onClick={handleToggle}>{icon}</span>
+          </div>
+
+        </div>
+
+        <button className='login-button'>Login</button>
+
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      </form>
     </div>
   );
 };

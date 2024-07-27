@@ -73,14 +73,12 @@ function App() {
           <Route path="/"
             element={
             <LoginPage
-              login={login}
               loggedIn={loggedIn}
               email={email}
               setEmail={setEmail}
               password={password}
               setPassword={setPassword}
               error={error}
-              setError={setError}
             />} 
           />
 
