@@ -51,46 +51,37 @@ function App() {
       setPassword('');
     }
   };
-  //Change login state to logged out
-  const handleLogOut = () => {
-    loggedIn(null);
-  };
+
 
   return (
     <BrowserRouter>
       <div className="App">
 
-      <NavBar login={login} loggedIn={loggedIn} />
-
-        {login ? 
-          <div>
-            <h2>Welcome!</h2>
-            <button onClick={handleLogOut}>Logout</button>
-          </div>
-        : 
+        <NavBar login={login} loggedIn={loggedIn} />
 
         <Routes>
-          <Route path="/"
-            element={
-            <LoginPage
-              loggedIn={loggedIn}
-              email={email}
-              setEmail={setEmail}
-              password={password}
-              setPassword={setPassword}
-              error={error}
-            />} 
-          />
-
+          {
+            login ? <></> :
+              <Route path="/"
+                element={
+                  <LoginPage
+                    loggedIn={loggedIn}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    error={error}
+                  />}
+              />
+          }
           <Route path="/signup"
             element={
               <Signup
-                login={login}
-                loggedIn={loggedIn}
+                setLogin={setLogin}
               />}
           />
+
         </Routes>
-        }
       </div>
     </BrowserRouter>
   );

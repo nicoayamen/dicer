@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
-  const {login, loggedIn} = props;
-  
+  const {setLogin} = props;
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -45,6 +45,7 @@ const Signup = (props) => {
 
       const data = await response.json();
       console.log('User signed up successfully:', data);
+      setLogin(true);
       navigate("/profile")
 
     } catch (error) {
