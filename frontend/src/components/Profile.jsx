@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   return (
-    <h2>Profile</h2>
-  )
-}
+    <div>
+      <h2>Profile</h2>
+      <Link to="/matches">Matches</Link>
+    </div>
+  );
+};
 
-export default Profile
+export default Profile;

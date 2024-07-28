@@ -7,6 +7,7 @@ import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import NavBar from './components/NavBar';
 import Profile from './components/Profile';
+import CardStack from './components/CardStack';
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -32,6 +33,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path="/" element={<LoginPage email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} setLogin={setLogin} />} />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
+          <Route path='/matches' element={<CardStack />} />
         </Routes>
 
       </div>
