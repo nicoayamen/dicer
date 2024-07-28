@@ -6,6 +6,7 @@ import './App.css';
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import NavBar from './components/NavBar';
+import EditProfile from './components/EditProfile';
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
               />
           }
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
+          <Route path="/editprofile/:userId" element={<EditProfile />} />
 
         </Routes>
       </div>
