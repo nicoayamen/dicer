@@ -1,13 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 
-//Components
+// Components
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import NavBar from './components/NavBar';
 import Profile from './components/Profile';
-
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -16,7 +15,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
-  //Handle login state
+  // Handle login state
   const loggedIn = async (e) => {
     if (e === null) {
       setLogin(false);
@@ -55,34 +54,33 @@ function App() {
     }
   };
 
-
   return (
     <BrowserRouter>
       <div className="App">
-
         <NavBar login={login} loggedIn={loggedIn} />
 
         <Routes>
-          {
-            login ? <></> :
-              <Route path="/"
-                element={
-                  <LoginPage
-                    loggedIn={loggedIn}
-                    email={email}
-                    setEmail={setEmail}
-                    password={password}
-                    setPassword={setPassword}
-                    error={error}
-                  />}
-              />
-          }
+          <Route
+            path="/"
+            element={
+              login ? <Navigate to="/profile" /> : (
+                <LoginPage
+                  loggedIn={loggedIn}
+                  email={email}
+                  setEmail={setEmail}
+                  password={password}
+                  setPassword={setPassword}
+                  error={error}
+                />
+              )
+            }
+          />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
           {login && (
-            <>
-              <Route path="/profile/" element={<Profile />} />
-            </>
+            <Route path="/profile" element={<Profile userId={user} />} />
           )}
+          {/* Redirect all other routes to login if not authenticated */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </BrowserRouter>
