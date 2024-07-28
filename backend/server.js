@@ -7,6 +7,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const db = require('./db/connection');
+const multer = require('multer');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -33,6 +34,7 @@ const loginRoute = require('./routes/login');
 // const widgetApiRoutes = require('./routes/widgets-api');
 // const usersRoutes = require('./routes/users');
 const signupRoutes = require('./routes/signup');
+const editProfileRoutes = require('./routes/editprofile')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,6 +43,7 @@ app.use('/', loginRoute);
 // app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/signup', signupRoutes);
+app.use('/editprofile', editProfileRoutes)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
