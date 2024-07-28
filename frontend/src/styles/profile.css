@@ -1,0 +1,42 @@
+/* Profile.css */
+
+.profile-container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.profile-header {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  row-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 150px; 
+  height: 150px; 
+}
+
+.profile-actions {
+  display: grid;
+  row-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-button {
+  padding: 1rem;
+  border-radius: .5rem;
+  border: 2px solid lightgrey;
+  background-color: white;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.profile-button:hover {
+  background-color: #f0f0f0; /* Optional hover effect */
+}

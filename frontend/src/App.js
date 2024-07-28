@@ -6,6 +6,7 @@ import './App.css';
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
 import NavBar from './components/NavBar';
+import Profile from './components/Profile';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null);
 
   //Handle login state
   const loggedIn = async (e) => {
@@ -44,6 +46,7 @@ function App() {
       setEmail('');
       setPassword('');
       setError('');
+      setUser(data.userId);
     } catch (err) {
       console.error(err.message);
       setError(err.message);
@@ -75,7 +78,11 @@ function App() {
               />
           }
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
-
+          {login && (
+            <>
+              <Route path="/profile/" element={<Profile />} />
+            </>
+          )}
         </Routes>
       </div>
     </BrowserRouter>
