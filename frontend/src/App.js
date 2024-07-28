@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 
@@ -13,9 +13,8 @@ function App() {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  // Handle login state
   const loggedIn = async (e) => {
     if (e === null) {
       setLogin(false);
@@ -27,7 +26,6 @@ function App() {
 
     try {
       const body = { email, password };
-      console.log(body);
       const response = await fetch('/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -40,18 +38,25 @@ function App() {
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log('Login response data:', data.user[0]);
       setLogin(true);
       setEmail('');
       setPassword('');
       setError('');
-      setUser(data.userId);
+      console.log('checking userId',data.user[0].id)
+      setUserId(data.user[0].id);
     } catch (err) {
       console.error(err.message);
       setError(err.message);
       setEmail('');
       setPassword('');
     }
+  };
+
+  const ProfileWithParams = (props) => {
+    const { userId } = useParams();
+    console.log("userId in profileParams", userId);
+    return <Profile userId={userId} {...props} />;
   };
 
   return (
@@ -63,7 +68,7 @@ function App() {
           <Route
             path="/"
             element={
-              login ? <Navigate to="/profile" /> : (
+              login ? <Navigate to={`/profile/${userId}`} /> : (
                 <LoginPage
                   loggedIn={loggedIn}
                   email={email}
@@ -77,9 +82,8 @@ function App() {
           />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
           {login && (
-            <Route path="/profile" element={<Profile userId={user} />} />
+            <Route path="/profile/:userId" element={<ProfileWithParams />} />
           )}
-          {/* Redirect all other routes to login if not authenticated */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
