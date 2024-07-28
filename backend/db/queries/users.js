@@ -37,5 +37,21 @@ const insertUser = (firstName, lastName, email, password) => {
   return db.query(queryString, values);
 };
 
+// Function to get profile by user ID
+const getProfileById = (userId) => {
+  const queryString = `
+    SELECT photo, first_name, last_name
+    FROM users
+    WHERE id = $1;
+  `;
+  const values = [userId];
 
-module.exports = { getLogin, checkEmailExists, insertUser };
+  return db.query(queryString, values)
+    .then(data => data.rows[0])
+    .catch(err => {
+      console.error('Error executing query', err.stack);
+      throw err;
+    });
+};
+
+module.exports = { getLogin, checkEmailExists, insertUser, getProfileById };
