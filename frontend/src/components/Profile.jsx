@@ -6,6 +6,7 @@ const Profile = ({ userId, onEdit, onSignOut, onDelete }) => {
   const [profileUser, setProfileUser] = useState({});
 
   useEffect(() => {
+    const userId = window.localStorage.getItem('userid');
     if (!userId) {
       console.error('User ID is not provided');
       return;
