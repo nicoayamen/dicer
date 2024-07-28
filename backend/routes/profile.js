@@ -1,21 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const userQueries = require('../db/queries/users');
+const { getProfileById } = require('../db/queries/users');
 
-// Route to get user profile
-router.get('/profile/', (req, res) => {
-  const userId = req.params.userId;
+router.get('/:userId', (req, res) => {
+  const { userId } = req.params;
+  console.log('Received userId:', userId); // Debug log
 
-  userQueries.getProfileById(userId)
-    .then(result => {
-      if (!result) {
-        return res.status(404).json({ message: 'User not found' });
+  getProfileById(userId)
+    .then(user => {
+      if (user) {
+        console.log('User data:', user); // Debug log
+        res.json(user);
+      } else {
+        res.status(404).json({ error: 'User not found' });
       }
-      res.json(result);
     })
-    .catch(error => {
-      console.error('Server error:', error);
-      res.status(500).json({ message: 'Server error' });
+    .catch(err => {
+      console.error('Error fetching user:', err);
+      res.status(500).json({ error: 'Internal server error' });
     });
 });
 
