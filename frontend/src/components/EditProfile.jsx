@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/editprofile.css';
 
-const EditProfile = () => {
+const EditProfile = (props) => {
   const { userId } = useParams();
   const navigate = useNavigate();
+  const { setLogin } = props;
 
   const [profile, setProfile] = useState({});
   const [formData, setFormData] = useState({
@@ -82,117 +84,123 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
+    <div className='editprofile'>
       <h1>Edit Profile</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <img 
-            src={profile.photo ? `/${profile.photo}` : 'http://placehold.it/150x150'} 
-            alt="Profile" 
-            style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-          />
-          <label>
-            Change Picture:
-            <input 
-              type="file" 
-              name="photo" 
-              accept="image/*"
-              onChange={handleFileChange} 
-            />
-          </label>
+      <form onSubmit={handleSubmit} className='editprofile-form'>
+        <div className= 'editprofile-content'>
+          <div className='editprofile-box'>
+
+            <div className='editprofile-box-input'>
+              <img
+                src={profile.photo ? `/${profile.photo}` : 'http://placehold.it/150x150'}
+                alt='Profile'
+                style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+              />
+            </div>
+            <div className='editprofile-box-input'>  
+              <label>Change Picture: </label>
+              <input
+                type='file'
+                name='photo'
+                accept='image/*'
+                className='editprofile-photo-button'
+                onChange={handleFileChange}
+              />
+            </div>
+
+            <div className='editprofile-box-input'>
+              <label>First Name: </label>
+              <input
+                type='text'
+                name='firstName'
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className='editprofile-box-input'>
+              <label>Last Name: </label>
+              <input
+                type='text'
+                name='lastName'
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className='editprofile-box-input'>
+              <label> Email: </label>
+              <input
+                type='email'
+                name='email'
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className='editprofile-box-input'>
+              <label> Preferred Class: </label>
+              <select
+                name='classType'
+                value={formData.classType}
+                onChange={handleChange}
+              >
+                <option value="">Select a class type</option>
+                <option value="Barbarian">Barbarian</option>
+                <option value="Bard">Bard</option>
+                <option value="Cleric">Cleric</option>
+                <option value="Druid">Druid</option>
+                <option value="Fighter">Fighter</option>
+                <option value="Monk">Monk</option>
+                <option value="Multiclass">Multiclass</option>
+                <option value="Paladin">Paladin</option>
+                <option value="Ranger">Ranger</option>
+                <option value="Rogue">Rogue</option>
+                <option value="Sorcerer">Sorcerer</option>
+                <option value="Warlock">Warlock</option>
+                <option value="Wizard">Wizard</option>
+              </select>
+            </div>
+
+            <div className='editprofile-box-input'>
+              <label>Role: </label>
+              <label>
+                <input
+                  type='radio'
+                  name='isDM'
+                  value='true'
+                  checked={formData.isDM === true}
+                  onChange={handleChange}
+                />
+                DM
+              </label>
+              <label>
+                <input
+                  type='radio'
+                  name='isDM'
+                  value='false'
+                  checked={formData.isDM === false}
+                  onChange={handleChange}
+                />
+                Player
+              </label>
+            </div>
+
+            <div className='editprofile-box-input'>
+              <label> Bio: </label>
+            </div>  
+            <div className='editprofile-box-input'>  
+              <textarea
+                name='bio'
+                value={formData.bio}
+                onChange={handleChange}
+                style={{ width: '500px', height: '150px' }}
+              />
+            </div>
+
+            <button type='submit' className='editprofile-button'>Update Profile</button>
+          </div>
         </div>
-        <div>
-          <label>
-            First Name:
-            <input 
-              type="text" 
-              name="firstName" 
-              value={formData.firstName} 
-              onChange={handleChange} 
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last Name:
-            <input 
-              type="text" 
-              name="lastName" 
-              value={formData.lastName} 
-              onChange={handleChange} 
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email:
-            <input 
-              type="email" 
-              name="email" 
-              value={formData.email} 
-              onChange={handleChange} 
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Preferred Class:
-            <select 
-              name="classType" 
-              value={formData.classType} 
-              onChange={handleChange}
-            >
-              <option value="">Select a class type</option>
-              <option value="Barbarian">Barbarian</option>
-              <option value="Bard">Bard</option>
-              <option value="Cleric">Cleric</option>
-              <option value="Druid">Druid</option>
-              <option value="Fighter">Fighter</option>
-              <option value="Monk">Monk</option>
-              <option value="Multiclass">Multiclass</option>
-              <option value="Paladin">Paladin</option>
-              <option value="Ranger">Ranger</option>
-              <option value="Rogue">Rogue</option>
-              <option value="Sorcerer">Sorcerer</option>
-              <option value="Warlock">Warlock</option>
-              <option value="Wizard">Wizard</option>
-            </select>
-          </label>
-        </div>
-        <div>
-          <label>
-            <input 
-              type="radio" 
-              name="isDM" 
-              value="true" 
-              checked={formData.isDM === true} 
-              onChange={handleChange}
-            />
-            DM
-          </label>
-          <label>
-            <input 
-              type="radio" 
-              name="isDM" 
-              value="false" 
-              checked={formData.isDM === false} 
-              onChange={handleChange}
-            />
-            Player
-          </label>
-        </div>
-        <div>
-          <label>
-            Bio:
-            <textarea 
-              name="bio" 
-              value={formData.bio} 
-              onChange={handleChange} 
-              rows="4"
-            />
-          </label>
-        </div>
-        <button type="submit">Update Profile</button>
       </form>
     </div>
   );
