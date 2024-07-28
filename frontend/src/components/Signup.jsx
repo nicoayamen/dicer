@@ -46,6 +46,7 @@ const Signup = (props) => {
 
       const data = await response.json();
       console.log('User signed up successfully:', data);
+      window.localStorage.setItem('userid', data.userid);
       setLogin(true);
       navigate('/profile');
 

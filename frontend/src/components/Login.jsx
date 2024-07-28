@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 
 //Components
@@ -9,11 +10,14 @@ import IconBxsLockAlt from './IconBxsLockAlt';
 
 
 const Login = (props) => {
-  const { loggedIn, email, setEmail, password, setPassword, error } = props;
+  const { email, setEmail, password, setPassword, error, setError, setLogin } = props;
 
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(<IconEyeSlash />);
 
+  const navigate = useNavigate();
+
+  //Toggle password visibility
   const handleToggle = () => {
     if (type === 'password') {
       setType('text');
@@ -24,9 +28,47 @@ const Login = (props) => {
     }
   };
 
-  const handleLogin = (e) => {
+  //Handle login state for the submit button
+  const handleLogin = async (e) => {
     e.preventDefault();
-    loggedIn(e);
+    
+    if (e === null) {
+      setLogin(false);
+      return;
+    }
+
+    e.preventDefault();
+    console.log(email, password);
+
+    try {
+      const body = { email, password };
+      console.log(body);
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+
+      const data = await response.json();
+      console.log(data.user[0].id);
+      window.localStorage.setItem('userid', data.user[0].id)
+
+      setLogin(true);
+      setEmail('');
+      setPassword('');
+      setError('');
+      navigate('/profile');
+    } catch (err) {
+      console.error(err.message);
+      setError(err.message);
+      setEmail('');
+      setPassword('');
+    }
   };
 
 
