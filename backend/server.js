@@ -41,6 +41,7 @@ app.use('/', loginRoute);
 // app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
 app.use('/signup', signupRoutes);
+app.use('/editprofile', editProfileRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
