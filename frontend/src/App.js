@@ -5,10 +5,16 @@ import './App.css';
 //Components
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
+/// imports for chat start here
+import Home from './components/Home';
+import ChatPage from './components/ChatPage';
+import socketIO from 'socket.io-client';
+/// end here
 import NavBar from './components/NavBar';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 
+const socket = socketIO.connect(`http://localhost:8080`);
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -34,8 +40,8 @@ function App() {
           <Route path="/" element={<LoginPage email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} setLogin={setLogin} />} />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
           <Route path="/editprofile/:userId" element={<EditProfile />} />
+          <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
         </Routes>
-
       </div>
     </BrowserRouter>
   );
