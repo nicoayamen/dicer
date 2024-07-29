@@ -6,6 +6,9 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const db = require('./db/connection');
+const multer = require('multer');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -26,6 +29,11 @@ app.use(
     isSass: false,
   })
 );
+
+app.use(express.static('public'));
+app.use(bodyParser.json());
+/// chat func starts here
+
 app.use(cors());
 
 let users = [];
@@ -53,10 +61,29 @@ socketIO.on('connection', (socket) => {
   });
 });
 
-app.get('/api', (req, res) => {
-  res.json({
-    message: "Hello World!",
-  });
+// ends here 
+
+
+// Separated Routes for each Resource
+const loginRoute = require('./routes/login');
+// const widgetApiRoutes = require('./routes/widgets-api');
+// const usersRoutes = require('./routes/users');
+const signupRoutes = require('./routes/signup');
+const editProfileRoutes = require('./routes/editprofile')
+
+const profileRoute = require('./routes/profile');
+
+// Mount all resource routes
+// Note: Endpoints that return data (eg. JSON) usually start with `/api`
+app.use('/', loginRoute);
+// app.use('/api/widgets', widgetApiRoutes);
+// app.use('/users', usersRoutes);
+app.use('/signup', signupRoutes);
+app.use('/editprofile', editProfileRoutes)
+app.use('/profile', profileRoute);
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
 
 http.listen(PORT, () => {

@@ -1,0 +1,77 @@
+.editprofile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+.editprofile-form {
+  width: fit-content;
+  position: relative;
+  background-color: hsla(30, 10%, 10%, .1);
+  border: 2px solid lightgrey;
+  margin-inline: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editprofile-content,
+.editprofile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editprofile-content {
+  row-gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.editprofile-box {
+  align-items: center;  
+  column-gap: .75rem;
+  border-bottom: 2px solid lightgray;
+  padding: 1rem;
+  row-gap: .5rem;
+}
+
+.editprofile-box-input {
+  position: relative;
+}
+
+.editprofile-input {
+  width: 100%;
+  padding-block: .8rem;
+  background: white;
+  color: black;
+  border-radius: 1rem;
+}
+
+.editprofile-bio {
+  width: 100%;
+  padding-block: .8rem;
+  background: white;
+  color: black;
+  border-radius: 1rem;
+}
+
+.editprofile-button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.editprofile-photo-button {
+  width:50%;
+  cursor: pointer;
+}
