@@ -28,9 +28,9 @@ const EditProfile = (props) => {
           firstName: user.first_name || '',
           lastName: user.last_name || '',
           email: user.email || '',
-          classType: role.class || '',
-          isDM: role.is_dm || false,
-          bio: role.bio || '',
+          classType: role?.class || '',
+          isDM: role?.is_dm || false,
+          bio: role?.bio || '',
           photo: null
         });
       })

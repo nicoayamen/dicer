@@ -41,7 +41,7 @@ const getUserById = (userId) => {
   const queryString = `
     SELECT users.*, roles.class, roles.is_dm, roles.bio
     FROM users
-    JOIN roles ON users.role_id = roles.id
+    LEFT JOIN roles ON users.role_id = roles.id
     WHERE users.id = $1;
   `;
   const values = [userId];

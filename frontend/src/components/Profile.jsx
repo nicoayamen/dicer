@@ -39,7 +39,7 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
   const handleEditClick = () => {
     const userId = window.localStorage.getItem('userid'); 
     if (userId) {
-      navigate(`/editprofile/${userId}`); 
+      navigate(`/profile/${userId}/edit`); 
     } else {
       console.error('User ID is not provided');
     }

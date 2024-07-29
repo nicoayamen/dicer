@@ -12,7 +12,7 @@ router.get('/:userId', (req, res) => {
         console.log('User data:', user); // Debug log
         res.json(user);
       } else {
-        res.status(404).json({ error: 'User not found' });
+        res.status(400).json({ error: 'User not found' });
       }
     })
     .catch(err => {
