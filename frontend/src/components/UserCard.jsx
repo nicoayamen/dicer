@@ -1,16 +1,19 @@
 import React from 'react'
+import '../styles/userCard.css'
 
 const UserCard = (props) => {
-  const {card, onAccept, onDecline} = props;
+  const {user, onMatch, onReject} = props;
 
   return (
     <div>
-      <p>User card</p>
-      <li className='card-list' key={card.id}>
-        <div>{card.name}</div>
-        <div>{card.image}</div>
-        <button onClick={onAccept}>yes</button>
-        <button onClick={onDecline}>no</button>
+      <p>Match with player?</p>
+      <li className='user-list' key={user.id}>
+        <div>{user.first_name}</div>
+        <div>{user.photo}</div>
+        <div>
+          <button onClick={onMatch}>yes</button>
+          <button onClick={onReject}>no</button>
+        </div>
       </li>
     </div>
   )

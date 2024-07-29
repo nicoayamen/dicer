@@ -5,7 +5,7 @@ const Profile = () => {
   return (
     <div>
       <h2>Profile</h2>
-      <Link to="/matches">Matches</Link>
+      <Link to="/match">Matches</Link>
     </div>
   );
 };
