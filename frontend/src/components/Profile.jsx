@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/profile.css';
 
-const Profile = ({ userId, onEdit, onSignOut, onDelete }) => {
+const Profile = ({ userId, onSignOut, onDelete }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [profileUser, setProfileUser] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = window.localStorage.getItem('userid');
@@ -37,6 +39,15 @@ const Profile = ({ userId, onEdit, onSignOut, onDelete }) => {
       });
   }, [userId]);
 
+  const handleEditClick = () => {
+    navigate(`/editprofile/${userId}`); // Use navigate for redirection
+  };
+  //Change login state to logged out
+  const handleSignOut = () => {
+    window.localStorage.removeItem('userid')
+    navigate("/");
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -48,8 +59,8 @@ const Profile = ({ userId, onEdit, onSignOut, onDelete }) => {
         <h1>Welcome, {profileUser.firstName} {profileUser.lastName}</h1>
       </div>
       <div className="profile-actions">
-        <button onClick={onEdit} className="profile-button">Edit Account</button>
-        <button onClick={onSignOut} className="profile-button">Sign Out</button>
+        <button onClick={handleEditClick} className="profile-button">Edit Account</button>
+        <button onClick={handleSignOut} className="profile-button">Sign Out</button>
         <button onClick={onDelete} className="profile-button">Delete Account</button>
       </div>
     </div>
