@@ -63,6 +63,7 @@ const Login = (props) => {
       setPassword('');
       setError('');
       navigate('/profile');
+      
     } catch (err) {
       console.error(err.message);
       setError(err.message);

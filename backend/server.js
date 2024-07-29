@@ -35,6 +35,8 @@ const loginRoute = require('./routes/login');
 const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile')
 
+const profileRoute = require('./routes/profile');
+
 // Mount all resource routes
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/', loginRoute);
@@ -42,6 +44,7 @@ app.use('/', loginRoute);
 // app.use('/users', usersRoutes);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes)
+app.use('/profile', profileRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

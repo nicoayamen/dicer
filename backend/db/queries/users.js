@@ -1,7 +1,7 @@
 const db = require('../connection');
 
 const getLogin = (email, password) => {
-  const queryString = `SELECT email, password, * FROM users
+  const queryString = `SELECT id, email, password, * FROM users
   WHERE email = $1
   AND password = $2;
   `;
@@ -59,4 +59,22 @@ const updateUser = (userId, { firstName, lastName, email, photo }) => {
   return db.query(queryString, values).then(data => data.rows[0]);
 };
 
-module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser };
+// Function to get profile by user ID
+const getProfileById = (userId) => {
+  const queryString = `
+    SELECT photo, first_name, last_name
+    FROM users
+    WHERE id = $1;
+  `;
+  const values = [userId];
+
+  return db.query(queryString, values)
+    .then(data => data.rows[0])
+    .catch(err => {
+      console.error('Error executing query', err.stack);
+      throw err;
+    });
+};
+
+
+module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById };
