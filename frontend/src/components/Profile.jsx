@@ -14,8 +14,6 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
       return;
     }
 
-    console.log('Fetching profile for userId:', userId); // Debug log
-
     fetch(`/profile/${userId}`)
       .then(response => {
         if (!response.ok) {
@@ -24,7 +22,6 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
         return response.json();
       })
       .then(data => {
-        console.log('Profile data received:', data); // Debug log
         setProfileUser({
           photo: data.photo || '',
           firstName: data.first_name || '',
@@ -37,14 +34,20 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
         console.error('Error fetching profile data:', err);
         setIsLoading(false);
       });
-  }, [userId]);
+  }, []);
 
   const handleEditClick = () => {
-    navigate(`/editprofile/${userId}`); // Use navigate for redirection
+    const userId = window.localStorage.getItem('userid'); 
+    if (userId) {
+      navigate(`/editprofile/${userId}`); 
+    } else {
+      console.error('User ID is not provided');
+    }
   };
-  //Change login state to logged out
+
+  // Change login state to logged out
   const handleSignOut = () => {
-    window.localStorage.removeItem('userid')
+    window.localStorage.removeItem('userid');
     navigate("/");
   };
 
