@@ -68,11 +68,13 @@ const loginRoute = require('./routes/login');
 const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile');
 const profileRoute = require('./routes/profile');
+const matchRoute = require('./routes/match')
 
 app.use('/', loginRoute);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
+app.use('/profile', matchRoute);
 
 // Start server
 server.listen(PORT, () => {
