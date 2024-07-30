@@ -42,8 +42,8 @@ function App() {
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
 
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
-          <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
           <Route path="/profile/:userId/delete" element={<DeleteProfile />} />
+          <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

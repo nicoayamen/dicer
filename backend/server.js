@@ -68,13 +68,13 @@ const loginRoute = require('./routes/login');
 const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile');
 const profileRoute = require('./routes/profile');
-const deleteProfileRoutes = require('./routes/deleteprofile');
+const deleteProfileRoute = require('./routes/deleteprofile');
 
 app.use('/', loginRoute);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
-app.use('/deleteprofile', deleteProfileRoutes);
+app.use('/deleteprofile', deleteProfileRoute);
 
 // Start server
 server.listen(PORT, () => {

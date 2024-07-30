@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-const DeleteProfile = () => {
+const DeleteProfile = ({ setLogin }) => {
+  const { userId } = useParams(); // Extract userId from the URL
+  const navigate = useNavigate(); // Hook to handle navigation
   const [isLoading, setIsLoading] = useState(true);
   const [profileUser, setProfileUser] = useState({});
-  const navigate = useNavigate();
-  const { userId } = useParams();
+
 
   useEffect(() => {
     if (!userId) {
