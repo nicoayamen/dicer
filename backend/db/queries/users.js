@@ -3,6 +3,7 @@ const db = require('../connection');
 
 const getLogin = (email, password) => {
   const queryString = `SELECT id, email, password, * FROM users
+  const queryString = `SELECT id, email, password, * FROM users
   WHERE email = $1
   AND password = $2;
   `;
@@ -42,7 +43,7 @@ const getUserById = (userId) => {
   const queryString = `
     SELECT users.*, roles.class, roles.is_dm, roles.bio
     FROM users
-    JOIN roles ON users.role_id = roles.id
+    LEFT JOIN roles ON users.role_id = roles.id
     WHERE users.id = $1;
   `;
   const values = [userId];
