@@ -91,4 +91,4 @@ const deleteUserById = (userId) => {
 }
 
 
-module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById };
+module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById, deleteUserById };
