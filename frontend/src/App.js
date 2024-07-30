@@ -44,7 +44,7 @@ function App() {
 
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
           <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
-          <Route path='/match' element={<Match />} />
+          <Route path='/profile/match' element={<Match />} />
         </Routes>
       </div>
     </BrowserRouter>

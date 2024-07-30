@@ -4,11 +4,19 @@ import UserCard from './UserCard';
 const CardStack = () => {
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
+  
 
   useEffect(() => {
-    const getUser = async (userId) => {
+    const userId = window.localStorage.getItem('userid');
+    console.log('match page userid', userId)
+    if (!userId) {
+      console.error('User ID is not provided');
+      return;
+    }
+    
+    const getUser = async (getId) => {
       try {
-        const response = await fetch(`/profile/match/${userId}`);
+        const response = await fetch(`/profile/match/${getId}`);
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(errorData.error);

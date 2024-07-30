@@ -52,7 +52,7 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
   };
 
   const handleMatchButton = () => {
-    navigate('/match')
+    navigate('/profile/match')
   };
   
   if (isLoading) {
