@@ -7,14 +7,19 @@ const CardStack = () => {
   
 
   useEffect(() => {
-    const userId = window.localStorage.getItem('userid');
+    const userId = Number(window.localStorage.getItem('userid'));
     console.log('match page userid', userId)
     if (!userId) {
       console.error('User ID is not provided');
       return;
     }
     
-    const getUser = async (getId) => {
+    const getUser = async (userId, getId) => {
+      //Skip if fetched user is the logged in user
+      if (userId === getId) {
+        getId++;
+      }
+
       try {
         const response = await fetch(`/profile/match/${getId}`);
         if (!response.ok) {
@@ -29,7 +34,7 @@ const CardStack = () => {
       }
     };
 
-    getUser(currentUserIndex + 1);
+    getUser(userId, currentUserIndex + 1);
   }, [currentUserIndex]);
 
   //Match with a user
