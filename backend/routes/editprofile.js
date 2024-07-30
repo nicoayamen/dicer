@@ -13,10 +13,11 @@ router.get('/:userId', (req, res) => {
     roleQueries.getRoleByUserId(userId) // Ensure this function is defined in roles queries
   ])
     .then(([user, role]) => {
-      if (user && role) {
+      console.log ("user:", user, "role:", role, "userid:", userId)
+      if (user) {
         res.json({ user, role });
       } else {
-        res.status(404).json({ error: 'User not found' });
+        res.status(400).json({ error: 'User not found' });
       }
     })
     .catch(err => {
