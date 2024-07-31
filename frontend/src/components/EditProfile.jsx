@@ -23,7 +23,9 @@ const EditProfile = (props) => {
       .then(response => response.json())
       .then(data => {
         const { user, role } = data;
+        console.log('data:', data);
         setProfile(user);
+        console.log('role:', role)
         setFormData({
           firstName: user.first_name || '',
           lastName: user.last_name || '',
@@ -31,7 +33,8 @@ const EditProfile = (props) => {
           classType: role?.class || '',
           isDM: role?.is_dm || false,
           bio: role?.bio || '',
-          photo: null
+          photo: null,
+          roleId: role?.id
         });
       })
       .catch(err => {
@@ -63,6 +66,9 @@ const EditProfile = (props) => {
     data.append('classType', formData.classType);
     data.append('isDM', formData.isDM);
     data.append('bio', formData.bio);
+    if (formData.roleId) {
+      data.append('roleId', formData.roleId)
+    console.log(formData.roleId, "formData.roleID")};
     if (formData.photo) {
       data.append('photo', formData.photo);
     }
