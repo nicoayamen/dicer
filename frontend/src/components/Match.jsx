@@ -4,6 +4,7 @@ import UserCard from './UserCard';
 const CardStack = () => {
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
+  const [role, setRole] = useState(null);
   const userId = Number(window.localStorage.getItem('userid'));
 
   //Skip if fetched user is the logged in user
@@ -20,8 +21,9 @@ const CardStack = () => {
         throw new Error(errorData.error);
       }
       const data = await response.json();
-      console.log("Fetched user:", data.user);
+      console.log("Fetched user:", [data.user, data.role]);
       setCurrentUser(data.user);
+      setRole(data.role);
     } catch (err) {
       console.error(err.message);
     }
@@ -44,7 +46,7 @@ const CardStack = () => {
       const body = { userId, getId };
       console.log('sending data', body);
       
-      const response = await fetch(`${userId}/profile/match/${getId}`, {
+      const response = await fetch(`/profile/match/${userId}/${getId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -72,10 +74,11 @@ const CardStack = () => {
 
   return (
     <div>
-      <h2>This is the match page!</h2>
+      <h2>Match?</h2>
       {currentUser ? (
         <UserCard
           user={currentUser}
+          role={role}
           onMatch={handleMatch}
           onReject={handleReject}
         />

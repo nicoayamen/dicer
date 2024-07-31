@@ -2,12 +2,20 @@ const db = require('../connection');
 
 const insertMatch = (user_id, matched_user_id) => {
   const queryString = `INSERT INTO matches (user_id, matched_user_id)
-  VALUES ($1, $2);
+  VALUES ($1, $2)
+  RETURNING *;
   `;
   const values = [user_id, matched_user_id];
 
   return db.query(queryString, values)
-  .then(data => data.rows[0]);
+  .then(data => {
+    console.log("Insert successful, returning data:", data.rows) // Debugging
+    return data.rows
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 };
 
-module.exports = insertMatch
+
+module.exports = { insertMatch };

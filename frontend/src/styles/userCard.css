@@ -10,8 +10,9 @@
   max-width: 600px;
 }
 
-.user-card-header {
+.user-name {
   display: flex;
+  font-weight: bolder;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
@@ -22,7 +23,14 @@
   flex-direction: column;
   justify-content: space-around;
   list-style-type: none;
-  width: max-content
+  width: fit-content
+}
+
+.user-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .user-card-button {

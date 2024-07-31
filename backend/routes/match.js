@@ -1,35 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const userQueries = require('../db/queries/users');
+const roleQueries = require('../db/queries/roles');
+const matchQueries = require('../db/queries/match');
 
 router.get('/match/:getId', (req, res) => {
   const getId = req.params.getId;
   console.log("backend", getId);
 
-  userQueries.getUserById(getId)
-  .then(user => {
-    if (!user || user.length === 0) {
-      return res.status(401).send({ error: "No user found" });
-    }
-    console.log("User found:", user); 
-    res.json({ success: true, user });
-  })
-  .catch(err => {
-    res.status(500).json({ error: err.message })
-  });
-});
-
-router.post(':userId/match/:getId', (req, res) => {
-  const {userId, getId} = req.params;
-
-  userQueries.insertMatch(userId, getId)
-    .then(data => {
-      const newMatch = data.body
-      res.json(newMatch)
+  Promise.all([
+    userQueries.getUserById(getId),
+    roleQueries.getRoleByUserId(getId)
+  ])
+    .then(([user, role]) => {
+      //console.log("user:", user, "role:", role, "userid:", getId);
+      if (user) {
+        res.json({ user, role });
+      } else {
+        res.status(400).json({ error: 'User not found' });
+      }
     })
     .catch(err => {
-      res.status(500).json({ error: err.message })
+      console.error('Error fetching profile data:', err);
+      res.status(500).json({ error: 'Internal server error' });
     });
-})
+});
+
+router.post('/match/:userId/:getId', (req, res) => {
+  const { userId, getId } = req.params;
+
+  matchQueries.insertMatch(userId, getId)
+    .then(data => {
+      console.log("Response data:", data); // Debugging
+      res.json(data);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
 
 module.exports = router;
