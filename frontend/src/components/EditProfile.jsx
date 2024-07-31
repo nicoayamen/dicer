@@ -75,7 +75,7 @@ const EditProfile = (props) => {
       .then(data => {
         setProfile(data);
         alert('Profile updated successfully');
-        navigate(`/profile/${userId}`);
+        navigate(`/profile/`);
       })
       .catch(err => {
         console.error('Error updating profile:', err);

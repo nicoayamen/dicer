@@ -2,9 +2,10 @@ import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './App.css';
 
-//Components
+// Components
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
+import DeleteProfile from './components/DeleteProfile';
 /// imports for chat start here
 import Home from './components/Home';
 import ChatPage from './components/ChatPage';
@@ -41,6 +42,7 @@ function App() {
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
 
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
+          <Route path="/profile/:userId/delete" element={<DeleteProfile />} />
           <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
         </Routes>
       </div>

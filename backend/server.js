@@ -41,7 +41,7 @@ let users = [];
 
 io.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
-  
+
   socket.on('message', (data) => {
     io.emit('messageResponse', data);
   });
@@ -68,11 +68,13 @@ const loginRoute = require('./routes/login');
 const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile');
 const profileRoute = require('./routes/profile');
+const deleteProfileRoute = require('./routes/deleteprofile');
 
 app.use('/', loginRoute);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
+app.use('/deleteprofile', deleteProfileRoute);
 
 // Start server
 server.listen(PORT, () => {

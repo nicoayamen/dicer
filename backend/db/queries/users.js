@@ -76,5 +76,19 @@ const getProfileById = (userId) => {
     });
 };
 
+const deleteUserById = (userId) => {
+  const queryString = `
+  DELETE FROM users WHERE id = $1;
+  `;
+  const values = [userId];
 
-module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById };
+  return db.query(queryString, values)
+    .then(data => data.rows[0])
+    .catch(err => {
+      console.error('Error executing query', err.stack);
+      throw err;
+    });
+}
+
+
+module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById, deleteUserById };
