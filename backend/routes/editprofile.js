@@ -13,7 +13,6 @@ router.get('/:userId', (req, res) => {
     roleQueries.getRoleByUserId(userId)
   ])
     .then(([user, role]) => {
-      console.log("user:", user, "role:", role, "userid:", userId);
       if (user) {
         res.json({ user, role });
       } else {
@@ -35,16 +34,14 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
   if (req.file) {
     photo = req.file.filename;
   }
-  
+
   console.log("existingroleId:", existingRoleId);
 
   (existingRoleId ? roleQueries.updateRole(existingRoleId, { classType, isDM, bio })
     : roleQueries.createRole({ classType, isDM, bio }))
     .then((role) => {
-      console.log("role:", role);
       return userQueries.updateUser(userId, { firstName, lastName, email, photo, roleId: role.id })
       .then((user) => {
-        console.log("user:", user);
         res.json({ user, role });
     })
     .catch (err => {

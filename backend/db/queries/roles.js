@@ -18,10 +18,6 @@ const getRoleByUserId = (userId) => {
 };
 
 const updateRole = (roleId, { classType, isDM, bio }) => {
-  console.log('Updating role with ID:', roleId);
-  console.log('New class type:', classType);
-  console.log('Is DM:', isDM);
-  console.log('Bio:', bio);
 
   const queryString = `
     UPDATE roles

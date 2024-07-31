@@ -23,9 +23,7 @@ const EditProfile = (props) => {
       .then(response => response.json())
       .then(data => {
         const { user, role } = data;
-        console.log('data:', data);
         setProfile(user);
-        console.log('role:', role)
         setFormData({
           firstName: user.first_name || '',
           lastName: user.last_name || '',
