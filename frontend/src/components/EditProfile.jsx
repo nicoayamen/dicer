@@ -95,11 +95,11 @@ const EditProfile = (props) => {
           <div className='editprofile-box'>
 
             <div className='editprofile-box-input'>
-              <img
-                src={profile.photo ? `/${profile.photo}` : 'http://placehold.it/150x150'}
-                alt='Profile'
-                style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-              />
+            <img
+              src={profile.photo ? profile.photo : 'http://placehold.it/150x150'}
+              alt='Profile'
+              style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+            />
             </div>
             <div className='editprofile-box-input'>  
               <label>Change Picture: </label>
