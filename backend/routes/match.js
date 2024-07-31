@@ -17,6 +17,19 @@ router.get('/match/:getId', (req, res) => {
   .catch(err => {
     res.status(500).json({ error: err.message })
   });
+});
+
+router.post(':userId/match/:getId', (req, res) => {
+  const {userId, getId} = req.params;
+
+  userQueries.insertMatch(userId, getId)
+    .then(data => {
+      const newMatch = data.body
+      res.json(newMatch)
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message })
+    });
 })
 
 module.exports = router;

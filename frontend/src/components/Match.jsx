@@ -4,45 +4,58 @@ import UserCard from './UserCard';
 const CardStack = () => {
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
-  
+  const userId = Number(window.localStorage.getItem('userid'));
 
-  useEffect(() => {
-    const userId = Number(window.localStorage.getItem('userid'));
-    console.log('match page userid', userId)
-    if (!userId) {
-      console.error('User ID is not provided');
-      return;
+  //Skip if fetched user is the logged in user
+  if (userId - 1 === currentUserIndex) {
+    setCurrentUserIndex(currentUserIndex + 1)
+  };
+
+  //Get user profiles
+  const getUser = async (getId) => {
+    try {
+      const response = await fetch(`/profile/match/${getId}`);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+      const data = await response.json();
+      console.log("Fetched user:", data.user);
+      setCurrentUser(data.user);
+    } catch (err) {
+      console.error(err.message);
     }
-    
-    const getUser = async (userId, getId) => {
-      //Skip if fetched user is the logged in user
-      if (userId === getId) {
-        getId++;
-      }
+  };
 
-      try {
-        const response = await fetch(`/profile/match/${getId}`);
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error);
-        }
-        const data = await response.json();
-        console.log("Fetched user:", data.user);
-        setCurrentUser(data.user);
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
-
-    getUser(userId, currentUserIndex + 1);
+  //Get users one by one
+  useEffect(() => { 
+    if (currentUserIndex >= 0) {
+      getUser(currentUserIndex + 1);
+    }    
   }, [currentUserIndex]);
 
   //Match with a user
-  const handleMatch = () => {
-    console.log(`Match: ${currentUser.first_name}`);
-    // Write to database: currentUser.id
+  const handleMatch = async (e) => {
+    console.log(`Match: ${currentUser.id} - ${currentUser.first_name}`);
+    e.preventDefault();
 
-    nextUser();
+    try {
+      const getId = currentUser.id;  
+      const body = { userId, getId };
+      console.log('sending data', body);
+      
+      const response = await fetch(`${userId}/profile/match/${getId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
+      }
+    }
+    finally {nextUser();}    
   };
 
   //Reject a user
