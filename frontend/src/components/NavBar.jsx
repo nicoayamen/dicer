@@ -30,13 +30,21 @@ const NavBar = (props) => {
   return (
     <div className='nav-bar'>
       <div className='navbar-logo'>
-        <Link to='/match'>
+        {login ? (
+          <Link to='/match'>
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/014/893/346/original/dice-d20-icon-design-free-vector.jpg"
+              alt="dicer logo"
+              className='navbar-logo-img'
+            />
+          </Link>
+        ) : (
           <img
             src="https://static.vecteezy.com/system/resources/previews/014/893/346/original/dice-d20-icon-design-free-vector.jpg"
             alt="dicer logo"
             className='navbar-logo-img'
           />
-        </Link>
+        )}
       </div>
 
       {login && profile && (
