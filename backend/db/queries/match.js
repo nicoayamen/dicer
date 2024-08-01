@@ -17,5 +17,21 @@ const insertMatch = (user_id, matched_user_id) => {
   });
 };
 
+const getMatches = (user_id) => {
+  const queryString = `SELECT matched_user_id
+  FROM matches 
+  WHERE user_id = $1;
+  `;
+  const values = [user_id];
 
-module.exports = { insertMatch };
+  return db.query(queryString, values)
+  .then(data => {
+    console.log("Getting matches:", data.rows) // Debugging
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+};
+
+module.exports = { insertMatch, getMatches };

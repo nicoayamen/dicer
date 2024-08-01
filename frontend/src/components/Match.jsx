@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UserCard from './UserCard';
+import { Link } from 'react-router-dom';
 
 const CardStack = () => {
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
@@ -85,6 +86,7 @@ const CardStack = () => {
       ) : (
         <p>no more players :(</p>
       )}
+      <Link to="/profile/messages">Go to messages!</Link>
     </div>
   );
 };
