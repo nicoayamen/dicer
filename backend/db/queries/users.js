@@ -51,18 +51,18 @@ const getUserById = (userId) => {
 const updateUser = (userId, { firstName, lastName, email, photo, roleId }) => {
   const queryString = `
     UPDATE users
-    SET first_name = $1, last_name = $2, email = $3, photo = $4, role_id = $6
-    WHERE id = $5
+    SET first_name = $1, last_name = $2, email = $3, photo = $4, role_id = $5
+    WHERE id = $6
     RETURNING *;
   `;
-  const values = [firstName, lastName, email, photo, userId, roleId];
+  const values = [firstName, lastName, email, photo, roleId, userId];
   return db.query(queryString, values).then(data => data.rows[0]);
 };
 
 // Function to get profile by user ID
 const getProfileById = (userId) => {
   const queryString = `
-    SELECT photo, first_name, last_name
+    SELECT id, photo, first_name, last_name
     FROM users
     WHERE id = $1;
   `;

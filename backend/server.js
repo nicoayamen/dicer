@@ -69,12 +69,14 @@ const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile');
 const profileRoute = require('./routes/profile');
 const deleteProfileRoute = require('./routes/deleteprofile');
+const navbarRoute = require('./routes/navbar');
 
 app.use('/', loginRoute);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
 app.use('/deleteprofile', deleteProfileRoute);
+app.use('/navbar', navbarRoute);
 
 // Start server
 server.listen(PORT, () => {

@@ -1,30 +1,57 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import '../styles/navbar.css';
 
 const NavBar = (props) => {
   const { login, setLogin } = props;
+  const [profile, setProfile] = useState(null);
+  const navigate = useNavigate();
+  const userId = window.localStorage.getItem('userid');
 
-  const navigate = useNavigate()
+  useEffect(() => {
+    if (login && userId) {
+      fetch(`/profile/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          setProfile(data);
+        })
+        .catch(err => {
+          console.error('Error fetching profile:', err);
+        });
+    }
+  }, [login, userId]);
 
-  //Change login state to logged out
   const handleLogOut = () => {
-    window.localStorage.removeItem('userid')
+    window.localStorage.removeItem('userid');
     setLogin(false);
     navigate("/");
   };
 
-
   return (
     <div className='nav-bar'>
-      <h1>Dicer</h1>
+      <div className='navbar-logo'>
+        <Link to='/match'>
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/014/893/346/original/dice-d20-icon-design-free-vector.jpg"
+            alt="dicer logo"
+            className='navbar-logo-img'
+          />
+        </Link>
+      </div>
 
-      {login ?
-        <div>
-          <h3>you're logged in</h3>
-          <button onClick={handleLogOut}>Logout</button>
+      {login && profile && (
+        <div className='navbar-links'>
+          <Link to='/messages'>Messages</Link>
+          <button onClick={handleLogOut} className='navbar-logout-button'>Logout</button>
+          <Link to={`/profile`}>
+            <img
+              src={profile.photo ? profile.photo : 'http://placehold.it/50x50'}
+              alt='Profile'
+              className='navbar-profile-photo'
+            />
+          </Link>
         </div>
-        : <div>Login or Sign Up</div>
-      }
+      )}
     </div>
   );
 };
