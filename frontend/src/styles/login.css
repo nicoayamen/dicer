@@ -4,22 +4,21 @@
   align-items: center;
 }
 
-input,
-button {
+input {
   border: none;
   outline: none;
 }
 
 .login-form {
-  width: fit-content;
-  position: relative;
-  background-color: hsla(30, 10%, 10%, .1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: hsla(30, 10%, 10%, 0.1);
   border: 2px solid lightgrey;
-  margin-inline: 1.5rem;
-  padding: 2.5rem 1.5rem;
   border-radius: 1rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  max-width: 600px;
 }
 
 .login-content,
@@ -55,7 +54,16 @@ button {
 .login-button {
   width: 100%;
   padding: 1rem;
-  border-radius: .5rem;
-  cursor: pointer;
+  border-radius: 0.5rem;
+  border: 2px solid lightgrey;
   background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #f0f0f0;
+  color: #000;
 }

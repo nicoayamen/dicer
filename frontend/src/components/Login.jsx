@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 
@@ -16,6 +16,14 @@ const Login = (props) => {
   const [icon, setIcon] = useState(<IconEyeSlash />);
 
   const navigate = useNavigate();
+
+  //Redirect to profile page if user is still logged in
+  useEffect(() => {
+    const userId = window.localStorage.getItem('userid');
+    if(userId) {
+      navigate('/profile')
+    }
+  })
 
   //Toggle password visibility
   const handleToggle = () => {

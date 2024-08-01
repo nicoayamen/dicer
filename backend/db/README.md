@@ -35,6 +35,7 @@ CREATE DATABASE finals OWNER dicer;
     ALTER TABLE parties OWNER TO dicer;
     ALTER TABLE users OWNER TO dicer;
     ALTER TABLE user_parties OWNER TO dicer;
+    ALTER TABLE matches OWNER TO dicer;
     ```
 
 3. DB reset: ```npm run db:reset```

@@ -68,6 +68,10 @@ const Profile = (props) => {
     }
   };
 
+  const handleMatchButton = () => {
+    navigate('/profile/match')
+  };
+
   // Show loading message while profile data is being fetched
   if (isLoading) {
     return <div>Loading...</div>;
@@ -81,6 +85,7 @@ const Profile = (props) => {
         <h1>Welcome, {profileUser.firstName} {profileUser.lastName}</h1>
       </div>
       <div className="profile-actions">
+      <button onClick={handleMatchButton} className="profile-button">Start Matching!</button>
         <button onClick={handleEditClick} className="profile-button">Edit Account</button>
         <button onClick={handleSignOut} className="profile-button">Sign Out</button>
         <button onClick={handleDeleteClick} className="profile-button">Delete Account</button>
