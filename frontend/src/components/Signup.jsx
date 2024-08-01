@@ -48,7 +48,7 @@ const Signup = (props) => {
       console.log('User signed up successfully:', data);
       window.localStorage.setItem('userid', data.id);
       setLogin(true);
-      navigate('/profile');
+      navigate('/profile/${userId}');
 
     } catch (error) {
       console.error('There was an error signing up:', error);
