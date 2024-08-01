@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Messages = () => {
-  const [userName, setUserName] = useState(null);
+  const [userName, setUserName] = useState([]);
   const userId = Number(window.localStorage.getItem('userid'));
 
   //Fetch users that the logged-in user matched with
@@ -21,6 +21,7 @@ const Messages = () => {
     }
   };
 
+  //Get users on page load
   useEffect(() => {
     if (userId) {
       getUsers(userId);
@@ -32,8 +33,8 @@ const Messages = () => {
     <div>
       <h1>Messages</h1>
       <ul>
-        {userName.map(id => (
-          <li key={id}>{id}</li>
+        {userName.map(name => (
+          <li key={name}>{name}</li>
         ))}
       </ul>
     </div>

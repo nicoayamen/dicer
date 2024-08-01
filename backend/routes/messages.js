@@ -7,7 +7,7 @@ router.get('/messages/:userId', (req, res) => {
 
   matchQueries.getMatches(userId)
     .then(data => {
-      const idList = data.map(item => item.matched_user_id);
+      const idList = data.map(item => item.matched_user_first_name);
       console.log("List:", idList); // Debugging
       res.json(idList);
     })
