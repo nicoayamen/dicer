@@ -68,6 +68,10 @@ const Profile = (props) => {
     }
   };
 
+  const handleMatchButton = () => {
+    navigate('/profile/match')
+  };
+
   // Show loading message while profile data is being fetched
   if (isLoading) {
     return <div>Loading...</div>;

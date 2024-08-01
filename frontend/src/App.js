@@ -2,11 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './App.css';
 
-// Components
-import LoginPage from './components/LoginPage';
-import Signup from './components/Signup';
-import DeleteProfile from './components/DeleteProfile';
-/// imports for chat start here
+/// imports for chat
 import Home from './components/Home';
 import ChatPage from './components/ChatPage';
 import socketIO from 'socket.io-client';
@@ -14,6 +10,7 @@ import socketIO from 'socket.io-client';
 //Components
 import LoginPage from './components/LoginPage';
 import Signup from './components/Signup';
+import DeleteProfile from './components/DeleteProfile';
 import NavBar from './components/NavBar';
 import Profile from './components/Profile';
 import Match from './components/Match';
