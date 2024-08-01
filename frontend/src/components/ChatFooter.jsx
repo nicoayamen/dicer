@@ -1,38 +1,49 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 
-const ChatFooter = ({socket}) => {
-    const [message, setMessage] = useState("")
-    const handleTyping = () => socket.emit("typing",`${localStorage.getItem("userName")} is typing`)
+const ChatFooter = ({ socket }) => {
+  const [message, setMessage] = useState("");
 
-    const handleSendMessage = (e) => {
-        e.preventDefault()
-        if(message.trim() && localStorage.getItem("userName")) {
-        socket.emit("message", 
-            {
-            text: message, 
-            name: localStorage.getItem("userName"), 
-            id: `${socket.id}${Math.random()}`,
-            socketID: socket.id
-            }
-        )
-        }
-        setMessage("")
+  const handleTyping = () => {
+    const username = localStorage.getItem("userName");
+    if (username) {
+      socket.emit("typing", { username });
     }
+  };
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    const username = localStorage.getItem("userName");
+
+    if (message.trim() && username) {
+      const messageData = {
+        username,
+        content: message.trim(),
+      };
+      console.log("Sending message:", messageData); // Debugging output
+      socket.emit("message", messageData);
+
+      // Clear the message input
+      setMessage("");
+    } else {
+      console.error("Message data is missing or invalid"); // Debugging output
+    }
+  };
+
   return (
     <div className='chat__footer'>
-        <form className='form' onSubmit={handleSendMessage}>
-          <input 
-            type="text" 
-            placeholder='Write message' 
-            className='message' 
-            value={message} 
-            onChange={e => setMessage(e.target.value)}
-            onKeyDown={handleTyping}
-            />
-            <button className="sendBtn">SEND</button>
-        </form>
-     </div>
-  )
-}
+      <form className='form' onSubmit={handleSendMessage}>
+        <input 
+          type="text" 
+          placeholder='Write message' 
+          className='message' 
+          value={message} 
+          onChange={e => setMessage(e.target.value)}
+          onKeyDown={handleTyping}
+        />
+        <button className="sendBtn">SEND</button>
+      </form>
+    </div>
+  );
+};
 
-export default ChatFooter
+export default ChatFooter;

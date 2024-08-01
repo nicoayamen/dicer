@@ -37,6 +37,7 @@ function App() {
         <NavBar login={login} setLogin={setLogin} />        
 
         <Routes>
+        <Route path='/home' element={<Home socket={socket}/>} />
           <Route path='/profile' element={<Profile />} />
           <Route path="/" element={<LoginPage email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} setLogin={setLogin} />} />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />

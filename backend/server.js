@@ -1,18 +1,13 @@
-// Load .env data into process.env
 require('dotenv').config();
-
-// Import required modules
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('./lib/sass-middleware');
-const multer = require('multer');
 const http = require('http');
 const socketIO = require('socket.io');
 const db = require('./db/connection');
 
-// Initialize app and server
 const app = express();
 const server = http.Server(app);
 const io = socketIO(server, {
@@ -21,10 +16,8 @@ const io = socketIO(server, {
   },
 });
 
-// Define port
 const PORT = process.env.PORT || 8080;
 
-// Middleware
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use('/styles', sassMiddleware({
@@ -37,24 +30,58 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Socket.io logic
+
+const saveMessageToDatabase = async (message) => {
+  try {
+    const query = 'INSERT INTO messages (username, content, timestamp) VALUES ($1, $2, $3) RETURNING *';
+    const values = [message.username, message.content, new Date()];
+    const result = await db.query(query, values);
+    console.log('Message saved:', result.rows[0]);
+    return result.rows[0]; // Return saved message to be emitted
+  } catch (error) {
+    console.error('Error saving message to database:', error);
+    throw error;
+  }
+};
 let users = [];
 
 io.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
 
-  socket.on('message', (data) => {
-    io.emit('messageResponse', data);
+  // Fetch previous messages when a user joins
+  socket.on('join', async (username) => {
+    try {
+      // Fetch old messages from the database
+      const result = await db.query('SELECT * FROM messages ORDER BY timestamp ASC');
+      socket.emit('chatHistory', result.rows);
+    } catch (err) {
+      console.error('Error fetching chat history:', err);
+    }
   });
 
+  socket.on('message', async (data) => {
+    try {
+      const { username, content } = data;
+      await saveMessageToDatabase({ username, content });
+      io.emit('messageResponse', data); // Broadcast to all connected clients
+    } catch (err) {
+      console.error('Error saving message to database:', err);
+    }
+  });
+
+  // Handle typing indication
   socket.on('typing', (data) => {
-    socket.broadcast.emit('typingResponse', data);
+    const { username } = data;
+    socket.broadcast.emit('typingResponse', { username });
   });
 
+  // Handle new user connection
   socket.on('newUser', (data) => {
     users.push(data);
     io.emit('newUserResponse', users);
   });
 
+  // Handle user disconnection
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
     users = users.filter(user => user.socketID !== socket.id);
@@ -62,6 +89,7 @@ io.on('connection', (socket) => {
     socket.disconnect();
   });
 });
+
 
 // Routes
 const loginRoute = require('./routes/login');
@@ -76,7 +104,6 @@ app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
 app.use('/deleteprofile', deleteProfileRoute);
 
-// Start server
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
