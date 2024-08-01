@@ -2,26 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/profile.css';
 
-const Profile = ({ userId, onSignOut, onDelete }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [profileUser, setProfileUser] = useState({});
+const Profile = (props) => {
   const navigate = useNavigate();
 
+  // State to manage loading status and profile user data
+  const [isLoading, setIsLoading] = useState(true);
+  const [profileUser, setProfileUser] = useState({});
+
   useEffect(() => {
+    // Retrieve userID from localStorage
     const userId = window.localStorage.getItem('userid');
     if (!userId) {
       console.error('User ID is not provided');
       return;
     }
 
+    // Fetch user profile data from API
     fetch(`/profile/${userId}`)
       .then(response => {
+        // Check if response is successful
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
       .then(data => {
+        // Update state with profile user data
         setProfileUser({
           photo: data.photo || '',
           firstName: data.first_name || '',
@@ -36,6 +42,7 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
       });
   }, []);
 
+  // Navigate to Edit Account page when the button is clicked
   const handleEditClick = () => {
     const userId = window.localStorage.getItem('userid'); 
     if (userId) {
@@ -45,20 +52,28 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
     }
   };
 
-  // Change login state to logged out
+  // Clear user ID from localStorage and navigate to home page on sign out
   const handleSignOut = () => {
     window.localStorage.removeItem('userid');
     navigate("/");
   };
 
-  const handleMatchButton = () => {
-    navigate('/profile/match')
+  // Navigate to Delete Account page when the button is clicked
+  const handleDeleteClick = () => {
+    const userId = window.localStorage.getItem('userid'); 
+    if (userId) {
+      navigate(`/profile/${userId}/delete`);
+    } else {
+      console.error('User ID is not defined');
+    }
   };
-  
+
+  // Show loading message while profile data is being fetched
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
+  // Render the profile page with user information and action buttons
   return (
     <div className="profile-container">
       <div className="profile-header">
@@ -69,7 +84,7 @@ const Profile = ({ userId, onSignOut, onDelete }) => {
       <button onClick={handleMatchButton} className="profile-button">Start Matching!</button>
         <button onClick={handleEditClick} className="profile-button">Edit Account</button>
         <button onClick={handleSignOut} className="profile-button">Sign Out</button>
-        <button onClick={onDelete} className="profile-button">Delete Account</button>
+        <button onClick={handleDeleteClick} className="profile-button">Delete Account</button>
       </div>
     </div>
   );

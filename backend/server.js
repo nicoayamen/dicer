@@ -41,7 +41,7 @@ let users = [];
 
 io.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
-  
+
   socket.on('message', (data) => {
     io.emit('messageResponse', data);
   });
@@ -68,6 +68,7 @@ const loginRoute = require('./routes/login');
 const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile');
 const profileRoute = require('./routes/profile');
+const deleteProfileRoute = require('./routes/deleteprofile');
 const matchRoute = require('./routes/match');
 const messagesRoute = require('./routes/messages');
 
@@ -75,6 +76,7 @@ app.use('/', loginRoute);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
+app.use('/deleteprofile', deleteProfileRoute);
 app.use('/profile', matchRoute);
 app.use('/profile', messagesRoute);
 

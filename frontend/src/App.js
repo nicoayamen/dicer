@@ -2,7 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './App.css';
 
-// imports for chat
+// Components
+import LoginPage from './components/LoginPage';
+import Signup from './components/Signup';
+import DeleteProfile from './components/DeleteProfile';
+/// imports for chat start here
 import Home from './components/Home';
 import ChatPage from './components/ChatPage';
 import socketIO from 'socket.io-client';
@@ -44,6 +48,7 @@ function App() {
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
 
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
+          <Route path="/profile/:userId/delete" element={<DeleteProfile />} />
           <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
           <Route path='/profile/match' element={<Match />} />
           <Route path='/profile/messages' element={<Messages />} />

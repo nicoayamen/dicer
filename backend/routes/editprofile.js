@@ -10,10 +10,9 @@ router.get('/:userId', (req, res) => {
 
   Promise.all([
     userQueries.getUserById(userId),
-    roleQueries.getRoleByUserId(userId) // Ensure this function is defined in roles queries
+    roleQueries.getRoleByUserId(userId)
   ])
     .then(([user, role]) => {
-      console.log ("user:", user, "role:", role, "userid:", userId)
       if (user) {
         res.json({ user, role });
       } else {
@@ -28,7 +27,7 @@ router.get('/:userId', (req, res) => {
 
 router.post('/:userId', upload.single('photo'), (req, res) => {
   const userId = req.params.userId;
-  const { firstName, lastName, email, classType, isDM, bio } = req.body;
+  const { firstName, lastName, email, classType, isDM, bio, roleId: existingRoleId } = req.body;
 
   // Handle file upload if present
   let photo = null;
@@ -36,17 +35,33 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
     photo = req.file.filename;
   }
 
-  Promise.all([
-    userQueries.updateUser(userId, { firstName, lastName, email, photo }),
-    roleQueries.updateRole(userId, { classType, isDM, bio })
-  ])
-    .then(([updatedUser, updatedRole]) => {
-      res.json({ user: updatedUser, role: updatedRole });
+  console.log("existingroleId:", existingRoleId);
+
+  (existingRoleId ? roleQueries.updateRole(existingRoleId, { classType, isDM, bio })
+    : roleQueries.createRole({ classType, isDM, bio }))
+    .then((role) => {
+      return userQueries.updateUser(userId, { firstName, lastName, email, photo, roleId: role.id })
+      .then((user) => {
+        res.json({ user, role });
     })
-    .catch(err => {
+    .catch (err => {
       console.error('Error updating profile:', err);
       res.status(500).json({ error: 'Internal server error' });
     });
+
+
+  // Promise.all([
+  //   userQueries.updateUser(userId, { firstName, lastName, email, photo }),
+  //   roleId ? roleQueries.updateRole(roleId, { classType, isDM, bio })
+  // ])
+  //   .then(([updatedUser, updatedRole]) => {
+  //     res.json({ user: updatedUser, role: updatedRole });
+  //     //console.log("updated roles:", updatedRole)  //returns undefined here!!!
+  //   })
+  //   .catch(err => {
+  //     console.error('Error updating profile:', err);
+  //     res.status(500).json({ error: 'Internal server error' });
+   });
 });
 
 module.exports = router;

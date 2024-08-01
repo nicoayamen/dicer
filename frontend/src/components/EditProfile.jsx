@@ -31,7 +31,8 @@ const EditProfile = (props) => {
           classType: role?.class || '',
           isDM: role?.is_dm || false,
           bio: role?.bio || '',
-          photo: null
+          photo: null,
+          roleId: role?.id
         });
       })
       .catch(err => {
@@ -63,6 +64,9 @@ const EditProfile = (props) => {
     data.append('classType', formData.classType);
     data.append('isDM', formData.isDM);
     data.append('bio', formData.bio);
+    if (formData.roleId) {
+      data.append('roleId', formData.roleId)
+    console.log(formData.roleId, "formData.roleID")};
     if (formData.photo) {
       data.append('photo', formData.photo);
     }
@@ -75,7 +79,7 @@ const EditProfile = (props) => {
       .then(data => {
         setProfile(data);
         alert('Profile updated successfully');
-        navigate(`/profile/${userId}`);
+        navigate(`/profile/`);
       })
       .catch(err => {
         console.error('Error updating profile:', err);

@@ -48,14 +48,14 @@ const getUserById = (userId) => {
   return db.query(queryString, values).then(data => data.rows[0]);
 };
 
-const updateUser = (userId, { firstName, lastName, email, photo }) => {
+const updateUser = (userId, { firstName, lastName, email, photo, roleId }) => {
   const queryString = `
     UPDATE users
-    SET first_name = $1, last_name = $2, email = $3, photo = $4
+    SET first_name = $1, last_name = $2, email = $3, photo = $4, role_id = $6
     WHERE id = $5
     RETURNING *;
   `;
-  const values = [firstName, lastName, email, photo, userId];
+  const values = [firstName, lastName, email, photo, userId, roleId];
   return db.query(queryString, values).then(data => data.rows[0]);
 };
 
@@ -76,5 +76,19 @@ const getProfileById = (userId) => {
     });
 };
 
+const deleteUserById = (userId) => {
+  const queryString = `
+  DELETE FROM users WHERE id = $1;
+  `;
+  const values = [userId];
 
-module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById };
+  return db.query(queryString, values)
+    .then(data => data.rows[0])
+    .catch(err => {
+      console.error('Error executing query', err.stack);
+      throw err;
+    });
+}
+
+
+module.exports = { getLogin, checkEmailExists, insertUser, getUserById, updateUser, getProfileById, deleteUserById };
