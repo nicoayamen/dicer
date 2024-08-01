@@ -33,14 +33,14 @@ const NavBar = (props) => {
         {login ? (
           <Link to='/match'>
             <img
-              src="https://static.vecteezy.com/system/resources/previews/014/893/346/original/dice-d20-icon-design-free-vector.jpg"
+              src="https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer.png?raw=true"
               alt="dicer logo"
               className='navbar-logo-img'
             />
           </Link>
         ) : (
           <img
-            src="https://static.vecteezy.com/system/resources/previews/014/893/346/original/dice-d20-icon-design-free-vector.jpg"
+            src="https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer.png?raw=true"
             alt="dicer logo"
             className='navbar-logo-img'
           />
