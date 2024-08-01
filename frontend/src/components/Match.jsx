@@ -3,51 +3,41 @@ import UserCard from './UserCard';
 import { Link } from 'react-router-dom';
 
 const CardStack = () => {
+  const [users, setUsers] = useState([]);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [role, setRole] = useState(null);
   const userId = Number(window.localStorage.getItem('userid'));
 
-  //Skip if fetched user is the logged in user
-  if (userId - 1 === currentUserIndex) {
-    setCurrentUserIndex(currentUserIndex + 1)
-  };
 
   //Get user profiles
-  const getUser = async (getId) => {
+  const getUnmatchedUser = async () => {
     try {
-      const response = await fetch(`/profile/match/${getId}`);
+      const response = await fetch(`/profile/match/${userId}`);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error);
       }
       const data = await response.json();
-      console.log("Fetched user:", [data.user, data.role]);
-      setCurrentUser(data.user);
-      setRole(data.role);
+      console.log("Fetched user:", data);
+      setUsers(data);
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  //Get users one by one
-  useEffect(() => { 
-    if (currentUserIndex >= 0) {
-      getUser(currentUserIndex + 1);
-    }    
-  }, [currentUserIndex]);
+  useEffect(() => {
+    getUnmatchedUser();
+  }, []);
 
   //Match with a user
   const handleMatch = async (e) => {
-    console.log(`Match: ${currentUser.id} - ${currentUser.first_name}`);
     e.preventDefault();
+    const currentUser = users[currentUserIndex];
+    if (!currentUser) return;
 
     try {
-      const getId = currentUser.id;  
-      const body = { userId, getId };
-      console.log('sending data', body);
-      
-      const response = await fetch(`/profile/match/${userId}/${getId}`, {
+      const body = { userId, getId: currentUser.id };
+
+      const response = await fetch(`/profile/match/${userId}/${currentUser.id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -58,7 +48,7 @@ const CardStack = () => {
         throw new Error(errorData.error);
       }
     }
-    finally {nextUser();}    
+    finally { nextUser(); }
   };
 
   //Reject a user
@@ -72,6 +62,8 @@ const CardStack = () => {
     setCurrentUserIndex((prevIndex) => prevIndex + 1);
   };
 
+  const currentUser = users[currentUserIndex];
+
 
   return (
     <div>
@@ -79,7 +71,6 @@ const CardStack = () => {
       {currentUser ? (
         <UserCard
           user={currentUser}
-          role={role}
           onMatch={handleMatch}
           onReject={handleReject}
         />

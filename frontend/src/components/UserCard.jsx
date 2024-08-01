@@ -2,20 +2,17 @@ import React from 'react';
 import '../styles/userCard.css';
 
 const UserCard = (props) => {
-  const { user, role, onMatch, onReject } = props;
+  const { user, onMatch, onReject } = props;
 
   return (
     <div className='user-card-container'>
-      <li className='user-list' key={user.id}>
-        <div className='user-name'>{user.first_name}</div>
-        <div className='user-description'>{user.photo}</div>
-        <div className='user-description'>{role.class}</div>
-        <div className='user-description'>{role.bio}</div>
-        <div>
-          <button className='user-card-button' onClick={onMatch}>yes</button>
-          <button className='user-card-button' onClick={onReject}>no</button>
-        </div>
-      </li>
+      <img src={user.photo} alt={`${user.first_name}`} />
+      <h3>{`${user.first_name}`}</h3>
+      <div className='user-description'>Class: {user.class}</div>
+      <div className='user-description'>DM: {user.is_dm ? 'Yes' : 'No'}</div>
+      <div className='user-description'>{user.bio}</div>
+      <button className='user-card-button' onClick={onMatch}>Yay</button>
+      <button className='user-card-button' onClick={onReject}>Nay</button>
     </div>
   );
 };

@@ -5,10 +5,9 @@ const matchQueries = require('../db/queries/match');
 router.get('/messages/:userId', (req, res) => {
   const userId = req.params.userId;
 
-  matchQueries.getMatches(userId)
+  matchQueries.getMatchNames(userId)
     .then(data => {
       const idList = data.map(item => item.matched_user_first_name);
-      console.log("List:", idList); // Debugging
       res.json(idList);
     })
     .catch(err => {
