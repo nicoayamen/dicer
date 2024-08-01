@@ -31,7 +31,7 @@ const NavBar = (props) => {
     <div className='nav-bar'>
       <div className='navbar-logo'>
         {login ? (
-          <Link to='/match'>
+          <Link to='/profile/match'>
             <img
               src="https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer-2.png?raw=true"
               alt="dicer logo"
@@ -49,9 +49,9 @@ const NavBar = (props) => {
 
       {login && profile && (
         <div className='navbar-links'>
-          <Link to='/messages'>Messages</Link>
+          <Link to='/profile/messages'>Messages</Link>
           <button onClick={handleLogOut} className='navbar-logout-button'>Logout</button>
-          <Link to={`/profile`}>
+          <Link to={`/profile/${userId}`}>
             <img
               src={profile.photo ? profile.photo : 'https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer-2.png?raw=true'}
               alt='Profile'
