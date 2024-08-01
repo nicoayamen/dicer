@@ -52,7 +52,7 @@ const DeleteProfile = ({ setLogin }) => {
   };
 
   const handleBack = () => {
-    navigate(`/profile`); // Navigate back to the profile page
+    navigate(`/profile/${userId}`); // Navigate back to the profile page
   };
 
   if (isLoading) {

@@ -62,7 +62,7 @@ const Login = (props) => {
       setEmail('');
       setPassword('');
       setError('');
-      navigate('/profile');
+      navigate('/profile/userId');
       
     } catch (err) {
       console.error(err.message);
