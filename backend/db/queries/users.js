@@ -59,6 +59,7 @@ const updateUser = (userId, { firstName, lastName, email, photo, roleId }) => {
   return db.query(queryString, values).then(data => data.rows[0]);
 };
 
+
 // Function to get profile by user ID
 const getProfileById = (userId) => {
   const queryString = `
@@ -75,6 +76,7 @@ const getProfileById = (userId) => {
       throw err;
     });
 };
+
 
 const deleteUserById = (userId) => {
   const queryString = `
