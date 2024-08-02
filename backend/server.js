@@ -81,6 +81,8 @@ app.use('/deleteprofile', deleteProfileRoute);
 app.use('/navbar', navbarRoute);
 app.use('/profile', matchRoute);
 app.use('/profile', messagesRoute);
+app.use('/uploads', express.static('uploads'));
+
 
 // Start server
 server.listen(PORT, () => {

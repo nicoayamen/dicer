@@ -10,7 +10,7 @@ VALUES (FALSE, 'Ivy Nightshade', 'Cleric', 'A skilled grave-cleric that balances
 
 -- Insert third role
 INSERT INTO roles (is_DM, character_name, class, bio)
-VALUES (FALSE, 'Thorin Stonehammer', 'Barbarian', 'A battle-hardened barbarian from the northern mountains. Seeking adventure and glory with a brave party.');
+VALUES (FALSE, 'Mortimer the Relentless', 'Fighter', 'A fearless warrior renowned for their unparalleled courage and uncanny knack for landing critical hits in battle.');
 
 -- Insert fourth role
 INSERT INTO roles (is_DM, character_name, class, bio)

@@ -33,14 +33,14 @@ const NavBar = (props) => {
         {login ? (
           <Link to='/profile/match'>
             <img
-              src="https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer-2.png?raw=true"
+              src="https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true"
               alt="dicer logo"
               className='navbar-logo-img'
             />
           </Link>
         ) : (
           <img
-            src="https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer-2.png?raw=true"
+            src="https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true"
             alt="dicer logo"
             className='navbar-logo-img'
           />
@@ -53,7 +53,7 @@ const NavBar = (props) => {
           <button onClick={handleLogOut} className='navbar-logout-button'>Logout</button>
           <Link to={`/profile/${userId}`}>
             <img
-              src={profile.photo ? profile.photo : 'https://github.com/nicoayamen/dicer/blob/nav-bar/frontend/public/dicer-2.png?raw=true'}
+              src={profile.photo ? profile.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'}
               alt='Profile'
               className='navbar-profile-photo'
             />
