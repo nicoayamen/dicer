@@ -10,28 +10,29 @@ VALUES ('Eve', 'Johnson', 'https://raw.githubusercontent.com/nicoayamen/dicer/de
 
 -- Insert third user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Morty', 'Smith', 'backend/db/docs/profile-images/20230513_215256.jpg', 2, 2, 'morty_s@example.com', 'moe');
+VALUES ('Morty', 'Smith', 'https://raw.githubusercontent.com/nicoayamen/dicer/photo-upload/backend/db/docs/profile-images/User3-3.jpg
+', 2, 3, 'morty_s@example.com', 'moe');
 
 -- Insert fourth user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Sophia', 'Davis', 'backend/db/docs/profile-images/User4-1.jpg', 2, 1, 'sophia_d@example.com', 'sophiapass');
+VALUES ('Sophia', 'Davis', 'backend/db/docs/profile-images/User4-1.jpg', 2, 4, 'sophia_d@example.com', 'sophiapass');
 
 -- Insert fifth user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Liam', 'Wilson', 'backend/db/docs/profile-images/User5-1.png', 1, 3, 'liam_w@example.com', 'liampass');
+VALUES ('Liam', 'Wilson', 'backend/db/docs/profile-images/User5-1.png', 1, 5, 'liam_w@example.com', 'liampass');
 
 -- Insert sixth user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Emma', 'Taylor', 'backend/db/docs/profile-images/User6-1.jpg', 1, 2, 'emma_t@example.com', 'emmapass');
+VALUES ('Emma', 'Taylor', 'backend/db/docs/profile-images/User6-1.jpg', 1, 6, 'emma_t@example.com', 'emmapass');
 
 -- Insert seventh user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Noah', 'Moore', 'backend/db/docs/profile-images/User7-1.png', 2, 1, 'noah_m@example.com', 'noahpass');
+VALUES ('Noah', 'Moore', 'backend/db/docs/profile-images/User7-1.png', 2, 7, 'noah_m@example.com', 'noahpass');
 
 -- Insert eighth user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Ava', 'Clark', 'backend/db/docs/profile-images/User8-1.jpg', 1, 3, 'ava_c@example.com', 'avapass');
+VALUES ('Ava', 'Clark', 'backend/db/docs/profile-images/User8-1.jpg', 1, 8, 'ava_c@example.com', 'avapass');
 
 -- Insert ninth user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('William', 'Hall', 'backend/db/docs/profile-images/User9-1.png', 1, 2, 'william_h@example.com', 'williampass');
+VALUES ('William', 'Hall', 'backend/db/docs/profile-images/User9-1.png', 1, 9, 'william_h@example.com', 'williampass');
