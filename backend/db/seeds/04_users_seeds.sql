@@ -10,7 +10,7 @@ VALUES ('Eve', 'Johnson', 'https://raw.githubusercontent.com/nicoayamen/dicer/de
 
 -- Insert third user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Oliver', 'Brown', 'backend/db/docs/profile-images/User3-1.png', 2, 2, 'oliver_b@example.com', 'oliverpass');
+VALUES ('Morty', 'Smith', 'backend/db/docs/profile-images/20230513_215256.jpg', 2, 2, 'morty_s@example.com', 'moe');
 
 -- Insert fourth user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
