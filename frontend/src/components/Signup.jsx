@@ -49,7 +49,7 @@ const Signup = (props) => {
       window.localStorage.setItem('userid', data.id);
       window.localStorage.setItem('fullName', data.first_name + ' ' + data.last_name);
       setLogin(true);
-      navigate('/profile');
+      navigate('/profile/${userId}');
 
     } catch (error) {
       console.error('There was an error signing up:', error);

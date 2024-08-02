@@ -98,12 +98,20 @@ const signupRoutes = require('./routes/signup');
 const editProfileRoutes = require('./routes/editprofile');
 const profileRoute = require('./routes/profile');
 const deleteProfileRoute = require('./routes/deleteprofile');
+const navbarRoute = require('./routes/navbar');
+const matchRoute = require('./routes/match');
+const messagesRoute = require('./routes/messages');
 
 app.use('/', loginRoute);
 app.use('/signup', signupRoutes);
 app.use('/editprofile', editProfileRoutes);
 app.use('/profile', profileRoute);
 app.use('/deleteprofile', deleteProfileRoute);
+app.use('/navbar', navbarRoute);
+app.use('/profile', matchRoute);
+app.use('/profile', messagesRoute);
+app.use('/uploads', express.static('uploads'));
+
 
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
