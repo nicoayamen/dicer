@@ -50,7 +50,7 @@
 }
 .chat__main {
   height: 100%;
-  flex: 0.8;
+  flex: 1;
 }
 .chat__header {
   margin: 30px 0 20px 0;

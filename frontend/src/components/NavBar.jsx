@@ -9,6 +9,7 @@ const NavBar = (props) => {
   //Change login state to logged out
   const handleLogOut = () => {
     window.localStorage.removeItem('userid')
+    window.localStorage.removeItem('fullName')
     setLogin(false);
     navigate("/");
   };

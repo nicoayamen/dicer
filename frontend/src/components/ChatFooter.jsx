@@ -4,19 +4,19 @@ const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState("");
 
   const handleTyping = () => {
-    const username = localStorage.getItem("userName");
-    if (username) {
-      socket.emit("typing", { username });
+    const fullName = localStorage.getItem("fullName");
+    if (fullName) {
+      socket.emit("typing", { username: fullName });
     }
   };
 
   const handleSendMessage = (e) => {
     e.preventDefault();
-    const username = localStorage.getItem("userName");
+    const fullName = localStorage.getItem("fullName");
 
-    if (message.trim() && username) {
+    if (message.trim() && fullName) {
       const messageData = {
-        username,
+        username: fullName,
         content: message.trim(),
       };
       console.log("Sending message:", messageData); // Debugging output

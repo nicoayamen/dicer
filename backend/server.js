@@ -50,6 +50,7 @@ io.on('connection', (socket) => {
 
   // Fetch previous messages when a user joins
   socket.on('join', async (username) => {
+    socket.username = username
     try {
       // Fetch old messages from the database
       const result = await db.query('SELECT * FROM messages ORDER BY timestamp ASC');
@@ -72,7 +73,7 @@ io.on('connection', (socket) => {
   // Handle typing indication
   socket.on('typing', (data) => {
     const { username } = data;
-    socket.broadcast.emit('typingResponse', { username });
+    socket.broadcast.emit('typingResponse', { username: data.username });
   });
 
   // Handle new user connection

@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
+/*
+does not show active users in sidebar... yet
 import ChatBar from './ChatBar';
+*/
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
 
@@ -9,7 +12,7 @@ const ChatPage = ({ socket }) => {
   const lastMessageRef = useRef(null);
 
   useEffect(() => {
-    const username = localStorage.getItem("userName");
+    const username = localStorage.getItem("fullName");
 
     if (username) {
       socket.emit('join', username); // Request chat history
@@ -35,7 +38,7 @@ const ChatPage = ({ socket }) => {
 
   return (
     <div className="chat">
-      <ChatBar socket={socket} typingStatus={typingStatus} />
+      {/* <ChatBar socket={socket} typingStatus={typingStatus} / */}
       <div className='chat__main'>
         <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
         <ChatFooter socket={socket} />
