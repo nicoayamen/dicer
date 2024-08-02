@@ -3,7 +3,9 @@ const router = express.Router();
 const userQueries = require('../db/queries/users');
 const roleQueries = require('../db/queries/roles');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const fs = require('fs');
+
+const upload = multer({ dest: 'uploads/' });  //temp stroage 
 
 // Route to get user profile by ID
 router.get('/:userId', (req, res) => {
@@ -37,7 +39,7 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
       let existingPhoto = user.photo;
       let photo = existingPhoto;
       if (req.file) {
-        photo = req.file.filename;
+        photo = `/uploads/${req.file.filename}`;
       }
 
       console.log("existingRoleId:", existingRoleId);

@@ -17,6 +17,7 @@ const EditProfile = (props) => {
     bio: '',
     photo: null
   });
+  const [imagePreview, setImagePreview] = useState('http://placehold.it/150x150');
 
   useEffect(() => {
     fetch(`/editprofile/${userId}`)
@@ -34,6 +35,7 @@ const EditProfile = (props) => {
           photo: null,
           roleId: role?.id
         });
+        setImagePreview(user.photo ? user.photo : 'http://placehold.it/150x150');
       })
       .catch(err => {
         console.error('Error fetching profile data:', err);
@@ -41,7 +43,7 @@ const EditProfile = (props) => {
   }, [userId]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type } = e.target;
     setFormData({
       ...formData,
       [name]: type === 'radio' ? value === 'true' : value
@@ -49,10 +51,14 @@ const EditProfile = (props) => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      photo: e.target.files[0]
-    });
+    const file = e.target.files[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+      setFormData({
+        ...formData,
+        photo: file
+      });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -65,8 +71,8 @@ const EditProfile = (props) => {
     data.append('isDM', formData.isDM);
     data.append('bio', formData.bio);
     if (formData.roleId) {
-      data.append('roleId', formData.roleId)
-    console.log(formData.roleId, "formData.roleID")};
+      data.append('roleId', formData.roleId);
+    }
     if (formData.photo) {
       data.append('photo', formData.photo);
     }
@@ -91,17 +97,18 @@ const EditProfile = (props) => {
     <div className='editprofile'>
       <h1>Edit Profile</h1>
       <form onSubmit={handleSubmit} className='editprofile-form'>
-        <div className= 'editprofile-content'>
+        <div className='editprofile-content'>
           <div className='editprofile-box'>
+            
+            <div className='editprofile-box-input'>
+              <img
+                src={imagePreview}
+                alt='Profile'
+                style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+              />
+            </div>
 
             <div className='editprofile-box-input'>
-            <img
-              src={profile.photo ? profile.photo : 'http://placehold.it/150x150'}
-              alt='Profile'
-              style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-            />
-            </div>
-            <div className='editprofile-box-input'>  
               <label>Change Picture: </label>
               <input
                 type='file'
@@ -133,7 +140,7 @@ const EditProfile = (props) => {
             </div>
 
             <div className='editprofile-box-input'>
-              <label> Email: </label>
+              <label>Email: </label>
               <input
                 type='email'
                 name='email'
@@ -143,7 +150,7 @@ const EditProfile = (props) => {
             </div>
 
             <div className='editprofile-box-input'>
-              <label> Preferred Class: </label>
+              <label>Preferred Class: </label>
               <select
                 name='classType'
                 value={formData.classType}
@@ -191,9 +198,9 @@ const EditProfile = (props) => {
             </div>
 
             <div className='editprofile-box-input'>
-              <label> Bio: </label>
-            </div>  
-            <div className='editprofile-box-input'>  
+              <label>Bio: </label>
+            </div>
+            <div className='editprofile-box-input'>
               <textarea
                 name='bio'
                 value={formData.bio}
