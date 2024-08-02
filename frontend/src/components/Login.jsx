@@ -63,8 +63,9 @@ const Login = (props) => {
       }
 
       const data = await response.json();
-      console.log(data.user[0].id);
+      console.log(data.user[0]);
       window.localStorage.setItem('userid', data.user[0].id)
+      window.localStorage.setItem('fullName', data.user[0].first_name + ' ' + data.user[0].last_name);
 
       setLogin(true);
       setEmail('');

@@ -22,7 +22,9 @@ const NavBar = (props) => {
   }, [login, userId]);
 
   const handleLogOut = () => {
-    window.localStorage.removeItem('userid');
+    window.localStorage.removeItem('userid')
+    window.localStorage.removeItem('fullName')
+
     setLogin(false);
     navigate("/");
   };
