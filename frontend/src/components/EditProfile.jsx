@@ -17,6 +17,8 @@ const EditProfile = (props) => {
     bio: '',
     photo: null
   });
+
+  //state to preview image at after selection
   const [imagePreview, setImagePreview] = useState('http://placehold.it/150x150');
 
   useEffect(() => {
@@ -50,6 +52,7 @@ const EditProfile = (props) => {
     });
   };
 
+  //Handles file input changes: updates the image preview and sets the selected file in the form data.
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -99,7 +102,7 @@ const EditProfile = (props) => {
       <form onSubmit={handleSubmit} className='editprofile-form'>
         <div className='editprofile-content'>
           <div className='editprofile-box'>
-            
+
             <div className='editprofile-box-input'>
               <img
                 src={imagePreview}

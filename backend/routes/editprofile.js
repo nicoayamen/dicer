@@ -39,7 +39,7 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
       let existingPhoto = user.photo;
       let photo = existingPhoto;
       if (req.file) {
-        photo = `/uploads/${req.file.filename}`;
+        photo = `/uploads/${req.file.filename}`; //route to uploads folder containing images
       }
 
       console.log("existingRoleId:", existingRoleId);
