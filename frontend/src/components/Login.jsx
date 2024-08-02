@@ -21,7 +21,7 @@ const Login = (props) => {
   useEffect(() => {
     const userId = window.localStorage.getItem('userid');
     if(userId) {
-      navigate('/profile')
+      navigate('/profile/userId')
     }
   })
 
