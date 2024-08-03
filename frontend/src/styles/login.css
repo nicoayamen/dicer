@@ -1,69 +1,57 @@
+/* Styles for login page */
 .login {
-  position: relative;
-  display: grid;
-  align-items: center;
-}
-
-input {
-  border: none;
-  outline: none;
-}
-
-.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: hsla(30, 10%, 10%, 0.1);
-  border: 2px solid lightgrey;
-  border-radius: 1rem;
-  margin: auto;
-  max-width: 600px;
 }
 
-.login-content,
-.login-box {
-  display: grid;
+h1 {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .login-content {
-  row-gap: 1.75rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .login-box {
-  grid-template-columns: max-content 1fr;
-  align-items: center;  
-  column-gap: .75rem;
-  border-bottom: 2px solid lightgray;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-box-input {
-  position: relative;
-}
-
-.login-input {
   width: 100%;
-  padding-block: .8rem;
-  background: white;
-  color: black;
-  border-radius: 1rem;
 }
 
 .login-button {
-  width: 100%;
+  width: 75%;
   padding: 1rem;
-  border-radius: 0.5rem;
-  border: 2px solid lightgrey;
-  background-color: white;
-  color: #333;
+  border-radius: .5rem;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
+  color: white;
+  font-size: 16px;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
 
 .login-button:hover {
-  background-color: #f0f0f0;
-  color: #000;
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
