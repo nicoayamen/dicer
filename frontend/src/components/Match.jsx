@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import UserCard from './UserCard';
-import { Link } from 'react-router-dom';
 
 const CardStack = () => {
   const [users, setUsers] = useState([]);
@@ -48,7 +47,7 @@ const CardStack = () => {
         throw new Error(errorData.error);
       }
     }
-    finally { nextUser(); }
+    finally {  }
   };
 
   //Reject a user
@@ -67,17 +66,16 @@ const CardStack = () => {
 
   return (
     <div>
-      <h2>Match?</h2>
       {currentUser ? (
         <UserCard
           user={currentUser}
           onMatch={handleMatch}
           onReject={handleReject}
+          nextUser={nextUser}
         />
       ) : (
         <p>no more players :(</p>
       )}
-      <Link to="/profile/messages">Go to messages!</Link>
     </div>
   );
 };
