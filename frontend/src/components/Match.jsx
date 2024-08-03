@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import UserCard from './UserCard';
-import { Link } from 'react-router-dom';
 
 const CardStack = () => {
   const [users, setUsers] = useState([]);
