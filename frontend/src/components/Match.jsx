@@ -67,7 +67,6 @@ const CardStack = () => {
 
   return (
     <div>
-      <h2>Match?</h2>
       {currentUser ? (
         <UserCard
           user={currentUser}
