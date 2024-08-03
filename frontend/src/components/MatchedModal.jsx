@@ -41,7 +41,7 @@ export default function MatchedModal(props) {
             You've matched with {props.userName}!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Go to Messages to start chatting
+            Let's Roll! Go to Messages!
           </Typography>
         </Box>
       </Modal>
