@@ -48,7 +48,7 @@ const CardStack = () => {
         throw new Error(errorData.error);
       }
     }
-    finally { nextUser(); }
+    finally {  }
   };
 
   //Reject a user
@@ -73,6 +73,7 @@ const CardStack = () => {
           user={currentUser}
           onMatch={handleMatch}
           onReject={handleReject}
+          nextUser={nextUser}
         />
       ) : (
         <p>no more players :(</p>

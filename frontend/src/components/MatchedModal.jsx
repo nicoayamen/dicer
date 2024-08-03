@@ -19,11 +19,14 @@ const style = {
 export default function MatchedModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    props.onClose();
+  }
 
   return (
     <div>
-      <Button onClick={(e) => props.onMatch(e, handleOpen)}>Yay</Button>
+      <Button onClick={(e) => { props.onMatch(e); handleOpen(); }}>Yay</Button>
       <Modal
         open={open}
         onClose={handleClose}
