@@ -12,14 +12,12 @@
 }
 
 .signup-form {
- 
   position: relative;
   margin-inline: 1.5rem;
   padding: 2.5rem 1.5rem;
   border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
- 
 }
 
 .signup-box {
@@ -30,7 +28,6 @@
 .signup-content {
   row-gap: 1.75rem;
   margin-bottom: 1.5rem;
-
 }
 
 .signup-box {
