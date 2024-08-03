@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import '../styles/login.css';
 
 // Components
@@ -65,7 +67,7 @@ const Login = (props) => {
       setError('');
       navigate('/profile/userId');
     } catch (err) {
-      setError(err.message);
+      setError("You shall not pass: email or password is incorrect.");
       setFormData({ email: '', password: '' });
     }
   };
@@ -74,8 +76,16 @@ const Login = (props) => {
     <div className='login'>
       <h1>Login</h1>
 
+      {error && (
+        <Stack sx={{ width: 500, maxWidth: '100%' }} spacing={2}>
+          <Alert severity="error" onClose={() => setError('')}>
+            {error}
+          </Alert>
+        </Stack>
+      )}
+
       <form onSubmit={handleSubmit} className='login-form'>
-        <div className='login-content'>
+        <div className='login-content'>          
           <div className='login-box'>
             <div className='input-icon'>
               <IconBxsUser />
@@ -94,7 +104,7 @@ const Login = (props) => {
               />
             </Box>
           </div>
-
+        
           <div className='login-box'>
             <div className='input-icon'>
               <IconBxsLockAlt />
@@ -114,7 +124,7 @@ const Login = (props) => {
             </Box>
             <span onClick={handleToggle} className='visibility-icon'>{icon}</span>
           </div>
-
+        
           <button type='submit' className='login-button'>Login</button>
         </div>
       </form>
