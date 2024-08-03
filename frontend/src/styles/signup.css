@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-h1 {
+.signup h1 {
   background: -webkit-linear-gradient(right, #9252a0,#d8479a, #ef3f6d, #f36523);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
