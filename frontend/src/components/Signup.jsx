@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
-
-
-
+import Box from '@mui/material/Box';
 import '../styles/signup.css';
 
 
@@ -71,10 +69,15 @@ const Signup = (props) => {
       <form onSubmit={handleSubmit} className='signup-form'>
         <div className='signup-content'>
           <div className='signup-box'>
-
+          <Box
+              sx={{
+                width: 300,
+                maxWidth: '100%',
+              }}
+            >
             <div className='signup-box-input'>
-             
-              <TextField
+
+              <TextField fullWidth
                 type='text'
                 name='firstName'
                 value={formData.firstName}
@@ -82,12 +85,13 @@ const Signup = (props) => {
                 required
                 variant="standard"
                 label="First Name"
+                color="secondary"
               />
             </div>
-            
+
             <div className='signup-box-input'>
-              
-              <TextField
+
+              <TextField fullWidth
                 type='text'
                 name='lastName'
                 value={formData.lastName}
@@ -95,12 +99,13 @@ const Signup = (props) => {
                 required
                 variant="standard"
                 label="Last Name"
+                color="secondary"
               />
             </div>
 
             <div className='signup-box-input'>
-              
-              <TextField
+
+              <TextField fullWidth
                 type='email'
                 name='email'
                 value={formData.email}
@@ -108,12 +113,13 @@ const Signup = (props) => {
                 required
                 variant="standard"
                 label="Email"
+                color="secondary"
               />
             </div>
 
             <div className='signup-box-input'>
-              
-              <TextField
+
+              <TextField fullWidth
                 type='password'
                 name='password'
                 value={formData.password}
@@ -121,9 +127,10 @@ const Signup = (props) => {
                 required
                 variant="standard"
                 label="Password"
+                color="secondary"
               />
             </div>
-
+            </Box>
             <button type='submit' className='signup-button'>Sign Up</button>
 
           </div>
