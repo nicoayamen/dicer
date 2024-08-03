@@ -1,9 +1,11 @@
+/* Styles for profile page */
 .profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: hsla(30, 10%, 10%, 0.1);
+  background: white;
+  -webkit-background-clip: padding-box;
   border: 2px solid lightgrey;
   border-radius: 1rem;
   margin: auto;
@@ -28,7 +30,9 @@
 .profile-header h1 {
   margin: 0;
   font-size: 1.5rem;
-  color: #333;
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .profile-actions {
@@ -40,18 +44,32 @@
 }
 
 .profile-button {
-  width: 100%;
+  width: 75%;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 2px solid lightgrey;
-  background-color: white;
-  color: #333;
+  background-color: #9252a0; /* Default color */
+  color: white;
   cursor: pointer;
   font-size: 1rem;
+  text-align: center;
   transition: background-color 0.3s, color 0.3s;
 }
 
+.profile-button:nth-child(2) {
+  background-color: #d8479a; /* Second button color */
+}
+
+.profile-button:nth-child(3) {
+  background-color: #ef3f6d; /* Third button color */
+}
+
+.profile-button:nth-child(4) {
+  background-color: #f36523; /* Fourth button color */
+}
+
 .profile-button:hover {
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: #ffffff; /* White background on hover */
+  color: #000; /* Black text color on hover */
+  border-color: transparent; /* Remove border color */
 }
