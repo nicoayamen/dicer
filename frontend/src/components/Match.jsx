@@ -78,7 +78,6 @@ const CardStack = () => {
       ) : (
         <p>no more players :(</p>
       )}
-      <Link to="/profile/messages">Go to messages!</Link>
     </div>
   );
 };
