@@ -49,6 +49,7 @@
   color: white;
   font-size: 16px;
   cursor: pointer;
+  border: none;
   margin-top: 1rem;
   background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
