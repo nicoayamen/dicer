@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+
+
+
 import '../styles/signup.css';
+
 
 const Signup = (props) => {
   const { setLogin } = props;
@@ -60,7 +65,7 @@ const Signup = (props) => {
 
   return (
     <div className='signup'>
-      <h2>Sign Up</h2>
+      <h1>Sign Up</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <form onSubmit={handleSubmit} className='signup-form'>
@@ -68,46 +73,54 @@ const Signup = (props) => {
           <div className='signup-box'>
 
             <div className='signup-box-input'>
-              <label>First Name:</label>
-              <input
+             
+              <TextField
                 type='text'
                 name='firstName'
                 value={formData.firstName}
                 onChange={handleChange}
                 required
+                variant="standard"
+                label="First Name"
               />
             </div>
-
+            
             <div className='signup-box-input'>
-              <label>Last Name:</label>
-              <input
+              
+              <TextField
                 type='text'
                 name='lastName'
                 value={formData.lastName}
                 onChange={handleChange}
                 required
+                variant="standard"
+                label="Last Name"
               />
             </div>
 
             <div className='signup-box-input'>
-              <label>Email:</label>
-              <input
+              
+              <TextField
                 type='email'
                 name='email'
                 value={formData.email}
                 onChange={handleChange}
                 required
+                variant="standard"
+                label="Email"
               />
             </div>
 
             <div className='signup-box-input'>
-              <label>Password:</label>
-              <input
+              
+              <TextField
                 type='password'
                 name='password'
                 value={formData.password}
                 onChange={handleChange}
                 required
+                variant="standard"
+                label="Password"
               />
             </div>
 
