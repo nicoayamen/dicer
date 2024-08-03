@@ -5,6 +5,7 @@ import ChatBar from './ChatBar';
 */
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
+import '../styles/chatPage.css';
 
 const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
