@@ -4,17 +4,15 @@
   align-items: center;
 }
 
-input,
-button {
-  border: none;
-  outline: none;
+.signup h1 {
+  background: -webkit-linear-gradient(right, #9252a0,#d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
 .signup-form {
-  width: fit-content;
   position: relative;
-  background-color: hsla(30, 10%, 10%, .1);
-  border: 2px solid lightgrey;
   margin-inline: 1.5rem;
   padding: 2.5rem 1.5rem;
   border-radius: 1rem;
@@ -22,9 +20,9 @@ button {
   margin-right: auto;
 }
 
-.signup-content,
 .signup-box {
-  display: grid;
+ display: flex;
+ flex-direction: column;
 }
 
 .signup-content {
@@ -35,7 +33,6 @@ button {
 .signup-box {
   align-items: center;  
   column-gap: .75rem;
-  border-bottom: 2px solid lightgray;
   padding: 1rem;
   row-gap: .5rem;
 }
@@ -44,18 +41,22 @@ button {
   position: relative;
 }
 
-.signup-input {
-  width: 100%;
-  padding-block: .8rem;
-  background: white;
-  color: black;
-  border-radius: 1rem;
-}
-
 .signup-button {
   width: 100%;
   padding: 1rem;
   border-radius: .5rem;
   cursor: pointer;
-  background-color: white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+.signup-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }

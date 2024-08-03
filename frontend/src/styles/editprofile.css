@@ -1,33 +1,32 @@
 .editprofile {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
 }
 
-input,
-button {
-  border: none;
-  outline: none;
+.editprofile h1 {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
 .editprofile-form {
-  width: fit-content;
   position: relative;
-  background-color: hsla(30, 10%, 10%, .1);
-  border: 2px solid lightgrey;
   margin-inline: 1.5rem;
-  padding: 2.5rem 1.5rem;
+  padding: .5rem .5rem;
   border-radius: 1rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-.editprofile-content,
 .editprofile-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  column-gap: .75rem;
+  padding: 1rem;
+  row-gap: .5rem;
 }
 
 .editprofile-content {
@@ -35,24 +34,31 @@ button {
   margin-bottom: 1.5rem;
 }
 
-.editprofile-box {
-  align-items: center;  
-  column-gap: .75rem;
-  border-bottom: 2px solid lightgray;
-  padding: 1rem;
-  row-gap: .5rem;
-}
-
 .editprofile-box-input {
-  position: relative;
+  position: relative
 }
 
 .editprofile-input {
+  position: relative;
+}
+
+.editprofile-box-input img {
+  margin-bottom: 3rem;
+}
+
+.editprofile-box-input-photo {
   width: 100%;
-  padding-block: .8rem;
-  background: white;
-  color: black;
-  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 6rem;
+  padding-bottom: 0.5rem;
+}
+
+.editprofile-photo-button {
+  width: 47%
 }
 
 .editprofile-bio {
@@ -64,14 +70,22 @@ button {
 }
 
 .editprofile-button {
-  width: 100%;
+  width: 80%;
   padding: 1rem;
   border-radius: .5rem;
   cursor: pointer;
-  background-color: white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  border: none;
 }
 
-.editprofile-photo-button {
-  width:50%;
-  cursor: pointer;
+.editprofile-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }

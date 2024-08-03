@@ -1,69 +1,94 @@
+/* Styles for login page */
 .login {
-  position: relative;
-  display: grid;
-  align-items: center;
-}
-
-input {
-  border: none;
-  outline: none;
-}
-
-.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  background-color: hsla(30, 10%, 10%, 0.1);
-  border: 2px solid lightgrey;
-  border-radius: 1rem;
-  margin: auto;
-  max-width: 600px;
+  padding: 1rem;
 }
 
-.login-content,
-.login-box {
-  display: grid;
+h1 {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .login-content {
-  row-gap: 1.75rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .login-box {
-  grid-template-columns: max-content 1fr;
-  align-items: center;  
-  column-gap: .75rem;
-  border-bottom: 2px solid lightgray;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem; /* Space between input groups */
+}
+
+.input-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px; /* Space between icon and input */
+}
+
+.input-icon svg {
+  font-size: 1rem; /* Adjust icon size as needed */
+  position: relative;
+  top: 7px;
+  color: #423e6b
 }
 
 .login-box-input {
-  position: relative;
+  flex-grow: 1;
 }
 
-.login-input {
-  width: 100%;
-  padding-block: .8rem;
-  background: white;
-  color: black;
-  border-radius: 1rem;
+.password-input {
+  padding-right: 50px; /* Space for the visibility icon */
+}
+
+.visibility-icon {
+  position: absolute;
+  right: 60px; /* Move the icon 10px from the right */
+  top: 25%;
+  transform: translateY(10%); /* Center it vertically */
+  cursor: pointer;
 }
 
 .login-button {
-  width: 100%;
+  width: 75%;
   padding: 1rem;
-  border-radius: 0.5rem;
-  border: 2px solid lightgrey;
-  background-color: white;
-  color: #333;
+  border-radius: .5rem;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
+  color: white;
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-left: -30px;
+  border: none;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
 
 .login-button:hover {
-  background-color: #f0f0f0;
-  color: #000;
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.sign-up {
+  text-align: center; /* Centers the text */
+  margin-top: 1rem; /* Adds space above the element */
+  margin-left: -50px;
 }

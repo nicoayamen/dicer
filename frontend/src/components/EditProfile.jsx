@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 import '../styles/editprofile.css';
 
 const EditProfile = (props) => {
@@ -107,12 +117,17 @@ const EditProfile = (props) => {
               <img
                 src={imagePreview}
                 alt='Profile'
-                style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                style={{
+                  width: '275px',
+                  height: '275px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                }}
               />
             </div>
-
-            <div className='editprofile-box-input'>
-              <label>Change Picture: </label>
+          
+            <div className='editprofile-box-input-photo'>
+              <FormLabel>Change Picture:</FormLabel>
               <input
                 type='file'
                 name='photo'
@@ -121,95 +136,130 @@ const EditProfile = (props) => {
                 onChange={handleFileChange}
               />
             </div>
+            <Box
+              sx={{
+                width: 300,
+                maxWidth: '100%',
+              }}
+            >
+              <div className='editprofile-box-input'>
+                <TextField fullWidth
+                  type='text'
+                  name='firstName'
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                  variant="standard"
+                  label="First Name"
+                  color="secondary"
+                />
+              </div>
 
-            <div className='editprofile-box-input'>
-              <label>First Name: </label>
-              <input
-                type='text'
-                name='firstName'
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-            </div>
+              <div className='editprofile-box-input'>
+                <TextField fullWidth
+                  type='text'
+                  name='lastName'
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                  variant="standard"
+                  label="Last Name"
+                  color="secondary"
+                />
+              </div>
 
+              <div className='editprofile-box-input'>
+                <TextField fullWidth
+                  type='email'
+                  name='email'
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  variant="standard"
+                  label="Email"
+                  color="secondary"
+                />
+              </div>
+            </Box>
             <div className='editprofile-box-input'>
-              <label>Last Name: </label>
-              <input
-                type='text'
-                name='lastName'
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className='editprofile-box-input'>
-              <label>Email: </label>
-              <input
-                type='email'
-                name='email'
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className='editprofile-box-input'>
-              <label>Preferred Class: </label>
-              <select
-                name='classType'
-                value={formData.classType}
-                onChange={handleChange}
+              <FormControl
+                variant="standard"
+                sx={{ m: 1, minWidth: 300 }}
               >
-                <option value="">Select a class type</option>
-                <option value="Barbarian">Barbarian</option>
-                <option value="Bard">Bard</option>
-                <option value="Cleric">Cleric</option>
-                <option value="Druid">Druid</option>
-                <option value="Fighter">Fighter</option>
-                <option value="Monk">Monk</option>
-                <option value="Multiclass">Multiclass</option>
-                <option value="Paladin">Paladin</option>
-                <option value="Ranger">Ranger</option>
-                <option value="Rogue">Rogue</option>
-                <option value="Sorcerer">Sorcerer</option>
-                <option value="Warlock">Warlock</option>
-                <option value="Wizard">Wizard</option>
-              </select>
+                <InputLabel
+                  id="demo-simple-select-standard-label"
+                  color="secondary"
+                >
+                  Preferred Class:
+                </InputLabel>
+                <Select
+                  name='classType'
+                  value={formData.classType}
+                  onChange={handleChange}
+                  color="secondary"
+                >
+                  <MenuItem value="">Select a class type</MenuItem>
+                  <MenuItem value="Barbarian">Barbarian</MenuItem>
+                  <MenuItem value="Bard">Bard</MenuItem>
+                  <MenuItem value="Cleric">Cleric</MenuItem>
+                  <MenuItem value="Druid">Druid</MenuItem>
+                  <MenuItem value="Fighter">Fighter</MenuItem>
+                  <MenuItem value="Monk">Monk</MenuItem>
+                  <MenuItem value="Multiclass">Multiclass</MenuItem>
+                  <MenuItem value="Paladin">Paladin</MenuItem>
+                  <MenuItem value="Ranger">Ranger</MenuItem>
+                  <MenuItem value="Rogue">Rogue</MenuItem>
+                  <MenuItem value="Sorcerer">Sorcerer</MenuItem>
+                  <MenuItem value="Warlock">Warlock</MenuItem>
+                  <MenuItem value="Wizard">Wizard</MenuItem>
+                </Select>
+              </FormControl>
             </div>
 
             <div className='editprofile-box-input'>
-              <label>Role: </label>
-              <label>
-                <input
-                  type='radio'
-                  name='isDM'
-                  value='true'
-                  checked={formData.isDM === true}
-                  onChange={handleChange}
-                />
-                DM
-              </label>
-              <label>
-                <input
-                  type='radio'
-                  name='isDM'
-                  value='false'
-                  checked={formData.isDM === false}
-                  onChange={handleChange}
-                />
-                Player
-              </label>
+              <FormControl>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel
+                    name='isDM'
+                    value='true'
+                    checked={formData.isDM === true}
+                    onChange={handleChange}
+                    control={<Radio color="secondary" />}
+                    label="DM"
+                  />
+                  <FormControlLabel
+                    name='isDM'
+                    value='false'
+                    checked={formData.isDM === false}
+                    onChange={handleChange}
+                    control={<Radio color="secondary" />}
+                    label="Player"
+                  />
+                </RadioGroup>
+              </FormControl>
             </div>
 
             <div className='editprofile-box-input'>
-              <label>Bio: </label>
-            </div>
-            <div className='editprofile-box-input'>
-              <textarea
-                name='bio'
-                value={formData.bio}
-                onChange={handleChange}
-                style={{ width: '500px', height: '150px' }}
-              />
+              <Box
+                sx={{
+                  '& .MuiTextField-root': { m: 1, width: 400 },
+                }}
+              >
+                <TextField fullWidth
+                  name='bio'
+                  value={formData.bio}
+                  onChange={handleChange}
+                  variant="outlined"
+                  label="Bio"
+                  color="secondary"
+                  multiline
+                  placeholder='Brave adventurer, tell us about yourself and the character you are, or are hoping to play!'
+                />
+              </Box>
             </div>
 
             <button type='submit' className='editprofile-button'>Update Profile</button>

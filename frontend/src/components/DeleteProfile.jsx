@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../styles/deleteprofile.css';
 
 
 const DeleteProfile = ({ setLogin }) => {
@@ -62,12 +63,12 @@ const DeleteProfile = ({ setLogin }) => {
   return (
     <div className="delete-profile-container">
       <div className="delete-profile-header">
-        <img src={profileUser.photo} className="profile-photo" alt="Profile" />
+        <img src={profileUser.photo} className="delete-profile-photo" alt="Profile" />
         <h1>{profileUser.fullName}, are you sure you want to delete your account?</h1>
       </div>
       <div className="delete-profile-actions">
-        <button onClick={handleDelete} className="profile-button">Confirm</button>
-        <button onClick={handleBack} className="profile-button">Back</button>
+        <button onClick={handleDelete} className="profile-button-confirm">Confirm</button>
+        <button onClick={handleBack} className="profile-button-edit">Back</button>
       </div>
     </div>
   );
