@@ -6,8 +6,6 @@
   padding: 2rem;
   background: white;
   -webkit-background-clip: padding-box;
-  border: 2px solid lightgrey;
-  border-radius: 1rem;
   margin: auto;
   max-width: 600px;
 }
@@ -30,9 +28,7 @@
 .profile-header h1 {
   margin: 0;
   font-size: 1.5rem;
-  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #423e6b; /* Desired color */
 }
 
 .profile-actions {
@@ -48,28 +44,29 @@
   padding: 1rem;
   border-radius: 0.5rem;
   border: 2px solid lightgrey;
-  background-color: #9252a0; /* Default color */
-  color: white;
+  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
   cursor: pointer;
   font-size: 1rem;
   text-align: center;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.profile-button:nth-child(2) {
-  background-color: #d8479a; /* Second button color */
-}
-
-.profile-button:nth-child(3) {
-  background-color: #ef3f6d; /* Third button color */
+.profile-button:hover {
+  background: -webkit-linear-gradient(left,#7771c2,#9355c5, #9238bb, #a64f9e );
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
 
 .profile-button:nth-child(4) {
-  background-color: #f36523; /* Fourth button color */
+  background: -webkit-linear-gradient(left, #f20606, #f54b29);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
 
-.profile-button:hover {
-  background-color: #ffffff; /* White background on hover */
-  color: #000; /* Black text color on hover */
-  border-color: transparent; /* Remove border color */
+.profile-button:nth-child(4):hover {
+  background: -webkit-linear-gradient(left, #d80101, #ee2b04);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
