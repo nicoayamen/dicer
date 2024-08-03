@@ -55,6 +55,7 @@ const Profile = (props) => {
   // Clear user ID from localStorage and navigate to home page on sign out
   const handleSignOut = () => {
     window.localStorage.removeItem('userid');
+    window.localStorage.removeItem('fullName');
     navigate("/");
   };
 
