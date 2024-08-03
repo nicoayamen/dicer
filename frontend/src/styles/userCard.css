@@ -6,7 +6,7 @@
   background-color: hsla(30, 10%, 10%, 0.1);
   border: 2px solid lightgrey;
   border-radius: 1rem;
-  margin: auto;
+  margin: auto auto 5rem auto;
   max-width: 600px;
 }
 
