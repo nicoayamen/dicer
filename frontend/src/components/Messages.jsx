@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/messages.css';
 
-const Messages = () => {
+const Messages = ({ socket }) => {
   const [users, setUsers] = useState([]);
   const userId = Number(window.localStorage.getItem('userid'));
+  const navigate = useNavigate();
 
-  // Fetch users that the logged-in user matched with
   const getUsers = async (userId) => {
     try {
       const response = await fetch(`/profile/messages/${userId}`);
@@ -21,12 +22,16 @@ const Messages = () => {
     }
   };
 
-  // Get users on page load
   useEffect(() => {
     if (userId) {
       getUsers(userId);
     }
   }, [userId]);
+
+  const handleUserClick = (matchedUserId) => {
+    const roomId = `chat_${[userId, matchedUserId].sort().join('_')}`;
+    navigate(`/chat/${roomId}`);
+  };
 
   const placeholderPhoto = 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true';
 
@@ -36,7 +41,11 @@ const Messages = () => {
       <div className='messages-users'>
         <ul>
           {users.map(user => (
-            <li key={user.user_id} className='messages-user-item'>
+            <li
+              key={user.user_id}
+              className='messages-user-item'
+              onClick={() => handleUserClick(user.user_id)}
+            >
               <img
                 src={user.matched_user_photo ? user.matched_user_photo : placeholderPhoto}
                 alt={`${user.matched_user_first_name} photo`}
