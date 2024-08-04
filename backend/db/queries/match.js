@@ -57,13 +57,16 @@ const getMatches = (userId) => {
 };
 
 //Get the names of the matched users
-const getMatchNames = (userId) => {
-  const queryString = `SELECT m.id AS match_id,
-  u2.first_name AS matched_user_first_name
-  FROM matches m
-  JOIN users u2 ON m.matched_user_id = u2.id
-  WHERE
-  m.user_id = $1;
+const getMatchDetails = (userId) => {
+  const queryString = `
+    SELECT m.id AS match_id,
+           u2.id AS user_id,
+           u2.first_name AS matched_user_first_name,
+           u2.last_name AS matched_user_last_name,
+           u2.photo AS matched_user_photo
+    FROM matches m
+    JOIN users u2 ON m.matched_user_id = u2.id
+    WHERE m.user_id = $1;
   `;
   const values = [userId];
 
@@ -73,7 +76,8 @@ const getMatchNames = (userId) => {
     })
     .catch((err) => {
       console.log(err.message);
+      throw err; // Make sure to throw error so that it can be caught in the route handler
     });
 };
 
-module.exports = { insertMatch, getMatchNames, getMatches, getUmatchedUsers };
+module.exports = { insertMatch, getMatchDetails, getMatches, getUmatchedUsers };

@@ -5,10 +5,9 @@ const matchQueries = require('../db/queries/match');
 router.get('/messages/:userId', (req, res) => {
   const userId = req.params.userId;
 
-  matchQueries.getMatchNames(userId)
+  matchQueries.getMatchDetails(userId)
     .then(data => {
-      const idList = data.map(item => item.matched_user_first_name);
-      res.json(idList);
+      res.json(data); // Send complete user details including photos
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
