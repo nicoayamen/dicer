@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/messages.css';
 
 const Messages = () => {
   const [userName, setUserName] = useState([]);
   const userId = Number(window.localStorage.getItem('userid'));
+
+  
 
   //Fetch users that the logged-in user matched with
   const getUsers = async (userId) => {
@@ -30,13 +33,15 @@ const Messages = () => {
 
 
   return (
-    <div>
+    <div className='messages'>
       <h1>Messages</h1>
+      <div className='messages-users'>
       <ul>
         {userName.map(name => (
-          <li key={name}>{name}</li>
+          <li key={name} className='messages-users-name'>{name}</li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };

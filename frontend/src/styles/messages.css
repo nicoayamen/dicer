@@ -1,0 +1,21 @@
+.messages {
+  
+}
+
+.messages-users {
+  display: flex;
+  align-items: center; 
+  flex-direction: column;
+}
+
+.messages-users li {
+  border: 2px solid lightgrey; 
+  border-radius: 10px; 
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 10px;
+  width: 100%;
+  list-style-type: none;
+}
