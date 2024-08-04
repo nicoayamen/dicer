@@ -3,6 +3,7 @@ import { FormControl, InputLabel, MenuItem, Select, RadioGroup, FormControlLabel
 
 
 const MatchFilter = () => {
+  const userId = Number(window.localStorage.getItem('userid'));
   const [formData, setFormData] = useState({ classType: '', isDM: false });
   const [toggle, setToggle] = useState(false);
 
@@ -21,12 +22,7 @@ const MatchFilter = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
+      const response = await fetch(`/profile/match/${userId}`);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Network response was not ok');

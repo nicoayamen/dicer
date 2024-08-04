@@ -76,4 +76,28 @@ const getMatchNames = (userId) => {
     });
 };
 
-module.exports = { insertMatch, getMatchNames, getMatches, getUmatchedUsers };
+//Filter potential matches
+const filterUsers = (userId, role, isDM) => {
+  const queryString = `
+  SELECT users.*, roles.class, roles.is_dm, roles.bio
+  FROM users
+  LEFT JOIN roles ON users.role_id = roles.id
+  WHERE users.id != $1
+    AND roles.class = $2
+    AND roles.is_dm = $3
+    AND users.id NOT IN (
+      SELECT matched_user_id FROM matches WHERE user_id = $1
+    );
+`;
+  const values = [userId, role, isDM];
+
+  return db.query(queryString, values)
+  .then(data => {
+    return data.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+module.exports = { insertMatch, getMatchNames, getMatches, getUmatchedUsers, filterUsers };

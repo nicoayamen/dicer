@@ -21,6 +21,24 @@ router.get('/match/:userId', (req, res) => {
     });
 });
 
+//Get filtered users that haven't been matched with
+router.get('/match/:userId', (req, res) => {
+  const userId = req.params.userId;
+
+  matchQueries.filterUsers(userId)
+    .then(users => {
+      if (users.length > 0) {
+        res.json(users);
+      } else {
+        res.status(400).json({ error: 'No unmatched users found' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+
 //Insert a new match
 router.post('/match/:userId/:getId', (req, res) => {
   const { userId, getId } = req.params;
