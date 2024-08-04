@@ -4,6 +4,11 @@ import { FormControl, InputLabel, MenuItem, Select, RadioGroup, FormControlLabel
 
 const MatchFilter = () => {
   const [formData, setFormData] = useState({ classType: '', isDM: false });
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(true);
+  }
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -37,7 +42,9 @@ const MatchFilter = () => {
 
   return (
     <div>
-      <h3>Filter results</h3>
+      <button onClick={handleToggle}>Filter results</button>
+
+      {toggle && 
 
       <form onSubmit={handleSubmit} className='editprofile-form'>
         <div className='editprofile-content'>
@@ -103,10 +110,12 @@ const MatchFilter = () => {
               </RadioGroup>
             </FormControl>
           </div>
+          <button type='submit' className=''>Save</button>
+          <button  className=''>Clear</button>
 
         </div>
       </form >
-
+}
 
     </div >
   );
