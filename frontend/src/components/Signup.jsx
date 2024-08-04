@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -16,8 +16,16 @@ const Signup = (props) => {
   });
 
   const [error, setError] = useState('');
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkmode') === 'true');
   const navigate = useNavigate();
 
+  // Dark Mode useEffect 
+  useEffect(() => {
+    // Update localStorage when darkMode changes
+    localStorage.setItem('darkmode', darkMode);
+    // Apply dark mode class to body element
+    document.body.classList.toggle('darkmode', darkMode);
+  }, [darkMode]);
 
   //update values as user types
   const handleChange = (e) => {
@@ -61,8 +69,13 @@ const Signup = (props) => {
 
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(prevMode => !prevMode);
+  };
+
+
   return (
-    <div className='signup'>
+    <div className={`signup ${darkMode ? 'darkmode' : ''}`}>
       <h1>Sign Up</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
 

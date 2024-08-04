@@ -60,3 +60,27 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+
+.darkmode {
+  background-color: #353434; /* Dark background color */
+  color: #fff; /* Text color in dark mode */
+}
+
+/* Apply to other elements as needed */
+.darkmode .signup-form {
+  background-color: #7a7979; /* Example dark background for forms */
+  color: #fff; /* Example dark text color */
+}
+
+.darkmode .signup-button {
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.darkmode .signup-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
