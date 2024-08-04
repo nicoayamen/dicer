@@ -87,7 +87,7 @@ const Profile = (props) => {
       </div>
       <div className="profile-actions">
       <button onClick={handleMatchButton} className="profile-button">Start Matching!</button>
-        <button onClick={handleEditClick} className="profile-button">Edit Account</button>
+        <button onClick={handleEditClick} className="profile-button">Edit Profile</button>
         <button onClick={handleSignOut} className="profile-button">Sign Out</button>
         <button onClick={handleDeleteClick} className="profile-button">Delete Account</button>
       </div>
