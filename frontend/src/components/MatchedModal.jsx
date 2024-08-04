@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import '../styles/matchedModal.css';
 
 const style = {
   position: 'absolute',
@@ -29,7 +30,7 @@ export default function MatchedModal(props) {
 
   return (
     <div>
-      <Button onClick={(e) => { props.onMatch(e); handleOpen(); }}>Yay</Button>
+      <Button className="modal-button" sx={{ m: 1, minWidth: 300 }} onClick={(e) => { props.onMatch(e); handleOpen(); }}>Yes! Let's roll!</Button>
       <Modal
         open={open}
         onClose={handleClose}

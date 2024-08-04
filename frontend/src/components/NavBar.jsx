@@ -52,7 +52,7 @@ const NavBar = (props) => {
       {login && profile && (
         <div className='navbar-links'>
           <Link to='/profile/messages'>Messages</Link>
-          <button onClick={handleLogOut} className='navbar-logout-button'>Logout</button>
+          <button onClick={handleLogOut} className='navbar-logout-button'>Sign Out</button>
           <Link to={`/profile/${userId}`}>
             <img
               src={profile.photo ? profile.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'}
