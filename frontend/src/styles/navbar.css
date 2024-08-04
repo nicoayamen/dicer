@@ -42,7 +42,7 @@
 
 /* Dark mode styles */
 .dark-mode {
-  background-color: #3f3e3e; /* Dark background color for the NavBar */
+  background-color: #353434; /* Dark background color for the NavBar */
   color: #fff; /* Text color in dark mode */
 }
 
@@ -53,5 +53,13 @@
 }
 
 .dark-mode .navbar-profile-photo {
-  border: 2px solid #fff; /* Optional: Add border for better visibility */
+  border: 2px solid #fff; 
+}
+
+.navbar-dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 30px; /* Adjust font size */
+  padding: 0.5rem; /* Adjust padding */
+  width: 10%;
 }
