@@ -5,6 +5,13 @@ import '../styles/navbar.css';
 const NavBar = (props) => {
   const { login, setLogin } = props;
   const [profile, setProfile] = useState(null);
+
+  // Add dark mode
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check localStorage for the dark mode preference
+    return localStorage.getItem('darkmode') === 'true';
+  });
+
   const navigate = useNavigate();
   const userId = window.localStorage.getItem('userid');
 
@@ -21,6 +28,15 @@ const NavBar = (props) => {
     }
   }, [login, userId]);
 
+  // Dark Mode useEffect 
+  useEffect(() => {
+    // Update localStorage when darkMode changes
+    localStorage.setItem('darkmode', darkMode);
+    // Apply dark mode class to body element
+    document.body.classList.toggle('darkmode', darkMode);
+  }, [darkMode]);
+
+
   const handleLogOut = () => {
     window.localStorage.removeItem('userid')
     window.localStorage.removeItem('fullName')
@@ -29,8 +45,13 @@ const NavBar = (props) => {
     navigate("/");
   };
 
+  // Dark mode toggle function
+  const toggleDarkMode = () => {
+    setDarkMode(prevMode => !prevMode);
+  };
+
   return (
-    <div className='nav-bar'>
+    <div className={`nav-bar ${darkMode ? 'dark-mode' : ''}`}>
       <div className='navbar-logo'>
         {login ? (
           <Link to='/profile/match'>
@@ -62,6 +83,10 @@ const NavBar = (props) => {
           </Link>
         </div>
       )}
+
+      <button onClick={toggleDarkMode} className='navbar-dark-mode-toggle'>
+            {darkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
     </div>
   );
 };
