@@ -3,11 +3,18 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: hsla(30, 10%, 10%, 0.1);
   border: 2px solid lightgrey;
   border-radius: 1rem;
   margin: auto auto 5rem auto;
   max-width: 600px;
+  gap: 0.5rem;
+}
+
+.user-card-name {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
 .user-name {
@@ -15,7 +22,6 @@
   font-weight: bolder;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .user-list {
@@ -26,34 +32,35 @@
   width: fit-content
 }
 
-.profile-photo {
-  width: 120px;
-  height: 120px;
+.user-card-profile-photo {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
 }
 
 .user-description {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .user-card-button {
-  width: 100%;
   padding: 1rem;
-  border-radius: 0.5rem;
-  border: 2px solid lightgrey;
-  background-color: white;
-  color: #333;
+  border-radius: .5rem;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  border: none;
 }
 
 .user-card-button:hover {
-  background-color: #f0f0f0;
-  color: #000;
+  background: -webkit-linear-gradient(left, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
 }
