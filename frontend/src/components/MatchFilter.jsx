@@ -7,7 +7,7 @@ const MatchFilter = () => {
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
-    setToggle(true);
+    !toggle ? setToggle(true) : setToggle(false);
   }
 
   const handleChange = (e) => {
