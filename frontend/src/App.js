@@ -47,7 +47,7 @@ function App() {
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
           <Route path="/profile/:userId/delete" element={<DeleteProfile />} />
-          <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
+          <Route path="/chat/:roomId" element={<ChatPage socket={socket} />} />
           <Route path='/profile/match' element={<Match />} />
           <Route path='/profile/messages' element={<Messages />} />
         </Routes>
