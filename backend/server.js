@@ -7,6 +7,7 @@ const sassMiddleware = require('./lib/sass-middleware');
 const http = require('http');
 const socketIO = require('socket.io');
 const db = require('./db/connection');
+const pool = require('./db/connection');
 
 const app = express();
 const server = http.Server(app);
@@ -43,51 +44,68 @@ const saveMessageToDatabase = async (message) => {
     throw error;
   }
 };
-let users = [];
 
 io.on('connection', (socket) => {
-  console.log(`⚡: ${socket.id} user just connected!`);
+  console.log('A user connected:', socket.id);
 
-  // Fetch previous messages when a user joins
-  socket.on('join', async (username) => {
-    socket.username = username
+  // Join a chat room and fetch chat history
+  socket.on('join_room', async ({ username, roomId }) => {
+    socket.join(roomId);
+    console.log(`User ${username} joined room ${roomId}`);
+  
+    // Parse roomId for chat history
+    const [prefix, senderIdStr, receiverIdStr] = roomId.split('_');
+    
+    if (prefix !== 'chat' || isNaN(parseInt(senderIdStr)) || isNaN(parseInt(receiverIdStr))) {
+      console.error('Invalid roomId format:', roomId);
+      return;
+    }
+  
+    const senderId = parseInt(senderIdStr);
+    const receiverId = parseInt(receiverIdStr);
+  
+    // Fetch and send chat history
     try {
-      // Fetch old messages from the database
-      const result = await db.query('SELECT * FROM messages ORDER BY timestamp ASC');
+      const result = await pool.query(
+        'SELECT sender_id, content, timestamp FROM messages WHERE (sender_id = $1 AND receiver_id = $2) OR (sender_id = $2 AND receiver_id = $1) ORDER BY timestamp',
+        [senderId, receiverId]
+      );
       socket.emit('chatHistory', result.rows);
     } catch (err) {
       console.error('Error fetching chat history:', err);
     }
   });
 
-  socket.on('message', async (data) => {
+  // Handle sending messages
+  socket.on('send_message', async (data) => {
+    const { roomId, username, content } = data;
+  
+    // Ensure roomId is in the correct format
+    const [prefix, senderIdStr, receiverIdStr] = roomId.split('_');
+    
+    // Validate prefix and parse IDs
+    if (prefix !== 'chat' || isNaN(parseInt(senderIdStr)) || isNaN(parseInt(receiverIdStr))) {
+      console.error('Invalid roomId format:', roomId);
+      return;
+    }
+  
+    const senderId = parseInt(senderIdStr);
+    const receiverId = parseInt(receiverIdStr);
+  
+    // Save message to the database
     try {
-      const { username, content } = data;
-      await saveMessageToDatabase({ username, content });
-      io.emit('messageResponse', data); // Broadcast to all connected clients
+      await pool.query(
+        'INSERT INTO messages (sender_id, receiver_id, content) VALUES ($1, $2, $3)',
+        [senderId, receiverId, content]
+      );
+      io.to(roomId).emit('receive_message', { username, content });
     } catch (err) {
-      console.error('Error saving message to database:', err);
+      console.error('Error saving message:', err);
     }
   });
 
-  // Handle typing indication
-  socket.on('typing', (data) => {
-    const { username } = data;
-    socket.broadcast.emit('typingResponse', { username: data.username });
-  });
-
-  // Handle new user connection
-  socket.on('newUser', (data) => {
-    users.push(data);
-    io.emit('newUserResponse', users);
-  });
-
-  // Handle user disconnection
   socket.on('disconnect', () => {
-    console.log('🔥: A user disconnected');
-    users = users.filter(user => user.socketID !== socket.id);
-    io.emit('newUserResponse', users);
-    socket.disconnect();
+    console.log('User disconnected:', socket.id);
   });
 });
 
