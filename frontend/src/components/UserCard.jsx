@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import '../styles/userCard.css';
 
 import MatchedModal from './MatchedModal';
+import MatchFilter from './MatchFilter';
 
 const UserCard = (props) => {
   const { user, onMatch, onReject, nextUser } = props;
@@ -26,6 +27,7 @@ const UserCard = (props) => {
         className='user-card-button'
       />
       <Button className='user-card-button' sx={{ m: 1, minWidth: 300 }} onClick={onReject}>Maybe next time!</Button>
+      <MatchFilter />
     </div>
   );
 };
