@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 
+/* General reset and styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,6 +9,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Home container styles */
 .home__container {
   width: 100%;
   height: 100vh;
@@ -37,6 +39,8 @@
   border: none;
   border-radius: 5px;
 }
+
+/* Chat styles */
 .chat {
   width: 100%;
   height: 100vh;
@@ -67,6 +71,8 @@
   color: rgb(238, 102, 102);
   font-style: italic;
 }
+
+/* Chat header styles */
 .chat__mainHeader {
   width: 100%;
   height: 10vh;
@@ -88,23 +94,86 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
-
-.leaveChat__btn:hover{
+.leaveChat__btn:hover {
   background: -webkit-linear-gradient(left, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+/* Message container styles */
 .message__container {
   width: 100%;
   height: 80vh;
   background-color: #fff;
   padding: 20px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
-.message__container > * {
+/* Chat messages styles */
+.message__chats {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
 }
+
+/* Recipient's message styles */
+.message__recipient {
+  background-color: #e4e4e4;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  align-self: flex-start;
+  margin: 5px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word; 
+}
+
+/* Sender's message styles */
+.message__sender {
+  background-color: #d2d0e5;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  align-self: flex-end;
+  margin: 5px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Name styles */
+.sender__name {
+  align-self: flex-end;
+  margin-right: 10px;
+  font-size: 12px;
+  color: #6765ae;
+}
+
+.recipient__name {
+  align-self: flex-start;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #444444;
+}
+
+.message__chats > p {
+  font-size: 13px;
+  text-align: center;
+}
+
+.message__status {
+  position: fixed;
+  bottom: 50px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Chat footer styles */
 .chat__footer {
   padding: 10px;
   height: 10vh;
@@ -131,41 +200,12 @@
   outline: none;
   color: #EAE3D2;
   cursor: pointer;
-  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
 .sendBtn:hover {
-  background: -webkit-linear-gradient(left, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
-}
-.message__recipient {
-background-color: #e4e4e4;
-width: 300px;
-padding: 10px;
-border-radius: 10px;
-font-size: 15px;
-}
-.message__sender{
-background-color: #d2d0e5;
-max-width: 300px;
-padding: 10px;
-border-radius: 10px;
-margin-left: auto;
-font-size: 15px;
-}
-
-.message__chats > p {
-  font-size: 13px;
-  text-align: center;
-}
-.sender__name {
- text-align: left;
-}
-.message__status {
-  position: fixed;
-  bottom: 50px;
-  font-size: 13px;
-  font-style: italic;
 }
