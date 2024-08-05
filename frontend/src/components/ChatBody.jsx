@@ -10,19 +10,24 @@ const ChatBody = ({ messages, lastMessageRef }) => {
   };
 
   const fullName = localStorage.getItem('fullName');
+  const recipient = messages.find(message => message.username && message.username.trim() !== fullName?.trim());
+  const recipientName = recipient ? recipient.username : "Dicer";
 
-return (
+
+  return (
     <>
       <header className='chat__mainHeader'>
-        <h2>Dicer</h2>
-        <button className='leaveChat__btn' onClick={handleLeaveChat}>LEAVE CHAT</button>
+        <h2>{recipientName}</h2>
+        {/*<button className='leaveChat__btn' onClick={handleLeaveChat}>LEAVE CHAT</button>*/}
       </header>
 
       <div className='message__container'>
         {messages.map(message => (
           <div className="message__chats" key={message.id}>
-            <p>{message.username === fullName ? "You" : message.username}</p>
-            <div className={message.username === fullName ? 'message__sender' : 'message__recipient'}>
+            <p className={message.username === fullName ? 'sender__name' : 'recipient__name'}>
+              {message.username === fullName ? "You" : message.username}
+            </p>
+            <div className={message.username === fullName ? 'message__sender' : 'message__recipient' }>
               <p>{message.content}</p>
             </div>
           </div>
