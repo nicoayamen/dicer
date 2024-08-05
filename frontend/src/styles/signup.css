@@ -81,11 +81,11 @@
 
 /* Default state for inputs */
 .darkmode .signup-form input {
-  border: none; /* Remove default border */
-  border-bottom: 2px solid #fff; /* White underline by default */
-  color: #fff; /* Text color inside the input */
-  background-color: transparent; /* Transparent background */
-  transition: border-color 0.3s ease; /* Smooth transition for border color */
+  border: none; 
+  border-bottom: 2px solid #fff; 
+  color: #fff; 
+  background-color: transparent; 
+  transition: border-color 0.3s ease; 
 }
 
 /* Focus state for input containers and input elements */
@@ -95,7 +95,7 @@
 
 /* Focus state for inputs */
 .darkmode .signup-form input:focus {
-  outline: none; /* Remove default outline */
+  outline: none; 
   border-bottom: 2px solid #8a2be2; /* Purple underline on focus */
 }
 

@@ -1,3 +1,4 @@
+/* NavBar Styles */
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -7,10 +8,22 @@
   color: #161515;
 }
 
-
 .navbar-logo img {
   width: 8em;
   height: 8em;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  padding: 0.5rem;
 }
 
 .navbar-links {
@@ -18,15 +31,14 @@
   align-items: center;
 }
 
-.navbar-links a,
-.navbar-links button {
+.navbar-link,
+.navbar-logout-button {
   margin-left: 20px;
-  color: #6a62ab;
   text-decoration: none;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  background: -webkit-linear-gradient(right, #6963ab, #9252a0,#d8479a, #ef3f6d, #f05538, #f36523);
+  background: -webkit-linear-gradient(right, #6963ab, #9252a0, #d8479a, #ef3f6d, #f05538, #f36523);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -40,26 +52,18 @@
   margin-left: 1rem;
 }
 
-/* Dark mode styles */
 .dark-mode {
-  background-color: #232323; /* Dark background color for the NavBar */
-  color: #fff; /* Text color in dark mode */
+  background-color: #232323;
+  color: #fff;
 }
 
-.dark-mode .navbar-links a,
-.dark-mode .navbar-links button {
-  color: #fff; /* Text color for links and buttons in dark mode */
-  background: none; /* Remove gradient text color */
+.dark-mode .navbar-link,
+.dark-mode .navbar-logout-button {
+  background: -webkit-linear-gradient(right, #6963ab, #9252a0, #d8479a, #ef3f6d, #f05538, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .dark-mode .navbar-profile-photo {
-  border: 2px solid #fff; 
-}
-
-.navbar-dark-mode-toggle {
-  background-color: transparent;
-  border: none;
-  font-size: 30px; /* Adjust font size */
-  padding: 0.5rem; /* Adjust padding */
-  width: 10%;
+  border: 2px solid #fff;
 }

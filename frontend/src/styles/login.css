@@ -113,35 +113,35 @@ h1 {
 
 /* Dark mode styles */
 .darkmode {
-  background-color: #232323; /* Dark background color */
-  color: #fff; /* Default text color in dark mode */
+  background-color: #232323; 
+  color: #fff; 
 }
 
 /* Apply dark mode to form elements */
 .darkmode .login-form {
-  color: #fff; /* Text color in dark mode */
+  color: #fff; 
 }
 
 .darkmode .login-form input,
 .darkmode .login-form label {
-  color: #fff; /* Text color for input and label elements */
+  color: #fff; 
 }
 
 /* Default state for inputs */
 .darkmode .login-form input {
-  border: none; /* Remove default border */
-  border-bottom: 2px solid #fff; /* White underline by default */
-  color: #fff; /* Text color inside the input */
+  border: none; 
+  border-bottom: 2px solid #fff; 
+  color: #fff; 
 }
 
 /* Placeholder text color */
 .darkmode .login-form input::placeholder {
-  color: #fff; /* White placeholder text in dark mode */
+  color: #fff; 
 }
 
 /* Focus state for inputs */
 .darkmode .login-form input:focus {
-  outline: none; /* Remove default outline */
+  outline: none; 
   border-bottom: 2px solid #8a2be2; /* Purple underline on focus */
   color: white;
 }
@@ -152,7 +152,7 @@ h1 {
 }
 
 .darkmode .input-icon svg {
-  font-size: 1rem; /* Adjust icon size as needed */
+  font-size: 1rem; 
   position: relative;
   top: 7px;
   color: #fefefe; /* White icon color in dark mode */
@@ -162,4 +162,5 @@ h1 {
 .darkmode .sign-up a {
   color: #f449fd; /* Change link color to purple in dark mode */
 }
+
 
