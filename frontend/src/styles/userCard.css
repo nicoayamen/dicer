@@ -86,3 +86,12 @@
   gap: 0.5rem;
   background-color: #393939; 
 }
+
+.no-more-matches {
+  font-size: 1.5rem; /* Adjust size as needed */
+  background: -webkit-linear-gradient(right, #6963ab, #9252a0, #d8479a, #ef3f6d, #f05538, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold; 
+  text-align: center; 
+}
