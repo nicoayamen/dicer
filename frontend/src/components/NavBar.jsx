@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { IconButton } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import '../styles/navbar.css';
 
 const NavBar = (props) => {
@@ -84,9 +87,13 @@ const NavBar = (props) => {
         </div>
       )}
 
-      <button onClick={toggleDarkMode} className='navbar-dark-mode-toggle'>
-            {darkMode ? '🌕' : '🌑'}
-      </button>
+      <IconButton 
+            sx={{ ml: 1 }} 
+            onClick={toggleDarkMode} 
+            color="inherit"
+          >
+        {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
     </div>
   );
 };
