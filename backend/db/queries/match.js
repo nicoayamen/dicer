@@ -82,23 +82,22 @@ const getMatchDetails = (userId) => {
 
 //Filter potential matches
 const filterUsers = (userId, role, isDM) => {
-  console.log('filterUsers called'); 
   const queryString = `
   SELECT users.*, roles.class, roles.is_dm, roles.bio
   FROM users
   LEFT JOIN roles ON users.role_id = roles.id
   WHERE users.id != $1
-    AND roles.class = $2
-    AND roles.is_dm = $3
+    AND ($2::text IS NULL OR roles.class = $2::class_type)
+    AND ($3::boolean IS NULL OR roles.is_dm = $3::boolean)
     AND users.id NOT IN (
       SELECT matched_user_id FROM matches WHERE user_id = $1
     );
 `;
-  const values = [userId, role, isDM];
+const values = [userId, role || null, isDM === undefined ? null : isDM];
 
   return db.query(queryString, values)
   .then(data => {
-    console.log('Query Result:', data.rows);
+    console.log('Query Result:', data.rows); //Debugging
     return data.rows;
   })
   .catch((err) => {

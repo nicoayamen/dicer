@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FormControl, InputLabel, MenuItem, Select, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 
 
-const MatchFilter = () => {
+const MatchFilter = ({ onFilterChange }) => {
   const userId = Number(window.localStorage.getItem('userid'));
   const [formData, setFormData] = useState({ classType: '', isDM: false });
   const [toggle, setToggle] = useState(false);
@@ -19,30 +19,36 @@ const MatchFilter = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const role = formData.classType;
+  //   const isDM = formData.isDM;
+
+  //   console.log('Submitting Params:', { role, isDM }); 
+
+  //   try {
+  //     const response = await fetch(`/profile/match/${userId}/${role}/${isDM}`);
+  //     if (!response.ok) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.error || 'Network response was not ok');
+  //     }
+  //     const data = await response.json();
+  //     console.log('filtered:', data);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const role = formData.classType;
-    const isDM = formData.isDM;
-
-    console.log('Submitting Params:', { role, isDM }); 
-
-    try {
-      const response = await fetch(`/profile/match/${userId}/${role}/${isDM}`);
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Network response was not ok');
-      }
-      const data = await response.json();
-      console.log('filtered:', data);
-    } catch (err) {
-      console.error(err.message);
-    }
+    onFilterChange(formData);
   };
 
 
   return (
     <div>
-      <button onClick={handleToggle}>Show filters</button>
+      <button onClick={handleToggle}>Filter results</button>
 
       {toggle && 
 

@@ -4,13 +4,39 @@ import UserCard from './UserCard';
 const CardStack = () => {
   const [users, setUsers] = useState([]);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
+  const [filters, setFilters] = useState({ classType: '', isDM: undefined });
   const userId = Number(window.localStorage.getItem('userid'));
 
 
-  //Get user profiles
+  // //Get user profiles
+  // const getUnmatchedUser = async () => {
+  //   try {
+  //     const response = await fetch(`/profile/match/${userId}`);
+  //     if (!response.ok) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.error);
+  //     }
+  //     const data = await response.json();
+  //     console.log("Fetched user:", data);
+  //     setUsers(data);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
+
+  // Fetch user profiles with filtering
   const getUnmatchedUser = async () => {
     try {
-      const response = await fetch(`/profile/match/${userId}`);
+      const { classType, isDM } = filters;
+      let url = `/profile/match/${userId}`;
+
+      if (classType) url += `/${classType}`;
+      if (isDM !== undefined) url += `/${isDM}`;
+  
+      console.log(classType, isDM);
+      console.log(url);
+
+      const response = await fetch(url);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error);
@@ -18,14 +44,21 @@ const CardStack = () => {
       const data = await response.json();
       console.log("Fetched user:", data);
       setUsers(data);
+      setCurrentUserIndex(0);  // Reset the current user index
     } catch (err) {
       console.error(err.message);
     }
   };
 
+
   useEffect(() => {
     getUnmatchedUser();
-  }, []);
+  }, [filters]);
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
 
   //Match with a user
   const handleMatch = async (e) => {
@@ -72,6 +105,7 @@ const CardStack = () => {
           onMatch={handleMatch}
           onReject={handleReject}
           nextUser={nextUser}
+          onFilterChange={handleFilterChange}
         />
       ) : (
         <p>no more players :(</p>
