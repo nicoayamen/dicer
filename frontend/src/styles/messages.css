@@ -35,3 +35,27 @@
   object-fit: cover; 
   margin-right: 10px;
 }
+
+/* Dark mode styles */
+.darkmode .messages-user-profile-photo {
+  width: 80px; 
+  height: 80px; 
+  border-radius: 50%;
+  object-fit: cover; 
+  margin-right: 10px;
+  border: 1.5px solid #fff; 
+}
+
+.darkmode .messages-user-item {
+  border: 2px solid lightgrey; 
+  border-radius: 10px; 
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #393939; 
+}
