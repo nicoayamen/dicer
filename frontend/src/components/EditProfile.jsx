@@ -117,6 +117,7 @@ const EditProfile = (props) => {
               <img
                 src={imagePreview}
                 alt='Profile'
+                className='edit-profile-photo'
                 style={{
                   width: '275px',
                   height: '275px',
@@ -258,6 +259,7 @@ const EditProfile = (props) => {
                   color="secondary"
                   multiline
                   placeholder='Brave adventurer, tell us about yourself and the character you are, or are hoping to play!'
+                  className='custom-textfield'
                 />
               </Box>
             </div>
