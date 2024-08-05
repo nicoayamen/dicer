@@ -82,6 +82,7 @@ const getMatchDetails = (userId) => {
 
 //Filter potential matches
 const filterUsers = (userId, role, isDM) => {
+  console.log('filterUsers called'); 
   const queryString = `
   SELECT users.*, roles.class, roles.is_dm, roles.bio
   FROM users
@@ -97,11 +98,12 @@ const filterUsers = (userId, role, isDM) => {
 
   return db.query(queryString, values)
   .then(data => {
+    console.log('Query Result:', data.rows);
     return data.rows;
   })
   .catch((err) => {
     console.log(err.message);
   });
-}
+};
 
 module.exports = { insertMatch, getMatchDetails, getMatches, getUmatchedUsers, filterUsers };

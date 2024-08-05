@@ -22,10 +22,12 @@ router.get('/match/:userId', (req, res) => {
 });
 
 //Get filtered users that haven't been matched with
-router.get('/match/:userId', (req, res) => {
+router.get('/match/:userId/:role/:isDM', (req, res) => {
   const userId = req.params.userId;
+  const role = req.params.role;
+  const isDM = req.params.isDM;
 
-  matchQueries.filterUsers(userId)
+  matchQueries.filterUsers(userId, role, isDM)
     .then(users => {
       if (users.length > 0) {
         res.json(users);

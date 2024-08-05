@@ -21,15 +21,19 @@ const MatchFilter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const role = formData.classType;
+    const isDM = formData.isDM;
+
+    console.log('Submitting Params:', { role, isDM }); 
+
     try {
-      const response = await fetch(`/profile/match/${userId}`);
+      const response = await fetch(`/profile/match/${userId}/${role}/${isDM}`);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Network response was not ok');
       }
-
       const data = await response.json();
-
+      console.log('filtered:', data);
     } catch (err) {
       console.error(err.message);
     }
@@ -107,7 +111,7 @@ const MatchFilter = () => {
             </FormControl>
           </div>
           <button type='submit' className=''>Save</button>
-          <button  className=''>Clear</button>
+          <button className=''>Clear</button>
 
         </div>
       </form >
