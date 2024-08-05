@@ -42,7 +42,7 @@ const MatchFilter = () => {
 
   return (
     <div>
-      <button onClick={handleToggle}>Filter results</button>
+      <button onClick={handleToggle}>Show filters</button>
 
       {toggle && 
 
@@ -111,7 +111,7 @@ const MatchFilter = () => {
             </FormControl>
           </div>
           <button type='submit' className=''>Save</button>
-          <button className=''>Clear</button>
+          <button className='' onClick={() => setFormData({ classType: '', isDM: false })}>Clear</button>
 
         </div>
       </form >
