@@ -77,8 +77,8 @@ h1 {
 
 .visibility-icon {
   position: absolute;
-  right: 60px; /* Move the icon 10px from the right */
-  top: 25%;
+  right: 70px; /* Move the icon 10px from the right */
+  top: 40%;
   transform: translateY(10%); /* Center it vertically */
   cursor: pointer;
 }
@@ -113,35 +113,44 @@ h1 {
 
 /* Dark mode styles */
 .darkmode {
-  background-color: #232323; 
-  color: #fff; 
+  background-color: #232323; /* Dark background color */
+  color: #fff; /* Default text color in dark mode */
 }
 
 /* Apply dark mode to form elements */
 .darkmode .login-form {
-  color: #fff; 
+  color: #fff; /* Text color in dark mode */
 }
 
 .darkmode .login-form input,
 .darkmode .login-form label {
-  color: #fff; 
+  color: #fff; /* Text color for input and label elements */
 }
+
+.darkmode .visibility-icon {
+  position: absolute;
+  right: 70px; /* Move the icon 10px from the right */
+  top: 40%;
+  transform: translateY(10%); /* Center it vertically */
+  cursor: pointer;
+}
+
 
 /* Default state for inputs */
 .darkmode .login-form input {
-  border: none; 
-  border-bottom: 2px solid #fff; 
-  color: #fff; 
+  border: none; /* Remove default border */
+  border-bottom: 2px solid #fff; /* White underline by default */
+  color: #fff; /* Text color inside the input */
 }
 
 /* Placeholder text color */
 .darkmode .login-form input::placeholder {
-  color: #fff; 
+  color: #fff; /* White placeholder text in dark mode */
 }
 
 /* Focus state for inputs */
 .darkmode .login-form input:focus {
-  outline: none; 
+  outline: none; /* Remove default outline */
   border-bottom: 2px solid #8a2be2; /* Purple underline on focus */
   color: white;
 }
@@ -152,7 +161,7 @@ h1 {
 }
 
 .darkmode .input-icon svg {
-  font-size: 1rem; 
+  font-size: 1rem; /* Adjust icon size as needed */
   position: relative;
   top: 7px;
   color: #fefefe; /* White icon color in dark mode */
@@ -162,5 +171,3 @@ h1 {
 .darkmode .sign-up a {
   color: #f449fd; /* Change link color to purple in dark mode */
 }
-
-
