@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './App.css';
 
@@ -27,32 +27,36 @@ function App() {
 
   useEffect(() => {
     const user = window.localStorage.getItem('userid');
-    console.log('userid', user)
+    console.log('userid', user);
     if (user !== null) {
       setLogin(true);
     }
   }, []);
 
+  //get current path, define where navbar should be hidden
+  const location = useLocation();
+  const hideNavBarPaths = ['/'];
+  //check if current path is in hideNavBarPaths array
+  const showNavBar = !hideNavBarPaths.includes(location.pathname);
+
   return (
-    <BrowserRouter>
       <div className="App">
 
-        <NavBar login={login} setLogin={setLogin} />        
+        {showNavBar && <NavBar login={login} setLogin={setLogin} />}
 
         <Routes>
-        <Route path='/home' element={<Home socket={socket}/>} />
+          <Route path='/home' element={<Home socket={socket} />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/:userId' element={<Profile />} />
           <Route path="/" element={<LoginPage email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} setLogin={setLogin} />} />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
           <Route path="/profile/:userId/delete" element={<DeleteProfile />} />
-          <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
+          <Route path="/chat/:roomId" element={<ChatPage socket={socket} />} />
           <Route path='/profile/match' element={<Match />} />
           <Route path='/profile/messages' element={<Messages />} />
         </Routes>
       </div>
-    </BrowserRouter>
   );
 }
 

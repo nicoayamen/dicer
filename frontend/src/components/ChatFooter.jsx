@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState("");
+  const roomId = window.location.pathname.split('/').pop(); // Extract roomId from URL
 
   const handleTyping = () => {
     const fullName = localStorage.getItem("fullName");
     if (fullName) {
-      socket.emit("typing", { username: fullName });
+      socket.emit("typing", { roomId, username: fullName });
     }
   };
 
@@ -14,18 +15,19 @@ const ChatFooter = ({ socket }) => {
     e.preventDefault();
     const fullName = localStorage.getItem("fullName");
 
-    if (message.trim() && fullName) {
+    if (message.trim() && fullName && /^chat_\d+_\d+$/.test(roomId)) {
       const messageData = {
+        roomId: roomId,
         username: fullName,
         content: message.trim(),
       };
-      console.log("Sending message:", messageData); // Debugging output
-      socket.emit("message", messageData);
+      console.log("Sending message:", messageData);
+      socket.emit("send_message", messageData);
 
       // Clear the message input
       setMessage("");
     } else {
-      console.error("Message data is missing or invalid"); // Debugging output
+      console.error("Message data is missing or invalid");
     }
   };
 
