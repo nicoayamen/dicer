@@ -90,21 +90,20 @@
   -webkit-text-fill-color: white;
 }
 
-
-/* Dark mode styles */
+/* Dark mode base styles */
 .darkmode {
   background-color: #232323; 
   color: #fff; 
 }
 
-/* Apply dark mode to form elements */
+/* Dark mode form styling */
 .darkmode .editprofile-form {
-  /* background-color: #333;  */
-  background-color:transparent; 
+  background-color: transparent; 
   color: #fff; 
-  padding: 0
+  padding: 0;
 }
 
+/* Dark mode header styling */
 .darkmode .editprofile h1 {
   background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
   -webkit-background-clip: text;
@@ -112,98 +111,90 @@
   font-weight: bold;
 }
 
-.darkmode .editprofile-box {
+/* Dark mode box and photo styling */
+.darkmode .editprofile-box,
+.darkmode .edit-profile-photo {
   background-color: #333; 
-  border-radius: 0.5rem;
   border: 2px solid lightgrey;
   border-radius: 1rem; 
 }
 
+/* Dark mode input box styling */
 .darkmode .editprofile-box-input {
   margin-bottom: 1rem;
 }
 
-.darkmode .edit-profile-photo {
-  border-radius: 0.5rem;
-  border: 2px solid lightgrey;
-}
-
+/* Dark mode bio section styling */
 .darkmode .editprofile-bio {
   background: #444; 
   color: #fff; 
+  width: 100%;
+  padding-block: .8rem;
+  border-radius: 1rem;
 }
 
+/* Dark mode button styling */
 .darkmode .editprofile-button {
   background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
+  cursor: pointer;
 }
 
+/* Dark mode button hover effect */
 .darkmode .editprofile-button:hover {
   background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
 
+/* Dark mode form input and label styling */
 .darkmode .editprofile-form input,
 .darkmode .editprofile-form label {
   color: #fff; 
 }
 
+/* Dark mode input styling */
 .darkmode .editprofile-form input {
   border: none;
   border-bottom: 2px solid #d8479a; 
   color: #fff;
 }
 
+/* Dark mode input placeholder text color */
 .darkmode .editprofile-form input::placeholder {
   color: #fff;
 }
 
-.darkmode .editprofile-bio {
-  width: 100%;
-  padding-block: .8rem;
-  background: white;
-  color: rgb(253, 253, 253);
-  border-radius: 1rem;
-}
-
+/* Dark mode custom text field styling */
 .darkmode .custom-textfield {
   border: 2px solid #d8479a; 
   border-radius: 8px; 
 }
 
-.darkmode .custom-textfield .MuiFormLabel-root {
-  color: #d8479a; 
-  font-size: 1.2rem; 
-  padding: 1rem;
-  margin-left: -10px;
-}
-
+/* Dark mode MUI input base styling */
 .darkmode .MuiInputBase-input {
   color: #fff; 
   padding: 0.5rem; 
   background-color: #333; 
 }
 
-/* DM or Player Icon Color */
+/* Dark mode MUI radio button checked icon color */
 .darkmode .MuiRadio-root.Mui-checked .MuiSvgIcon-root[data-testid="RadioButtonCheckedIcon"] {
   color: #d8479a;
 }
 
+/* Dark mode MUI radio button unchecked icon color */
 .darkmode .MuiRadio-root:not(.Mui-checked) .MuiSvgIcon-root[data-testid="RadioButtonUncheckedIcon"] {
   color: #b0b0b0; /* Unchecked icon color */
 }
 
-/* Dark mode styles for the dropdown menu underline */
+/* Dark mode MUI input underline styling */
 .darkmode .MuiInputBase-root {
-  border-bottom: 0.5 solid #d8479a; /* Custom underline color */
+  border-bottom: 0.5px solid #d8479a; /* Custom underline color */
 }
 
-.darkmode .MuiInputBase-root.MuiInput-underline:before {
-  border-bottom: 0.5px solid #d8479a; /* Custom underline color when not focused */
-}
-
+.darkmode .MuiInputBase-root.MuiInput-underline:before,
 .darkmode .MuiInputBase-root.MuiInput-underline:after {
-  border-bottom: .5px solid #d8479a; /* Custom underline color when focused */
+  border-bottom: 0.5px solid #d8479a; /* Custom underline color for all states */
 }

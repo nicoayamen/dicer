@@ -29,7 +29,7 @@ const Profile = (props) => {
       .then(data => {
         // Update state with profile user data
         setProfileUser({
-          photo: data.photo || '',
+          photo: data.photo || 'http://placehold.it/150x150',
           firstName: data.first_name || '',
           lastName: data.last_name || '',
           fullName: `${data.first_name || ''} ${data.last_name || ''}`,
