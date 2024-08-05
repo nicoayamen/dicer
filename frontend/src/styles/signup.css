@@ -64,19 +64,19 @@
 
 /* Dark mode styles */
 .darkmode {
-  background-color: #232323; /* Dark background color */
-  color: #fff; /* Default text color in dark mode */
+  background-color: #232323; 
+  color: #fff; 
 }
 
 /* Apply dark mode to form elements */
 .darkmode .signup-form {
-  background-color: #393939; /* Example dark background for forms */
-  color: #fff; /* Text color in dark mode */
+  background-color: #393939; 
+  color: #fff; 
 }
 
 .darkmode .signup-form input,
 .darkmode .signup-form label {
-  color: #fff; /* Default text color for input and label elements */
+  color: #fff; 
 }
 
 /* Default state for inputs */
