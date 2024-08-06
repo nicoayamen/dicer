@@ -26,13 +26,13 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
     RETURNING *;
   `;
 
-  const values = [classType, isDM, bio, roleId];
+  const values = [classType || null, isDM, bio, roleId];
 
   return db.query(queryString, values)
     .then(data => {
       console.log('Update result:', data); // Added logging
       console.log('Rows:', data.rows); // Added logging
-      
+
       if (data.rows.length === 0) {
         console.log('No rows returned, check roleId:', roleId);
       } else {
@@ -45,21 +45,23 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
     //   console.error('Error executing updateRole query:', err);
     //   throw err;
     // });
-  
+
 };
 
-const createRole = ({ classType, characterName="", isDM, bio }) => {
-
+const createRole = ({ classType = null, isDM, bio }) => {
   const queryString = `
-    INSERT into roles (is_DM, character_name, class, bio) VALUES ($1, $2, $3, $4) RETURNING *;`;
+    INSERT INTO roles (is_dm, class, bio) VALUES ($1, $2, $3) RETURNING *;
+  `;
 
-  const values = [isDM, characterName, classType, bio]; 
-  
-  return db.query(queryString,values)
-   .then(data => {
-    return data.rows[0];
-   })
+  const values = [isDM, classType || null, bio];
 
-}
+  return db.query(queryString, values)
+    .then(data => data.rows[0])
+    .catch(err => {
+      console.error('Error executing createRole query:', err);
+      throw err;
+    });
+};
+
 
 module.exports = { getRoleById, getRoleByUserId, updateRole, createRole };
