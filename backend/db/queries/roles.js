@@ -32,7 +32,7 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
     .then(data => {
       console.log('Update result:', data); // Added logging
       console.log('Rows:', data.rows); // Added logging
-      
+
       if (data.rows.length === 0) {
         console.log('No rows returned, check roleId:', roleId);
       } else {
@@ -45,16 +45,16 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
     //   console.error('Error executing updateRole query:', err);
     //   throw err;
     // });
-  
+
 };
 
-const createRole = ({ classType, characterName="", isDM, bio }) => {
+const createRole = ({ classType, isDM, bio }) => {
 
   const queryString = `
-    INSERT into roles (is_DM, character_name, class, bio) VALUES ($1, $2, $3, $4) RETURNING *;`;
+    INSERT into roles (is_DM, class, bio) VALUES ($1, $2, $3) RETURNING *;`;
 
-  const values = [isDM, characterName, classType, bio]; 
-  
+  const values = [isDM, classType, bio];
+
   return db.query(queryString,values)
    .then(data => {
     return data.rows[0];

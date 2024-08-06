@@ -2,8 +2,8 @@
 DROP TABLE IF EXISTS user_matches CASCADE;
 CREATE TABLE user_matches (
   id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id),
-  match_id INTEGER REFERENCES matches(id)
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,  -- Added ON DELETE CASCADE to remove user-match associations when the user is deleted
+  match_id INTEGER REFERENCES matches(id) ON DELETE CASCADE  -- Added ON DELETE CASCADE to remove user-match associations when the match is deleted
 );
 
 -- Drop the trigger if it exists

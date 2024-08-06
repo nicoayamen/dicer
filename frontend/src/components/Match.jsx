@@ -74,7 +74,11 @@ const CardStack = () => {
           nextUser={nextUser}
         />
       ) : (
-        <p>no more players :(</p>
+        <p className="no-more-matches">
+          Sorry, there are no more Players or Dungeon Masters to match with!
+          <br />
+          Please check back later for future matches!
+       </p>
       )}
     </div>
   );
