@@ -27,11 +27,3 @@ VALUES ('Emma', 'Taylor', 'https://raw.githubusercontent.com/nicoayamen/dicer/de
 -- Insert seventh user
 INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
 VALUES ('Noah', 'Moore', 'https://raw.githubusercontent.com/nicoayamen/dicer/dev/backend/db/docs/profile-images/User6-1.png', 2, 7, 'noah_m@example.com', 'noahpass');
-
--- Insert eighth user
-INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Ava', 'Clark', 'backend/db/docs/profile-images/User8-1.jpg', 1, 8, 'ava_c@example.com', 'avapass');
-
--- Insert ninth user
-INSERT INTO users (first_name, last_name, photo, availability_id, role_id, email, password)
-VALUES ('Luca', 'Martinez', 'backend/db/docs/profile-images/User9-1.png', 1, 9, 'luca_m@example.com', 'lucapass');
