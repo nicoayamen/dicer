@@ -55,12 +55,11 @@ const EditProfile = (props) => {
   }, [userId]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: type === 'radio' ? checked : value,
-      classType: name === 'isDM' && checked ? null : prevFormData.classType
-    }));
+    const { name, value, type } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'radio' ? value === 'true' : value
+    });
   };
 
   //Handles file input changes: updates the image preview and sets the selected file in the form data.
@@ -81,7 +80,7 @@ const EditProfile = (props) => {
     data.append('firstName', formData.firstName);
     data.append('lastName', formData.lastName);
     data.append('email', formData.email);
-    data.append('classType', formData.classType || null);
+    data.append('classType', formData.classType);
     data.append('isDM', formData.isDM);
     data.append('bio', formData.bio);
     if (formData.roleId) {
@@ -196,7 +195,7 @@ const EditProfile = (props) => {
                 </InputLabel>
                 <Select
                   name='classType'
-                  value={formData.classType || ''}
+                  value={formData.classType}
                   onChange={handleChange}
                   color="secondary"
                 >
