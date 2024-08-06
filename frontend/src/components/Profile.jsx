@@ -82,7 +82,7 @@ const Profile = (props) => {
   return (
     <div className="profile-container">
       <div className="profile-header">
-        <img src={profileUser.photo} className="profile-photo" alt="Profile" />
+        <img src={profileUser.photo ? profileUser.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'} className="profile-photo" alt="Profile" />
         <h1>Welcome, {profileUser.firstName} {profileUser.lastName}</h1>
       </div>
       <div className="profile-actions">
