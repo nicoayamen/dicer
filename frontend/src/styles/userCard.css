@@ -65,6 +65,15 @@
   -webkit-text-fill-color: white;
 }
 
+.no-more-matches {
+  font-size: 1.5rem; /* Adjust size as needed */
+  background: -webkit-linear-gradient(right, #6963ab, #9252a0, #d8479a, #ef3f6d, #f05538, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold; 
+  text-align: center; 
+}
+
 /* Dark mode styles */
 .darkmode .user-card-profile-photo {
   width: 200px;

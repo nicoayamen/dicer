@@ -75,10 +75,10 @@ const CardStack = () => {
         />
       ) : (
         <p className="no-more-matches">
-            Sorry, there are no more adventurers or DMs to match with!
-            <br />
-            Please check back later for future matches.
-        </p>
+          Sorry, there are no more Players or Dungeon Masters to match with!
+          <br />
+          Please check back later for future matches!
+       </p>
       )}
     </div>
   );
