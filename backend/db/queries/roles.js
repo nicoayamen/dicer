@@ -26,7 +26,7 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
     RETURNING *;
   `;
 
-  const values = [classType || null, isDM, bio, roleId];
+  const values = [classType, isDM, bio, roleId];
 
   return db.query(queryString, values)
     .then(data => {
@@ -48,20 +48,18 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
 
 };
 
-const createRole = ({ classType = null, isDM, bio }) => {
+const createRole = ({ classType, isDM, bio }) => {
+
   const queryString = `
-    INSERT INTO roles (is_dm, class, bio) VALUES ($1, $2, $3) RETURNING *;
-  `;
+    INSERT into roles (is_DM, class, bio) VALUES ($1, $2, $3) RETURNING *;`;
 
-  const values = [isDM, classType || null, bio];
+  const values = [isDM, classType, bio];
 
-  return db.query(queryString, values)
-    .then(data => data.rows[0])
-    .catch(err => {
-      console.error('Error executing createRole query:', err);
-      throw err;
-    });
-};
+  return db.query(queryString,values)
+   .then(data => {
+    return data.rows[0];
+   })
 
+}
 
 module.exports = { getRoleById, getRoleByUserId, updateRole, createRole };
