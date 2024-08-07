@@ -76,6 +76,12 @@ const EditProfile = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // if (!formData.classType) {
+    //   alert('Please select a class type before submitting the form.');
+    //   return;
+    // }
+
     const data = new FormData();
     data.append('firstName', formData.firstName);
     data.append('lastName', formData.lastName);
@@ -89,6 +95,8 @@ const EditProfile = (props) => {
     if (formData.photo) {
       data.append('photo', formData.photo);
     }
+
+    console.log('Form data being submitted:', formData);
 
     fetch(`/editprofile/${userId}`, {
       method: 'POST',
