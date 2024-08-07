@@ -34,14 +34,7 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
   let { firstName, lastName, email, classType, isDM, bio, roleId: existingRoleId } = req.body;
 
   // Log incoming data
-  console.log("Incoming data:", { firstName, lastName, email, classType, isDM, bio, existingRoleId });
-
-  if (classType === '') {
-    classType = null;
-  }
-
-  console.log('NILL RIGHT HERE', classType);
-  console.log("Incoming data after classType:", { firstName, lastName, email, classType, isDM, bio, existingRoleId });
+  console.log("Incoming data:", { firstName, lastName, email, classType, isDM, bio, existingRoleId});
 
   // Fetch current user data to get the existing photo
   userQueries.getProfileById(userId)
@@ -51,8 +44,6 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
       if (req.file) {
         photo = `/uploads/${req.file.filename}`; //route to uploads folder containing images
       }
-
-      console.log("existingRoleId:", existingRoleId);
 
       // Handle role update or creation
       (existingRoleId ? roleQueries.updateRole(existingRoleId, { classType, isDM, bio })
