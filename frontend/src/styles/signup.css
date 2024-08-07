@@ -96,6 +96,11 @@
 }
 
 /* Focus state for labels */
-.darkmode .signup-box-input:focus-within label {
+.darkmode .signup-form input:focus + label {
   color: #8a2be2; /* Purple color for the focused label */
+}
+
+/* Ensure labels inside signup-box-input have correct color */
+.darkmode .signup-box-input label {
+  color: #fff; /* White color for labels in dark mode */
 }
