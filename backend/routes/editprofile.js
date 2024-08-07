@@ -31,7 +31,10 @@ router.get('/:userId', (req, res) => {
 // Route to update user profile by ID
 router.post('/:userId', upload.single('photo'), (req, res) => {
   const userId = req.params.userId;
-  const { firstName, lastName, email, classType, isDM, bio, roleId: existingRoleId } = req.body;
+  let { firstName, lastName, email, classType, isDM, bio, roleId: existingRoleId } = req.body;
+
+  // Log incoming data
+  console.log("Incoming data:", { firstName, lastName, email, classType, isDM, bio, existingRoleId});
 
   // Fetch current user data to get the existing photo
   userQueries.getProfileById(userId)
@@ -42,15 +45,14 @@ router.post('/:userId', upload.single('photo'), (req, res) => {
         photo = `/uploads/${req.file.filename}`; //route to uploads folder containing images
       }
 
-      console.log("existingRoleId:", existingRoleId);
-
       // Handle role update or creation
       (existingRoleId ? roleQueries.updateRole(existingRoleId, { classType, isDM, bio })
-        : roleQueries.createRole({ classType, isDM, bio }))
+        : roleQueries.createRole({classType, isDM, bio }))
         .then((role) => {
           return userQueries.updateUser(userId, { firstName, lastName, email, photo, roleId: role.id })
             .then(updatedUser => {
               res.status(200).json({ user: updatedUser, role });
+              console.log("form data saved:", role);
             })
             .catch(err => {
               console.error('Error updating profile:', err);
