@@ -28,7 +28,7 @@ const Match = () => {
       setUsers(data);
       setCurrentUserIndex(0);  // Reset the current user index
     } catch (err) {
-      console.log('noone found')
+      setUsers([]);
       console.error(err.message);
     }
   };
@@ -78,6 +78,12 @@ const Match = () => {
     setCurrentUserIndex((prevIndex) => prevIndex + 1);
   };
 
+  //Get unfiltered unmatched users from beginning
+  const handleRestart = () => {
+    getUnmatchedUser();
+    setFilters({ classType: '', isDM: undefined })
+  }
+
   const currentUser = users[currentUserIndex];
 
 
@@ -96,6 +102,8 @@ const Match = () => {
           Sorry, there are no more Players or Dungeon Masters to match with!
           <br />
           Please check back later for future matches!
+          <br />
+          <button onClick={handleRestart}>Start over</button>
        </p>
       )}
     </div>
