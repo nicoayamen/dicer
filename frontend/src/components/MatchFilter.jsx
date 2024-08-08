@@ -6,11 +6,13 @@ const MatchFilter = ({ handleFilterChange }) => {
   const userId = Number(window.localStorage.getItem('userid'));
   const [formData, setFormData] = useState({ classType: '', isDM: false });
   const [toggle, setToggle] = useState(false);
+  const [buttonName, setButtonName] = useState('Show filters');
 
   //Show or hide filters
   const handleToggle = () => {
     !toggle ? setToggle(true) : setToggle(false);
-  }
+    buttonName === 'Show filters' ? setButtonName('Hide filters') : setButtonName('Show filters');
+  };
 
   //Handle dropdown and radio button input changes
   const handleChange = (e) => {
@@ -30,7 +32,7 @@ const MatchFilter = ({ handleFilterChange }) => {
 
   return (
     <div>
-      <button onClick={handleToggle}>Filter results</button>
+      <button onClick={handleToggle}>{buttonName}</button>
 
       {toggle && 
 
