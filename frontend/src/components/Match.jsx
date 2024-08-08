@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UserCard from './UserCard';
 
-const CardStack = () => {
+const Match = () => {
   const [users, setUsers] = useState([]);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
   const [filters, setFilters] = useState({ classType: '', isDM: undefined });
@@ -118,4 +118,4 @@ const CardStack = () => {
   );
 };
 
-export default CardStack;
+export default Match;
