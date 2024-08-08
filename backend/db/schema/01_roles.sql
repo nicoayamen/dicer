@@ -25,7 +25,6 @@ CREATE TYPE class_type AS ENUM (
 CREATE TABLE roles (
   id SERIAL PRIMARY KEY NOT NULL,
   is_DM BOOLEAN,
-  character_name VARCHAR(255),
   class class_type,
   bio TEXT
 );

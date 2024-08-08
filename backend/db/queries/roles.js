@@ -18,21 +18,26 @@ const getRoleByUserId = (userId) => {
 };
 
 const updateRole = (roleId, { classType, isDM, bio }) => {
-
-  const queryString = `
+  const finalClass = classType ? classType : null
+  const queryString = isDM !== 'true' ? `
     UPDATE roles
     SET class = $1, is_dm = $2, bio = $3
     WHERE id = $4
     RETURNING *;
+  ` : `
+    UPDATE roles
+    SET class = null, is_dm = $1, bio = $2
+    WHERE id = $3
+    RETURNING *;
   `;
 
-  const values = [classType, isDM, bio, roleId];
+  const values = isDM !== 'true' ?  [finalClass, isDM, bio, roleId] : [isDM, bio, roleId];
 
   return db.query(queryString, values)
     .then(data => {
       console.log('Update result:', data); // Added logging
       console.log('Rows:', data.rows); // Added logging
-      
+
       if (data.rows.length === 0) {
         console.log('No rows returned, check roleId:', roleId);
       } else {
@@ -40,26 +45,29 @@ const updateRole = (roleId, { classType, isDM, bio }) => {
       }
 
       return data.rows[0];
+    })
+    .catch(err => {
+      console.error('Error executing updateRole query:', err);
+      throw err;
     });
-    // .catch(err => {
-    //   console.error('Error executing updateRole query:', err);
-    //   throw err;
-    // });
-  
+
 };
 
-const createRole = ({ classType, characterName="", isDM, bio }) => {
+const createRole = ({ classType, isDM, bio }) => {
 
-  const queryString = `
-    INSERT into roles (is_DM, character_name, class, bio) VALUES ($1, $2, $3, $4) RETURNING *;`;
+  const queryString = isDM ? `
+    INSERT into roles (is_DM, bio) VALUES ($1, $2) RETURNING *;
+    ` :`
+    INSERT into roles (is_DM,  bio, class) VALUES ($1, $2, $3) RETURNING *;
+    `;
 
-  const values = [isDM, characterName, classType, bio]; 
-  
-  return db.query(queryString,values)
-   .then(data => {
-    return data.rows[0];
-   })
+  const values = isDM ? [isDM, bio] : [isDM, bio, classType ];
 
-}
+  return db.query(queryString, values)
+    .then(data => {
+      return data.rows[0];
+    });
+
+};
 
 module.exports = { getRoleById, getRoleByUserId, updateRole, createRole };

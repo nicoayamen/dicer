@@ -76,11 +76,12 @@ const EditProfile = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = new FormData();
     data.append('firstName', formData.firstName);
     data.append('lastName', formData.lastName);
     data.append('email', formData.email);
-    data.append('classType', formData.classType);
+    data.append('classType', formData.isDM ? null : formData.classType);
     data.append('isDM', formData.isDM);
     data.append('bio', formData.bio);
     if (formData.roleId) {
@@ -89,6 +90,8 @@ const EditProfile = (props) => {
     if (formData.photo) {
       data.append('photo', formData.photo);
     }
+
+    console.log('Form data being submitted:', formData);
 
     fetch(`/editprofile/${userId}`, {
       method: 'POST',
