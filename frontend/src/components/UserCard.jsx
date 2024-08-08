@@ -6,7 +6,7 @@ import MatchedModal from './MatchedModal';
 import MatchFilter from './MatchFilter';
 
 const UserCard = (props) => {
-  const { user, onMatch, onReject, nextUser, onFilterChange } = props;
+  const { user, onMatch, onReject, nextUser, handleFilterChange } = props;
 
   //Combine the onMatch with the modal opening 
   const handleMatchClick = (e) => {
@@ -27,7 +27,7 @@ const UserCard = (props) => {
         className='user-card-button'
       />
       <Button className='user-card-button' sx={{ m: 1, minWidth: 300 }} onClick={onReject}>Maybe next time!</Button>
-      <MatchFilter onFilterChange={onFilterChange} />
+      <MatchFilter handleFilterChange={handleFilterChange} />
     </div>
   );
 };
