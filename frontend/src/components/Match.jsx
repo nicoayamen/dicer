@@ -2,27 +2,11 @@ import React, { useEffect, useState } from 'react';
 import UserCard from './UserCard';
 
 const Match = () => {
+  const userId = Number(window.localStorage.getItem('userid'));
   const [users, setUsers] = useState([]);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
-  const [filters, setFilters] = useState({ classType: '', isDM: undefined });
-  const userId = Number(window.localStorage.getItem('userid'));
+  const [filters, setFilters] = useState({ classType: '', isDM: undefined }); 
 
-
-  // //Get user profiles
-  // const getUnmatchedUser = async () => {
-  //   try {
-  //     const response = await fetch(`/profile/match/${userId}`);
-  //     if (!response.ok) {
-  //       const errorData = await response.json();
-  //       throw new Error(errorData.error);
-  //     }
-  //     const data = await response.json();
-  //     console.log("Fetched user:", data);
-  //     setUsers(data);
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
 
   // Fetch user profiles with filtering
   const getUnmatchedUser = async () => {
@@ -30,11 +14,9 @@ const Match = () => {
       const { classType, isDM } = filters;
       let url = `/profile/match/${userId}`;
 
+      //Send class and DM as parameters if filtering
       if (classType) url += `/${classType}`;
       if (isDM !== undefined) url += `/${isDM}`;
-  
-      console.log(classType, isDM);
-      console.log(url);
 
       const response = await fetch(url);
       if (!response.ok) {
@@ -46,15 +28,17 @@ const Match = () => {
       setUsers(data);
       setCurrentUserIndex(0);  // Reset the current user index
     } catch (err) {
+      console.log('noone found')
       console.error(err.message);
     }
   };
 
-
+  //Show potential matches on page load
   useEffect(() => {
     getUnmatchedUser();
   }, [filters]);
 
+  //Set filter data
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
   };
@@ -105,7 +89,7 @@ const Match = () => {
           onMatch={handleMatch}
           onReject={handleReject}
           nextUser={nextUser}
-          onFilterChange={handleFilterChange}
+          handleFilterChange={handleFilterChange}
         />
       ) : (
         <p className="no-more-matches">
