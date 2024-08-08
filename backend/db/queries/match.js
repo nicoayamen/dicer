@@ -87,8 +87,8 @@ const filterUsers = (userId, role, isDM) => {
   FROM users
   LEFT JOIN roles ON users.role_id = roles.id
   WHERE users.id != $1
-    AND ($2::text IS NULL OR roles.class = $2::class_type)
     AND ($3::boolean IS NULL OR roles.is_dm = $3::boolean)
+    AND ($2::text IS NULL OR roles.class = $2::class_type)
     AND users.id NOT IN (
       SELECT matched_user_id FROM matches WHERE user_id = $1
     );
