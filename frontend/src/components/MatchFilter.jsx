@@ -117,7 +117,7 @@ const MatchFilter = ({ onFilterChange }) => {
             </FormControl>
           </div>
           <button type='submit' className=''>Save</button>
-          <button className='' onClick={() => setFormData({ classType: '', isDM: false })}>Clear</button>
+          <button className='' onClick={() => setFormData({ classType: '', isDM: undefined })}>Clear</button>
 
         </div>
       </form >
