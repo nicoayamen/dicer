@@ -21,6 +21,26 @@ router.get('/match/:userId', (req, res) => {
     });
 });
 
+//Get filtered users that haven't been matched with
+router.get('/match/:userId/:role?/:isDM?', (req, res) => {
+  const userId = req.params.userId;
+  const role = req.params.role || null;
+  const isDM = req.params.isDM === 'true' ? true : (req.query.isDM === 'false' ? false : null);
+
+  matchQueries.filterUsers(userId, role, isDM)
+    .then(users => {
+      if (users.length > 0) {
+        res.json(users);
+      } else {
+        res.status(400).json({ error: 'No unmatched users found' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+
 //Insert a new match
 router.post('/match/:userId/:getId', (req, res) => {
   const { userId, getId } = req.params;

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import '../styles/matchedModal.css';
+import { Link } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -42,7 +43,7 @@ export default function MatchedModal(props) {
             You've matched with {props.userName}!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Let's Roll! Go to Messages!
+            Let's Roll! Go to <Link style={{ color: '#FFF' }} to="/profile/messages">Messages</Link>!
           </Typography>
         </Box>
       </Modal>

@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import UserCard from './UserCard';
 
-const CardStack = () => {
+const Match = () => {
+  const userId = Number(window.localStorage.getItem('userid'));
   const [users, setUsers] = useState([]);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
-  const userId = Number(window.localStorage.getItem('userid'));
+  const [filters, setFilters] = useState({ classType: '', isDM: undefined }); 
 
 
-  //Get user profiles
+  // Fetch user profiles with filtering
   const getUnmatchedUser = async () => {
     try {
-      const response = await fetch(`/profile/match/${userId}`);
+      const { classType, isDM } = filters;
+      let url = `/profile/match/${userId}`;
+
+      //Send class and DM as parameters if filtering
+      if (classType) url += `/${classType}`;
+      if (isDM !== undefined) url += `/${isDM}`;
+
+      const response = await fetch(url);
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error);
@@ -18,14 +26,23 @@ const CardStack = () => {
       const data = await response.json();
       console.log("Fetched user:", data);
       setUsers(data);
+      setCurrentUserIndex(0);  // Reset the current user index
     } catch (err) {
+      setUsers([]);
       console.error(err.message);
     }
   };
 
+  //Show potential matches on page load
   useEffect(() => {
     getUnmatchedUser();
-  }, []);
+  }, [filters]);
+
+  //Set filter data
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
 
   //Match with a user
   const handleMatch = async (e) => {
@@ -61,6 +78,12 @@ const CardStack = () => {
     setCurrentUserIndex((prevIndex) => prevIndex + 1);
   };
 
+  //Get unfiltered unmatched users from beginning
+  const handleRestart = () => {
+    getUnmatchedUser();
+    setFilters({ classType: '', isDM: undefined })
+  }
+
   const currentUser = users[currentUserIndex];
 
 
@@ -72,16 +95,19 @@ const CardStack = () => {
           onMatch={handleMatch}
           onReject={handleReject}
           nextUser={nextUser}
+          handleFilterChange={handleFilterChange}
         />
       ) : (
         <p className="no-more-matches">
           Sorry, there are no more Players or Dungeon Masters to match with!
           <br />
           Please check back later for future matches!
+          <br />
+          <button onClick={handleRestart}>Start over</button>
        </p>
       )}
     </div>
   );
 };
 
-export default CardStack;
+export default Match;
