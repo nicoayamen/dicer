@@ -111,8 +111,8 @@ const Match = () => {
           <br />
           Return later to discover new companions, or take another look!
           <br />
-          <button onClick={handleRestart}>Start over</button>
-        </p>
+          <Button className='match-start-over-button' onClick={handleRestart}sx={{ m: 1, minWidth: 200, mt: 3 }}>Start over</Button>
+       </h3>
       )}
     </div>
   );

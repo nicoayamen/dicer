@@ -102,8 +102,11 @@ const MatchFilter = ({ handleFilterChange }) => {
               </RadioGroup>
             </FormControl>
           </div>
-          <button type='submit' className=''>Save</button>
-          <button className='' onClick={() => setFormData({ classType: '', isDM: false })}>Clear</button>
+
+         <div className='matchfilter-filter-buttons'>
+            <Button type='submit' className='matchfilter-button-apply'>Apply</Button>
+            <Button className='matchfilter-button-clear' onClick={() => setFormData({ classType: '', isDM: undefined })}>Clear</Button>
+          </div>
 
         </div>
       </form >
