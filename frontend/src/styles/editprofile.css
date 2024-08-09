@@ -89,3 +89,123 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+
+
+
+/* Dark mode styles */
+.darkmode {
+  background-color: #232323; 
+  color: #fff; 
+}
+
+/* Apply dark mode to form elements */
+.darkmode .editprofile-form {
+  /* background-color: #333;  */
+  background-color:transparent; 
+  color: #fff; 
+  padding: 0
+}
+
+.darkmode .editprofile h1 {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.darkmode .editprofile-box {
+  background-color: #333; 
+  border-radius: 0.5rem;
+  border: 2px solid lightgrey;
+  border-radius: 1rem; 
+}
+
+.darkmode .editprofile-box-input {
+  margin-bottom: 1rem;
+}
+
+.darkmode .edit-profile-photo {
+  border-radius: 0.5rem;
+  border: 2px solid lightgrey;
+}
+
+.darkmode .editprofile-bio {
+  background: #444; 
+  color: #fff; 
+}
+
+.darkmode .editprofile-button {
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.darkmode .editprofile-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.darkmode .editprofile-form input,
+.darkmode .editprofile-form label {
+  color: #fff; 
+}
+
+.darkmode .editprofile-form input {
+  border: none;
+  border-bottom: 2px solid #d8479a; 
+  color: #fff;
+}
+
+.darkmode .editprofile-form input::placeholder {
+  color: #fff;
+}
+
+.darkmode .editprofile-bio {
+  width: 100%;
+  padding-block: .8rem;
+  background: white;
+  color: rgb(253, 253, 253);
+  border-radius: 1rem;
+}
+
+.darkmode .custom-textfield {
+  border: 2px solid #d8479a; 
+  border-radius: 8px; 
+}
+
+.darkmode .custom-textfield .MuiFormLabel-root {
+  color: #d8479a; 
+  font-size: 1.2rem; 
+  padding: 1rem;
+  margin-left: -10px;
+}
+
+.darkmode .MuiInputBase-input {
+  color: #fff; 
+  padding: 0.5rem; 
+  background-color: #333; 
+}
+
+/* DM or Player Icon Color */
+.darkmode .MuiRadio-root.Mui-checked .MuiSvgIcon-root[data-testid="RadioButtonCheckedIcon"] {
+  color: #d8479a;
+}
+
+.darkmode .MuiRadio-root:not(.Mui-checked) .MuiSvgIcon-root[data-testid="RadioButtonUncheckedIcon"] {
+  color: #b0b0b0;
+}
+
+/* Dark mode styles for the dropdown menu underline */
+.darkmode .MuiInputBase-root {
+  border-bottom: 0.5 solid #d8479a; 
+}
+
+.darkmode .MuiInputBase-root.MuiInput-underline:before {
+  border-bottom: 0.5px solid #d8479a; 
+}
+
+.darkmode .MuiInputBase-root.MuiInput-underline:after {
+  border-bottom: .5px solid #d8479a;
+}
