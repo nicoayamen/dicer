@@ -70,3 +70,20 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+
+/* Dark mode styles */
+.darkmode {
+  background-color: #232323;
+  color: #fff;
+}
+
+/* Apply dark mode to profile container */
+.darkmode .profile-container {
+  background-color: transparent;
+}
+
+/* Profile photo styling */
+.darkmode .profile-photo {
+  border: 3px solid #fff;
+}

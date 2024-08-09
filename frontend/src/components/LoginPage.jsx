@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DarkModeToggle from './DarkModeToggle';
+import DarkModeToggle from '../components/DarkModeToggle';
 import '../styles/login.css';
+import '../styles/darkmodetoggle.css';
 
 //Components
 import Login from './Login';

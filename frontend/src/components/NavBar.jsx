@@ -73,27 +73,28 @@ const NavBar = (props) => {
         )}
       </div>
 
-      {login && profile && (
-        <div className='navbar-links'>
-          <Link to='/profile/messages'>Messages</Link>
-          <button onClick={handleLogOut} className='navbar-logout-button'>Sign Out</button>
-          <Link to={`/profile/${userId}`}>
-            <img
-              src={profile.photo ? profile.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'}
-              alt='Profile'
-              className='navbar-profile-photo'
-            />
-          </Link>
-        </div>
-      )}
-
-      <IconButton 
-            sx={{ ml: 1 }} 
-            onClick={toggleDarkMode} 
-            color="inherit"
-          >
-        {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-      </IconButton>
+      <div className='navbar-actions'>
+        <IconButton 
+          sx={{ ml: 1 }} 
+          onClick={toggleDarkMode} 
+          color="inherit"
+        >
+          {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+        {login && profile && (
+          <div className='navbar-links'>
+            <Link to='/profile/messages' className='navbar-link'>Messages</Link>
+            <button onClick={handleLogOut} className='navbar-logout-button'>Sign Out</button>
+            <Link to={`/profile/${userId}`}>
+              <img
+                src={profile.photo ? profile.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'}
+                alt='Profile'
+                className='navbar-profile-photo'
+              />
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

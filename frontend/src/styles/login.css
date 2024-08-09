@@ -105,15 +105,15 @@ h1 {
 }
 
 .sign-up {
-  text-align: center; 
-  margin-top: 1rem; 
+  text-align: center; /* Centers the text */
+  margin-top: 1rem; /* Adds space above the element */
   margin-left: -50px;
 }
 
 
 /* Dark mode styles */
 .darkmode {
-  background-color: #232323;
+  background-color: #232323; 
   color: #fff; 
 }
 
@@ -141,24 +141,24 @@ h1 {
 
 /* Focus state for inputs */
 .darkmode .login-form input:focus {
-  outline: none;
-  border-bottom: 2px solid #8a2be2; 
+  outline: none; 
+  border-bottom: 2px solid #8a2be2; /* Purple underline on focus */
   color: white;
 }
 
 /* Change the label color when input is focused */
 .darkmode .login-form input:focus + label {
-  color: #8a2be2; 
+  color: #8a2be2; /* Purple color for the focused label */
 }
 
 .darkmode .input-icon svg {
   font-size: 1rem; 
   position: relative;
   top: 7px;
-  color: #fefefe; 
+  color: #fefefe; /* White icon color in dark mode */
 }
 
 /* Sign up link color in dark mode */
 .darkmode .sign-up a {
-  color: #f449fd; 
+  color: #f449fd; /* Change link color to purple in dark mode */
 }

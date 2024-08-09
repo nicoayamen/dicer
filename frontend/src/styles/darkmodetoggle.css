@@ -1,0 +1,7 @@
+/* Styles for Dark Mode Toggle */
+.dark-mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px; 
+  z-index: 1000;
+}
