@@ -51,7 +51,7 @@ function App() {
           <Route path="/" element={<LoginPage email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} setError={setError} setLogin={setLogin} />} />
           <Route path="/signup" element={<Signup setLogin={setLogin} />} />
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
-          <Route path="/profile/:userId/delete" element={<DeleteProfile />} />
+          <Route path="/profile/:userId/delete" element={<DeleteProfile setLogin={setLogin} />} />
           <Route path="/chat/:roomId" element={<ChatPage socket={socket} />} />
           <Route path='/profile/match' element={<Match />} />
           <Route path='/profile/messages' element={<Messages />} />
