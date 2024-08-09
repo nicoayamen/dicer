@@ -91,8 +91,6 @@
 }
 
 
-
-
 /* Dark mode styles */
 .darkmode {
   background-color: #232323; 
@@ -101,10 +99,9 @@
 
 /* Apply dark mode to form elements */
 .darkmode .editprofile-form {
-  /* background-color: #333;  */
-  background-color:transparent; 
+  background-color: transparent; 
   color: #fff; 
-  padding: 0
+  padding: 0;
 }
 
 .darkmode .editprofile h1 {
@@ -116,9 +113,8 @@
 
 .darkmode .editprofile-box {
   background-color: #333; 
-  border-radius: 0.5rem;
-  border: 2px solid lightgrey;
   border-radius: 1rem; 
+  border: 2px solid lightgrey;
 }
 
 .darkmode .editprofile-box-input {
@@ -131,8 +127,17 @@
 }
 
 .darkmode .editprofile-bio {
+  width: 100%;
+  padding: .8rem;
   background: #444; 
   color: #fff; 
+  border-radius: 1rem; 
+  border: 2px solid #d8479a; /* Purple border */
+}
+
+.darkmode .editprofile-bio:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #d8479a; /* Ensure the border remains purple on focus */
 }
 
 .darkmode .editprofile-button {
@@ -154,20 +159,16 @@
 
 .darkmode .editprofile-form input {
   border: none;
-  border-bottom: 2px solid #d8479a; 
+  border-bottom: 1px solid #d8479a; 
   color: #fff;
 }
 
 .darkmode .editprofile-form input::placeholder {
-  color: #fff;
+  color: #d8479a; /* Placeholder color for inputs */
 }
 
-.darkmode .editprofile-bio {
-  width: 100%;
-  padding-block: .8rem;
-  background: white;
-  color: rgb(253, 253, 253);
-  border-radius: 1rem;
+.darkmode .editprofile-bio::placeholder {
+  color: #d8479a; /* Placeholder color for textarea */
 }
 
 .darkmode .custom-textfield {
@@ -199,7 +200,7 @@
 
 /* Dark mode styles for the dropdown menu underline */
 .darkmode .MuiInputBase-root {
-  border-bottom: 0.5 solid #d8479a; 
+  border-bottom: 0.5px solid #d8479a; 
 }
 
 .darkmode .MuiInputBase-root.MuiInput-underline:before {
@@ -208,4 +209,9 @@
 
 .darkmode .MuiInputBase-root.MuiInput-underline:after {
   border-bottom: .5px solid #d8479a;
+}
+
+/* Dark mode styles for placeholder text in labels */
+.darkmode .MuiFormLabel-root {
+  color: #fff; /* White color for the label text */
 }
