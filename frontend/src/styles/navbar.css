@@ -32,11 +32,34 @@
   font-weight: bold;
 }
 
-
 .navbar-profile-photo {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
   margin-left: 1rem;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #232323; /* Dark background color for the NavBar */
+  color: #fff; /* Text color in dark mode */
+}
+
+.dark-mode .navbar-links a,
+.dark-mode .navbar-links button {
+  color: #fff; /* Text color for links and buttons in dark mode */
+  background: none; /* Remove gradient text color */
+}
+
+.dark-mode .navbar-profile-photo {
+  border: 2px solid #fff; 
+}
+
+.navbar-dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 30px; /* Adjust font size */
+  padding: 0.5rem; /* Adjust padding */
+  width: 10%;
 }
