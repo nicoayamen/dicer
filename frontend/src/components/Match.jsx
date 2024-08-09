@@ -7,7 +7,7 @@ const Match = () => {
   const userId = Number(window.localStorage.getItem('userid'));
   const [users, setUsers] = useState([]);
   const [currentUserIndex, setCurrentUserIndex] = useState(0);
-  const [filters, setFilters] = useState({ classType: '', isDM: undefined }); 
+  const [filters, setFilters] = useState({ classType: '', isDM: undefined });
 
 
   // Fetch user profiles with filtering
@@ -16,9 +16,15 @@ const Match = () => {
       const { classType, isDM } = filters;
       let url = `/profile/match/${userId}`;
 
-      //Send class and DM as parameters if filtering
-      if (classType) url += `/${classType}`;
-      if (isDM !== undefined) url += `/${isDM}`;
+      //Add isDM parameter to url
+      if (isDM !== undefined) {
+        url += `/${isDM}`;
+      }
+
+      //Add classType parameter to url only if isDM is false or undefined
+      if (!isDM && classType) {
+        url += `/${classType}`;
+      }
 
       const response = await fetch(url);
       if (!response.ok) {
@@ -66,7 +72,7 @@ const Match = () => {
         throw new Error(errorData.error);
       }
     }
-    finally {  }
+    finally { }
   };
 
   //Reject a user
@@ -83,8 +89,8 @@ const Match = () => {
   //Get unfiltered unmatched users from beginning
   const handleRestart = () => {
     getUnmatchedUser();
-    setFilters({ classType: '', isDM: undefined })
-  }
+    setFilters({ classType: '', isDM: undefined });
+  };
 
   const currentUser = users[currentUserIndex];
 
@@ -105,8 +111,8 @@ const Match = () => {
           <br />
           Return later to discover new companions, or take another look!
           <br />
-          <Button className='match-start-over-button' onClick={handleRestart}sx={{ m: 1, minWidth: 200, mt: 3 }}>Start over</Button>
-       </h3>
+          <button onClick={handleRestart}>Start over</button>
+        </p>
       )}
     </div>
   );
