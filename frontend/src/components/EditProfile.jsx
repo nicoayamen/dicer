@@ -120,6 +120,7 @@ const EditProfile = (props) => {
               <img
                 src={imagePreview}
                 alt='Profile'
+                className='profile-photo'
                 style={{
                   width: '275px',
                   height: '275px',
