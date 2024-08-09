@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
+import '../styles/match.css';
 import UserCard from './UserCard';
 
 const Match = () => {
@@ -104,13 +106,13 @@ const Match = () => {
           handleFilterChange={handleFilterChange}
         />
       ) : (
-        <p className="no-more-matches">
-          Sorry, there are no more Players or Dungeon Masters to match with!
+        <h3 className='match-no-more-matches'>
+          Sorry, there are no more Players or Dungeon Masters left in the campaign!
           <br />
-          Please check back later for future matches!
+          Return later to discover new companions, or take another look!
           <br />
-          <button onClick={handleRestart}>Start over</button>
-        </p>
+          <Button className='match-start-over-button' onClick={handleRestart}sx={{ m: 1, minWidth: 200, mt: 3 }}>Start over</Button>
+       </h3>
       )}
     </div>
   );

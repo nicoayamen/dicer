@@ -43,7 +43,7 @@ export default function MatchedModal(props) {
             You've matched with {props.userName}!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Let's Roll! Go to <Link style={{ color: '#FFF' }} to="/profile/messages">Messages</Link>!
+            Let's Roll! Go to <Link className='modal-link-to-messages' to="/profile/messages">Messages</Link>!
           </Typography>
         </Box>
       </Modal>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import '../styles/matchFilter.css';
 import { FormControl, InputLabel, MenuItem, Select, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 
 
@@ -32,14 +34,14 @@ const MatchFilter = ({ handleFilterChange }) => {
 
   return (
     <div>
-      <button onClick={handleToggle}>{buttonName}</button>
+      <Button onClick={handleToggle} className='matchfilter-button' sx={{ m: 1, minWidth: 150 }}>{buttonName}</Button>
 
       {toggle && 
 
-      <form onSubmit={handleSubmit} className='editprofile-form'>
-        <div className='editprofile-content'>
+      <form onSubmit={handleSubmit} className='matchfilter-form'>
+        <div className='matchfilter-content'>
 
-          <div className='editprofile-box'>
+          <div className='matchfilter-box'>
             <FormControl
               variant="standard"
               sx={{ m: 1, minWidth: 300 }}
@@ -74,7 +76,7 @@ const MatchFilter = ({ handleFilterChange }) => {
             </FormControl>
           </div>
 
-          <div className='editprofile-box-input'>
+          <div className='matchfilter-box-input'>
             <FormControl>
               <RadioGroup
                 row
@@ -100,8 +102,11 @@ const MatchFilter = ({ handleFilterChange }) => {
               </RadioGroup>
             </FormControl>
           </div>
-          <button type='submit' className=''>Save</button>
-          <button className='' onClick={() => setFormData({ classType: '', isDM: false })}>Clear</button>
+
+         <div className='matchfilter-filter-buttons'>
+            <Button type='submit' className='matchfilter-button-apply'>Apply</Button>
+            <Button className='matchfilter-button-clear' onClick={() => setFormData({ classType: '', isDM: undefined })}>Clear</Button>
+          </div>
 
         </div>
       </form >
