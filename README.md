@@ -72,7 +72,7 @@ Edit Profile
 
 
 Match
-![Match without Filter](<readme-screenshots/Match Filter Not Displayed .png>)
+![Match without Filter Displayed](<readme-screenshots/Match without filter displayed.png>)
 ![Match with Filter](<readme-screenshots/Match Filter Displayed.png>)
 
 Chat 
@@ -88,18 +88,17 @@ Sign Up & Login
 ![Sign Up](<readme-screenshots/Sign Up - dark mode.png>)
 ![Login](<readme-screenshots/Login - dark mode.png>)
 
-
 Profile
 ![Profile](<readme-screenshots/Profile - dark mode.png>)
 Edit Profile
 ![Edit Profile](<readme-screenshots/Edit Profile - Dark Mode.png>)
 
 Match
-![Match with Filter Hidden](<readme-screenshots/Match Filter Not Displayed - dark mode.png>)
+![Match without Filter displayed](<readme-screenshots/Match without filter displayed - dark mode.png>)
 ![Match with Filter](<readme-screenshots/Match Filter Displayed - dark mode.png>)
 
 Chat
-![Chat Dark Mode](<readme-screenshots/Chat - dark mode.png>)
+![Chat](<readme-screenshots/Chat - dark mode.png>)
 
 Delete Profile
 ![Delete Profile](<readme-screenshots/Delete Profile - dark mode.png>)
