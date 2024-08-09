@@ -48,6 +48,24 @@ const saveMessageToDatabase = async (message) => {
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
 
+   // Handle video call signaling
+   socket.on('video-offer', (data) => {
+    socket.broadcast.emit('video-offer', data);
+  });
+
+  socket.on('video-answer', (data) => {
+    socket.broadcast.emit('video-answer', data);
+  });
+
+  socket.on('new-ice-candidate', (data) => {
+    socket.broadcast.emit('new-ice-candidate', data);
+  });
+
+  // Handle end video chat
+  socket.on('end-video-chat', () => {
+    socket.broadcast.emit('end-video-chat');
+  });
+
   // Join a chat room and fetch chat history
   socket.on('join_room', async ({ username, roomId }) => {
     socket.join(roomId);
