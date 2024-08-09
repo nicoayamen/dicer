@@ -45,7 +45,10 @@ const DeleteProfile = ({ setLogin }) => {
         return response.json();
       })
       .then(() => {
-        navigate('/signup'); // Navigate to a confirmation page
+        // Clear the login state and local storage
+        setLogin(false);
+        localStorage.removeItem('userId'); // Assuming you store the user ID in localStorage
+        navigate('/signup'); // Navigate to the sign-up page
       })
       .catch(err => {
         console.error('Error deleting account:', err);

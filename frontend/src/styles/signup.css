@@ -5,7 +5,7 @@
 }
 
 .signup h1 {
-  background: -webkit-linear-gradient(right, #9252a0,#d8479a, #ef3f6d, #f36523);
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -21,8 +21,8 @@
 }
 
 .signup-box {
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .signup-content {
@@ -31,7 +31,7 @@
 }
 
 .signup-box {
-  align-items: center;  
+  align-items: center;
   column-gap: .75rem;
   padding: 1rem;
   row-gap: .5rem;
@@ -48,15 +48,47 @@
   cursor: pointer;
   color: white;
   font-size: 16px;
-  cursor: pointer;
   border: none;
   margin-top: 1rem;
-  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
 .signup-button:hover {
-  background: -webkit-linear-gradient(left, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
+}
+
+.darkmode {
+  background-color: #232323;
+  color: #fff;
+}
+
+.darkmode .signup-form {
+  background-color: #393939;
+  color: #fff;
+}
+
+.darkmode .signup-form input,
+.darkmode .signup-form label {
+  color: #fff;
+}
+
+.darkmode .signup-form input {
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.darkmode .signup-form input:focus {
+  outline: none;
+  border-bottom: 2px solid #8a2be2;
+}
+
+.darkmode .signup-box-input:focus-within label {
+  color: #8a2be2;
 }
