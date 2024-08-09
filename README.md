@@ -61,7 +61,7 @@ npm start
 
 ## Dicer - Light Mode
 Sign Up & Login
-![SignUp](<readme-screenshots/Sign Up.png>)
+![Sign Up](<readme-screenshots/Sign Up.png>)
 ![Login](readme-screenshots/Login.png)
 
 Profile
