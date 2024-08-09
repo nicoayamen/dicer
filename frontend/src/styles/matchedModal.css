@@ -17,3 +17,12 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+.modal-link-to-messages {
+  color: #FFF;
+}
+
+.modal-link-to-messages:hover {
+  color: #ef3f6d;
+}
+
