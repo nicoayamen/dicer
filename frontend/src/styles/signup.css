@@ -60,3 +60,46 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+
+/* Dark mode styles */
+.darkmode {
+  background-color: #232323; 
+  color: #fff; 
+}
+
+/* Apply dark mode to form elements */
+.darkmode .signup-form {
+  background-color: #393939; 
+  color: #fff; 
+}
+
+.darkmode .signup-form input,
+.darkmode .signup-form label {
+  color: #fff; 
+}
+
+/* Default state for inputs */
+.darkmode .signup-form input {
+  border: none; /* Remove default border */
+  border-bottom: 2px solid #fff; /* White underline by default */
+  color: #fff; /* Text color inside the input */
+  background-color: transparent; /* Transparent background */
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+/* Focus state for input containers and input elements */
+.darkmode .signup-box-input:focus-within {
+  color: #8a2be2; /* Purple color for the label when input is focused */
+}
+
+/* Focus state for inputs */
+.darkmode .signup-form input:focus {
+  outline: none; /* Remove default outline */
+  border-bottom: 2px solid #8a2be2; /* Purple underline on focus */
+}
+
+/* Focus state for labels */
+.darkmode .signup-box-input:focus-within label {
+  color: #8a2be2; /* Purple color for the focused label */
+}
