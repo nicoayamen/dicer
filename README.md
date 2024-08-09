@@ -10,7 +10,8 @@ Seamlessly match with others and use our in-app chat to start planning your next
 
 Step into the world of tabletop RPGs with ***Dicer*** and let the adventures begin!
 
-
+## Project Description
+***Dicer*** is a web app that helps Players and Dungeon Master's connect with each other for future adventures!
 
 ## Features
 * Match with Players and Dungeon Masters
@@ -102,3 +103,17 @@ Chat
 
 Delete Profile
 ![Delete Profile](<readme-screenshots/Delete Profile - dark mode.png>)
+
+
+## Contributors
+
+Thank you to all the contributors who have helped make this project great:
+
+- [Charley Smith-Schofield](https://github.com/charleysmithschofield)
+- [Nicolas Ayala](https://github.com/nicoayamen)
+- [Kim O'Dell](https://github.com/kimodell)
+- [Lani]()
+
+
+
+##### Special Thanks to [Caitlyn Orsak](https://www.instagram.com/caitlynorsak/?hl=en) for her creation of our amazing Dicer logo!

@@ -18,7 +18,7 @@ The following steps are only for _one_ of the group members to perform.
 2. Update the .env file with your correct local information 
   - username: `labber` *can be changed*
   - password: `labber` *can be changed*
-  - database: `finals`
+  - database: `finals` *can be changed*
 3. Install dependencies: `npm i`
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Reset database: `npm run db:reset`

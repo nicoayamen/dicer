@@ -1,17 +1,13 @@
 # Dicer Database
 
-## Database Set Up & Ownership
-### Database Basic Info:
 
-  user: 'dicer',
+## Database Basic Info:
 
-  host: 'localhost',
-
-  database: 'finals',
-  password: 'dicer',
-
-  port: 5432, // can be changed to match whichever port we use
-
+  * User: dicer
+  * Host: localhost
+  * Database: finals
+  * Password: dicer
+  * Port: 5432
 
 ## Setting up Your Database Access
 Run the following in your terminal:
@@ -127,4 +123,3 @@ Run the seed files:
 \i 04_users_seeds.sql
 \i 05_user_parties_seeds.sql
 ```
-dh
