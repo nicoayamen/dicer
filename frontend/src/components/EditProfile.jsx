@@ -28,8 +28,8 @@ const EditProfile = (props) => {
     photo: null
   });
 
-  //state to preview image at after selection
-  const [imagePreview, setImagePreview] = useState('http://placehold.it/150x150');
+  // State to preview image after selection
+  const [imagePreview, setImagePreview] = useState('https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'); // Default image
 
   useEffect(() => {
     fetch(`/editprofile/${userId}`)
@@ -47,7 +47,7 @@ const EditProfile = (props) => {
           photo: null,
           roleId: role?.id
         });
-        setImagePreview(user.photo ? user.photo : 'http://placehold.it/150x150');
+        setImagePreview(user.photo ? user.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'); // Set image preview
       })
       .catch(err => {
         console.error('Error fetching profile data:', err);
@@ -62,11 +62,10 @@ const EditProfile = (props) => {
     });
   };
 
-  //Handles file input changes: updates the image preview and sets the selected file in the form data.
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImagePreview(URL.createObjectURL(file));
+      setImagePreview(URL.createObjectURL(file)); // Preview selected image
       setFormData({
         ...formData,
         photo: file
@@ -115,7 +114,6 @@ const EditProfile = (props) => {
       <form onSubmit={handleSubmit} className='editprofile-form'>
         <div className='editprofile-content'>
           <div className='editprofile-box'>
-
             <div className='editprofile-box-input'>
               <img
                 src={imagePreview}
@@ -128,7 +126,6 @@ const EditProfile = (props) => {
                 }}
               />
             </div>
-          
             <div className='editprofile-box-input-photo'>
               <FormLabel>Change Picture:</FormLabel>
               <input
@@ -157,7 +154,6 @@ const EditProfile = (props) => {
                   color="secondary"
                 />
               </div>
-
               <div className='editprofile-box-input'>
                 <TextField fullWidth
                   type='text'
@@ -170,7 +166,6 @@ const EditProfile = (props) => {
                   color="secondary"
                 />
               </div>
-
               <div className='editprofile-box-input'>
                 <TextField fullWidth
                   type='email'
@@ -218,7 +213,6 @@ const EditProfile = (props) => {
                 </Select>
               </FormControl>
             </div>
-
             <div className='editprofile-box-input'>
               <FormControl>
                 <RadioGroup
@@ -245,7 +239,6 @@ const EditProfile = (props) => {
                 </RadioGroup>
               </FormControl>
             </div>
-
             <div className='editprofile-box-input'>
               <Box
                 sx={{
@@ -264,7 +257,6 @@ const EditProfile = (props) => {
                 />
               </Box>
             </div>
-
             <button type='submit' className='editprofile-button'>Update Profile</button>
           </div>
         </div>

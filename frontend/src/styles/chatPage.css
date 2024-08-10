@@ -214,6 +214,7 @@
   -webkit-text-fill-color: white;
 }
 
+
 .start-video-button {
   float: right;
   margin: 10px;
@@ -222,3 +223,66 @@
 .video-chat {
   margin: 50px;
  }
+/* Dark mode base styles */
+.darkmode {
+  background-color: #232323;
+  color: #E0E0E0; 
+}
+
+/* Background color adjustments for dark mode */
+.darkmode .home__container,
+.darkmode .chat__sidebar,
+.darkmode .message__container{
+  background-color: #1E1E1E; 
+}
+
+.darkmode .chat__mainHeader {
+  background-color: #8157a3; 
+}
+
+/* Button and call-to-action (CTA) styling in dark mode */
+.darkmode .home__cta,
+.darkmode .leaveChat__btn,
+.darkmode .sendBtn {
+  background-color: #333; 
+  color: #E0E0E0; 
+}
+
+/* Hover effects for buttons in dark mode */
+.darkmode .home__cta:hover,
+.darkmode .leaveChat__btn:hover,
+.darkmode .sendBtn:hover {
+  background-color: #444; 
+}
+
+/* Text color adjustments for user lists and messages in dark mode */
+.darkmode .chat__users > *,
+.darkmode .online__users > *,
+.darkmode .message__recipient,
+.darkmode .message__sender,
+.darkmode .sender__name,
+.darkmode .recipient__name {
+  color: #E0E0E0; 
+}
+
+/* Background color for recipient messages in dark mode */
+.darkmode .message__recipient {
+  background-color: #A178C3; 
+}
+
+/* Background color for sender messages in dark mode */
+.darkmode .message__sender {
+  background-color: #df6bade3; 
+}
+
+/* Border styling for chat header and footer in dark mode */
+.darkmode .chat__mainHeader,
+.darkmode .chat__footer {
+  border-bottom: 1px solid #444;
+}
+
+/* Message box styling in dark mode */
+.darkmode .message {
+  background-color: #393939;
+  color: white;
+}

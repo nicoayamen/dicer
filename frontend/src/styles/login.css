@@ -1,4 +1,3 @@
-/* Styles for login page */
 .login {
   display: flex;
   flex-direction: column;
@@ -21,7 +20,6 @@
   opacity: 0.1; 
   z-index: -1;
 }
-
 
 h1 {
   background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
@@ -50,21 +48,21 @@ h1 {
   align-items: center;
   width: 100%;
   position: relative;
-  margin-bottom: 1rem; /* Space between input groups */
+  margin-bottom: 1rem;
 }
 
 .input-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 10px; /* Space between icon and input */
+  padding: 0 10px;
 }
 
 .input-icon svg {
-  font-size: 1rem; /* Adjust icon size as needed */
+  font-size: 1rem;
   position: relative;
   top: 7px;
-  color: #423e6b
+  color: #423e6b;
 }
 
 .login-box-input {
@@ -72,14 +70,14 @@ h1 {
 }
 
 .password-input {
-  padding-right: 50px; /* Space for the visibility icon */
+  padding-right: 50px;
 }
 
 .visibility-icon {
   position: absolute;
-  right: 60px; /* Move the icon 10px from the right */
-  top: 25%;
-  transform: translateY(10%); /* Center it vertically */
+  right: 70px;
+  top: 40%;
+  transform: translateY(10%);
   cursor: pointer;
 }
 
@@ -105,7 +103,60 @@ h1 {
 }
 
 .sign-up {
-  text-align: center; /* Centers the text */
-  margin-top: 1rem; /* Adds space above the element */
+  text-align: center;
+  margin-top: 1rem;
   margin-left: -50px;
+}
+
+.darkmode {
+  background-color: #232323;
+  color: #fff;
+}
+
+.darkmode .login-form {
+  color: #fff;
+}
+
+.darkmode .login-form input,
+.darkmode .login-form label {
+  color: #fff;
+}
+
+.darkmode .visibility-icon {
+  position: absolute;
+  right: 70px;
+  top: 40%;
+  transform: translateY(10%);
+  cursor: pointer;
+}
+
+.darkmode .login-form input {
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+
+.darkmode .login-form input::placeholder {
+  color: #fff;
+}
+
+.darkmode .login-form input:focus {
+  outline: none;
+  border-bottom: 2px solid #8a2be2;
+  color: white;
+}
+
+.darkmode .login-form input:focus + label {
+  color: #8a2be2;
+}
+
+.darkmode .input-icon svg {
+  font-size: 1rem;
+  position: relative;
+  top: 7px;
+  color: #fefefe;
+}
+
+.darkmode .sign-up a {
+  color: #f449fd;
 }

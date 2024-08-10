@@ -89,3 +89,56 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
+
+
+/* Dark mode styles */
+.darkmode {
+  background-color: #232323; 
+  color: #fff; 
+}
+
+.darkmode .editprofile-form {
+  background-color: transparent; 
+  color: #fff; 
+  padding: 0;
+}
+
+.darkmode .editprofile-box {
+  background-color: #333; 
+  border-radius: 1rem; 
+  border: 2px solid #d8479a; 
+}
+
+.darkmode .editprofile-box-input {
+  margin-bottom: 1rem;
+}
+
+.darkmode .editprofile-box-input .MuiOutlinedInput-root {
+  background-color: #444; 
+  color: #fff;
+}
+
+.darkmode .editprofile-box-input .MuiOutlinedInput-notchedOutline {
+  border-color: #d8479a; 
+}
+
+.darkmode .MuiFormLabel-root {
+  color: #d8479a; 
+}
+
+.darkmode .MuiInputBase-input {
+  color: #fff; 
+}
+
+.darkmode .MuiInputBase-input::placeholder {
+  color: #d8479a; 
+}
+
+.darkmode .MuiSelect-outlined {
+  background-color: #444; 
+  color: #fff; 
+}
+
+.darkmode .MuiSelect-icon {
+  color: #d8479a; 
+}

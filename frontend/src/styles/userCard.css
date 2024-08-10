@@ -73,3 +73,84 @@
   font-weight: bold; 
   text-align: center; 
 }
+
+
+
+/* Dark Mode Styles */
+.darkmode .user-card-profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.darkmode .user-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid lightgrey;
+  border-radius: 1rem;
+  margin: auto auto 5rem auto;
+  max-width: 600px;
+  gap: 0.5rem;
+  background-color: #393939;
+}
+
+/* Placeholder Text in Dark Mode */
+.darkmode input::placeholder,
+.darkmode textarea::placeholder {
+  color: white !important;
+}
+
+/* Preferred Class Text in Dark Mode */
+.darkmode .preferred-class-label,
+.darkmode label {
+  color: white !important;
+}
+
+/* Dark Mode Styles for Radio Button */
+.darkmode .MuiRadio-root .MuiSvgIcon-root[data-testid="RadioButtonUncheckedIcon"] path {
+  stroke: rgb(255, 255, 255);
+  fill: none;
+}
+
+/* Dark Mode Styles for Dropdown Menu Items */
+.darkmode .MuiMenuItem-root {
+  background-color: rgba(57, 56, 56, 0.892); 
+  color: white;
+}
+
+/* Dark Mode Styles for Hovered Menu Item */
+.darkmode .MuiMenuItem-root:hover {
+  background-color: rgba(68, 68, 68, 0.8); 
+  color: white; 
+}
+
+/* Dark Mode Styles for Selected Menu Item */
+.darkmode .MuiMenuItem-root.Mui-selected {
+  background-color: rgba(68, 68, 68, 0.8); 
+  color: white; 
+}
+
+/* Dark Mode: Change the color of the dropdown arrow */
+.darkmode .MuiSelect-icon {
+  color: rgb(255, 255, 255);
+}
+
+/* Dark Mode Styles for the Select Input */
+.darkmode .MuiSelect-select {
+  color: white; 
+  background-color: transparent; 
+}
+
+/* Dark Mode Styles for Input in Select Component */
+.darkmode .MuiSelect-nativeInput {
+  color: white; 
+}
+
+/* Dark Mode Styles for the After Value of the Select Input */
+.darkmode .MuiSelect-select::after {
+  color: white; 
+}
