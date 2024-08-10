@@ -77,8 +77,9 @@ Match
 ![Match without Filter Displayed](<readme-screenshots/Match without filter displayed.png>)
 ![Match with Filter](<readme-screenshots/Match Filter Displayed.png>)
 
-Chat 
+Chat & Video Chat
 ![Chat](readme-screenshots/Chat.png)
+![Video Chat](<readme-screenshots/Video Chat.png>)
 
 Delete Profile
 ![Delete Profile](<readme-screenshots/Delete Profile.png>)
@@ -99,8 +100,9 @@ Match
 ![Match without Filter displayed](<readme-screenshots/Match without filter displayed - dark mode.png>)
 ![Match with Filter](<readme-screenshots/Match Filter Displayed - dark mode.png>)
 
-Chat
+Chat & Video Chat
 ![Chat](<readme-screenshots/Chat - dark mode.png>)
+![Video Chat](<readme-screenshots/Video Chat - dark mode.png>)
 
 Delete Profile
 ![Delete Profile](<readme-screenshots/Delete Profile - dark mode.png>)
