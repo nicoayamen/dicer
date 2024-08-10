@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS chat_rooms CASCADE;
+CREATE TABLE chat_rooms (
+    id SERIAL PRIMARY KEY,
+    user1_id INT REFERENCES users(id) ON DELETE CASCADE,
+    user2_id INT REFERENCES users(id) ON DELETE CASCADE
+);

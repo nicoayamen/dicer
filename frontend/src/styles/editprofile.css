@@ -1,0 +1,144 @@
+.editprofile {
+  position: relative;
+  display: grid;
+  align-items: center;
+}
+
+.editprofile h1 {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.editprofile-form {
+  position: relative;
+  margin-inline: 1.5rem;
+  padding: .5rem .5rem;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editprofile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: .75rem;
+  padding: 1rem;
+  row-gap: .5rem;
+}
+
+.editprofile-content {
+  row-gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.editprofile-box-input {
+  position: relative
+}
+
+.editprofile-input {
+  position: relative;
+}
+
+.editprofile-box-input img {
+  margin-bottom: 3rem;
+}
+
+.editprofile-box-input-photo {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 6rem;
+  padding-bottom: 0.5rem;
+}
+
+.editprofile-photo-button {
+  width: 47%
+}
+
+.editprofile-bio {
+  width: 100%;
+  padding-block: .8rem;
+  background: white;
+  color: black;
+  border-radius: 1rem;
+}
+
+.editprofile-button {
+  width: 80%;
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  border: none;
+}
+
+.editprofile-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+
+/* Dark mode styles */
+.darkmode {
+  background-color: #232323; 
+  color: #fff; 
+}
+
+.darkmode .editprofile-form {
+  background-color: transparent; 
+  color: #fff; 
+  padding: 0;
+}
+
+.darkmode .editprofile-box {
+  background-color: #333; 
+  border-radius: 1rem; 
+  border: 2px solid #d8479a; 
+}
+
+.darkmode .editprofile-box-input {
+  margin-bottom: 1rem;
+}
+
+.darkmode .editprofile-box-input .MuiOutlinedInput-root {
+  background-color: #444; 
+  color: #fff;
+}
+
+.darkmode .editprofile-box-input .MuiOutlinedInput-notchedOutline {
+  border-color: #d8479a; 
+}
+
+.darkmode .MuiFormLabel-root {
+  color: #d8479a; 
+}
+
+.darkmode .MuiInputBase-input {
+  color: #fff; 
+}
+
+.darkmode .MuiInputBase-input::placeholder {
+  color: #d8479a; 
+}
+
+.darkmode .MuiSelect-outlined {
+  background-color: #444; 
+  color: #fff; 
+}
+
+.darkmode .MuiSelect-icon {
+  color: #d8479a; 
+}

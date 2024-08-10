@@ -1,0 +1,78 @@
+.matchfilter-form {
+  position: relative;
+  margin-inline: 1.5rem;
+  padding: .5rem .5rem;
+  border-radius: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.matchfilter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: .75rem;
+  padding: 1rem;
+  row-gap: .5rem;
+}
+
+.matchfilter-content {
+  row-gap: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.matchfilter-box-input {
+  position: relative;
+}
+
+.matchfilter-filter-buttons{
+ display: flex;
+ justify-content: space-around;
+ padding: 1rem;
+}
+
+.matchfilter-button-save {
+  margin-right: 10px; 
+}
+
+.matchfilter-button, .matchfilter-button-apply {
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  border: none;
+}
+
+.matchfilter-button:hover, .matchfilter-button-apply:hover  {
+  background: -webkit-linear-gradient(left, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.matchfilter-button-clear {
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  border: none;
+
+}
+
+.matchfilter-button-clear:hover {
+  background: -webkit-linear-gradient(left, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+

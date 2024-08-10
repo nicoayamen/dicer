@@ -1,0 +1,38 @@
+.video-chats {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.local-video {
+  height: 300px;
+  border-radius: 1rem;
+  margin: 1rem;
+  width: 400px;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.remote-video {
+  height: 300px;
+  border-radius: 1rem;
+  margin: 1rem;
+  width: 400px;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.video-chat-btns {
+  float: right;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: .75rem;
+  padding: 1rem;
+  row-gap: .5rem;
+}

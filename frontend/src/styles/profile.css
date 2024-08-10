@@ -1,0 +1,89 @@
+/* Styles for profile page */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: white;
+  -webkit-background-clip: padding-box;
+  margin: auto;
+  max-width: 600px;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.profile-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #423e6b; /* Desired color */
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.profile-button {
+  width: 75%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid lightgrey;
+  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-button:hover {
+  background: -webkit-linear-gradient(left,#7771c2,#9355c5, #9238bb, #a64f9e );
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.profile-button:nth-child(4) {
+  background: -webkit-linear-gradient(left, #f20606, #f54b29);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.profile-button:nth-child(4):hover {
+  background: -webkit-linear-gradient(left, #d80101, #ee2b04);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+
+/* Dark mode styles */
+.darkmode {
+  background-color: #232323;
+  color: #fff;
+}
+
+/* Apply dark mode to profile container */
+.darkmode .profile-container {
+  background-color: transparent;
+}
+
+/* Profile photo styling */
+.darkmode .profile-photo {
+  border: 3px solid #fff;
+}

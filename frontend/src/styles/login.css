@@ -1,0 +1,162 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 8rem;
+}
+
+.login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1; 
+  z-index: -1;
+}
+
+h1 {
+  background: -webkit-linear-gradient(right, #9252a0, #d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.input-icon svg {
+  font-size: 1rem;
+  position: relative;
+  top: 7px;
+  color: #423e6b;
+}
+
+.login-box-input {
+  flex-grow: 1;
+}
+
+.password-input {
+  padding-right: 50px;
+}
+
+.visibility-icon {
+  position: absolute;
+  right: 70px;
+  top: 40%;
+  transform: translateY(10%);
+  cursor: pointer;
+}
+
+.login-button {
+  width: 75%;
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-left: -30px;
+  border: none;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.login-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.sign-up {
+  text-align: center;
+  margin-top: 1rem;
+  margin-left: -50px;
+}
+
+.darkmode {
+  background-color: #232323;
+  color: #fff;
+}
+
+.darkmode .login-form {
+  color: #fff;
+}
+
+.darkmode .login-form input,
+.darkmode .login-form label {
+  color: #fff;
+}
+
+.darkmode .visibility-icon {
+  position: absolute;
+  right: 70px;
+  top: 40%;
+  transform: translateY(10%);
+  cursor: pointer;
+}
+
+.darkmode .login-form input {
+  border: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+
+.darkmode .login-form input::placeholder {
+  color: #fff;
+}
+
+.darkmode .login-form input:focus {
+  outline: none;
+  border-bottom: 2px solid #8a2be2;
+  color: white;
+}
+
+.darkmode .login-form input:focus + label {
+  color: #8a2be2;
+}
+
+.darkmode .input-icon svg {
+  font-size: 1rem;
+  position: relative;
+  top: 7px;
+  color: #fefefe;
+}
+
+.darkmode .sign-up a {
+  color: #f449fd;
+}

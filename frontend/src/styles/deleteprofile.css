@@ -1,0 +1,105 @@
+/* Styles for delete profile page */
+.delete-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: white;
+  -webkit-background-clip: padding-box;
+  margin: auto;
+  max-width: 600px;
+}
+
+.delete-profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.delete-profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.delete-profile-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  background: -webkit-linear-gradient(left, #9252a0,#d8479a, #ef3f6d, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.delete-profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 75%;
+}
+
+.profile-button-edit {
+  width: 75%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid lightgrey;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-button-edit:hover {
+  background: -webkit-linear-gradient(left, #7771c2, #9355c5, #9238bb, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.profile-button-confirm {
+  width: 75%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid lightgrey;
+  background: -webkit-linear-gradient(left, #f20606, #f54b29);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-button-confirm:hover {
+  background: -webkit-linear-gradient(left, #d80101, #ee2b04);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+/* Dark mode styles */
+.darkmode .delete-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: #2d2d2d;
+  border: .5px solid #fff;
+  border-radius: 15px;
+  -webkit-background-clip: padding-box;
+  margin: auto;
+  max-width: 600px;
+}
+
+.darkmode .delete-profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 2px solid #fff; 
+}

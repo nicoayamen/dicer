@@ -1,0 +1,69 @@
+/* NavBar Styles */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  color: #161515;
+}
+
+.navbar-logo img {
+  width: 8em;
+  height: 8em;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  padding: 0.5rem;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link,
+.navbar-logout-button {
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background: -webkit-linear-gradient(right, #6963ab, #9252a0, #d8479a, #ef3f6d, #f05538, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.navbar-profile-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 1rem;
+}
+
+.dark-mode {
+  background-color: #232323;
+  color: #fff;
+}
+
+.dark-mode .navbar-link,
+.dark-mode .navbar-logout-button {
+  background: -webkit-linear-gradient(right, #6963ab, #9252a0, #d8479a, #ef3f6d, #f05538, #f36523);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-mode .navbar-profile-photo {
+  border: 2px solid #fff;
+}

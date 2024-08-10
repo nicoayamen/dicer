@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+/* General reset and styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Home container styles */
+.home__container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home__container > * {
+  margin-bottom: 10px;
+}
+.home__header {
+  margin-bottom: 30px;
+}
+.username__input {
+  padding: 10px;
+  width: 50%;
+}
+.home__cta {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #607EAA;
+  color: #F9F5EB;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Chat styles */
+.chat {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.chat__sidebar {
+  height: 100%;
+  background-color: #F9F5EB;
+  flex: 0.2;
+  padding: 20px;
+  border-right: 1px solid #fdfdfd;
+}
+.chat__main {
+  height: 100%;
+  flex: 1;
+}
+.chat__header {
+  margin: 30px 0 20px 0;
+}
+.chat__users > * {
+  margin-bottom: 10px;
+  color: #607EAA;
+  font-size: 14px;
+}
+.online__users > * {
+  margin-bottom: 10px;
+  color: rgb(238, 102, 102);
+  font-style: italic;
+}
+
+/* Chat header styles */
+.chat__mainHeader {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #8157a3;
+  color: white;
+}
+.leaveChat__btn {
+  padding: 10px;
+  width: 150px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #EAE3D2;
+  background: -webkit-linear-gradient(right, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+.leaveChat__btn:hover {
+  background: -webkit-linear-gradient(left, #ef3f6d, #ee3d74, #ee4854, #f04e49, #f1582c);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+/* Message container styles */
+.message__container {
+  width: 100%;
+  height: 80vh;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat messages styles */
+.message__chats {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+/* Recipient's message styles */
+.message__recipient {
+  background-color: #e4e4e4;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  align-self: flex-start;
+  margin: 5px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word; 
+}
+
+/* Sender's message styles */
+.message__sender {
+  background-color: #d2d0e5;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  align-self: flex-end;
+  margin: 5px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Name styles */
+.sender__name {
+  align-self: flex-end;
+  margin-right: 10px;
+  font-size: 12px;
+  color: #6765ae;
+}
+
+.recipient__name {
+  align-self: flex-start;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #444444;
+}
+
+.message__chats > p {
+  font-size: 13px;
+  text-align: center;
+}
+
+.message__status {
+  position: fixed;
+  bottom: 50px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Chat footer styles */
+.chat__footer {
+  padding: 10px;
+  height: 10vh;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message {
+  width: 80%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  padding: 15px;
+}
+
+.sendBtn, .start-video-button  {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: #EAE3D2;
+  cursor: pointer;
+  background: -webkit-linear-gradient(right, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.sendBtn:hover, .start-video-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+
+.start-video-button {
+  float: right;
+  margin: 10px;
+}
+
+.video-chat {
+  margin: 50px;
+ }
+/* Dark mode base styles */
+.darkmode {
+  background-color: #232323;
+  color: #E0E0E0; 
+}
+
+/* Background color adjustments for dark mode */
+.darkmode .home__container,
+.darkmode .chat__sidebar,
+.darkmode .message__container{
+  background-color: #1E1E1E; 
+}
+
+.darkmode .chat__mainHeader {
+  background-color: #8157a3; 
+}
+
+/* Button and call-to-action (CTA) styling in dark mode */
+.darkmode .home__cta,
+.darkmode .leaveChat__btn,
+.darkmode .sendBtn {
+  background-color: #333; 
+  color: #E0E0E0; 
+}
+
+/* Hover effects for buttons in dark mode */
+.darkmode .home__cta:hover,
+.darkmode .leaveChat__btn:hover,
+.darkmode .sendBtn:hover {
+  background-color: #444; 
+}
+
+/* Text color adjustments for user lists and messages in dark mode */
+.darkmode .chat__users > *,
+.darkmode .online__users > *,
+.darkmode .message__recipient,
+.darkmode .message__sender,
+.darkmode .sender__name,
+.darkmode .recipient__name {
+  color: #E0E0E0; 
+}
+
+/* Background color for recipient messages in dark mode */
+.darkmode .message__recipient {
+  background-color: #A178C3; 
+}
+
+/* Background color for sender messages in dark mode */
+.darkmode .message__sender {
+  background-color: #df6bade3; 
+}
+
+/* Border styling for chat header and footer in dark mode */
+.darkmode .chat__mainHeader,
+.darkmode .chat__footer {
+  border-bottom: 1px solid #444;
+}
+
+/* Message box styling in dark mode */
+.darkmode .message {
+  background-color: #393939;
+  color: white;
+}

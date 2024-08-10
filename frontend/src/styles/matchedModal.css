@@ -1,0 +1,28 @@
+.modal-button {
+  padding: 1rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+  background: -webkit-linear-gradient(right, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+  border: none;
+}
+
+.modal-button:hover {
+  background: -webkit-linear-gradient(left, #6963ab,#8157a3, #8853a1, #9451a0, #a64f9e);
+  -webkit-background-clip: button;
+  -webkit-text-fill-color: white;
+}
+
+.modal-link-to-messages {
+  color: #FFF;
+}
+
+.modal-link-to-messages:hover {
+  color: #ef3f6d;
+}
+
