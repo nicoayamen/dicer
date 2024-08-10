@@ -6,7 +6,7 @@ const ChatFooter = ({ socket }) => {
 
   const handleTyping = () => {
     const fullName = localStorage.getItem("fullName");
-    if (fullName) {
+    if (fullName && socket) {
       socket.emit("typing", { roomId, username: fullName });
     }
   };
@@ -34,11 +34,11 @@ const ChatFooter = ({ socket }) => {
   return (
     <div className='chat__footer'>
       <form className='form' onSubmit={handleSendMessage}>
-        <input 
-          type="text" 
-          placeholder='Write message' 
-          className='message' 
-          value={message} 
+        <input
+          type="text"
+          placeholder="Write message"
+          className="message"
+          value={message}
           onChange={e => setMessage(e.target.value)}
           onKeyDown={handleTyping}
         />

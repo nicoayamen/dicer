@@ -1,14 +1,25 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
+import VideoChat from './VideoChat';
 import { useParams } from 'react-router-dom';
 import '../styles/chatPage.css';
 
 const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
   const [typingStatus, setTypingStatus] = useState("");
+  const [videoChatActive, setVideoChatActive] = useState(false);
   const lastMessageRef = useRef(null);
   const { roomId } = useParams();
+
+  const handleStartVideoChat = () => {
+    setVideoChatActive(false);  // Force remount
+    setTimeout(() => setVideoChatActive(true), 100); // Re-enable after a small delay
+  };
+
+  const handleEndVideoChat = () => {
+    setVideoChatActive(false);
+  };
 
   useEffect(() => {
     const username = localStorage.getItem("fullName");
@@ -45,10 +56,11 @@ const ChatPage = ({ socket }) => {
   return (
     <div className="chat">
       <div className='chat__main'>
-        <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
+      <ChatBody messages={messages} lastMessageRef={lastMessageRef} typingStatus={typingStatus} />
         <ChatFooter socket={socket} />
+        <button className='start-video-button' onClick={handleStartVideoChat}>Start Video Chat</button>
+        {videoChatActive && <VideoChat className='video-chat' socket={socket} roomId={roomId} onEndCall={handleEndVideoChat} />}
       </div>
-      {typingStatus && <p className='typingStatus'>{typingStatus}</p>}
     </div>
   );
 };

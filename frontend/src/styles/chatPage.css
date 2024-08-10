@@ -178,6 +178,7 @@
   padding: 10px;
   height: 10vh;
 }
+
 .form {
   width: 100%;
   height: 100%;
@@ -185,6 +186,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .message {
   width: 80%;
   height: 100%;
@@ -193,7 +195,8 @@
   outline: none;
   padding: 15px;
 }
-.sendBtn {
+
+.sendBtn, .start-video-button  {
   width: 150px;
   padding: 10px;
   border: none;
@@ -204,12 +207,22 @@
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
-.sendBtn:hover {
+
+.sendBtn:hover, .start-video-button:hover {
   background: -webkit-linear-gradient(left, #6963ab, #8157a3, #8853a1, #9451a0, #a64f9e);
   -webkit-background-clip: button;
   -webkit-text-fill-color: white;
 }
 
+
+.start-video-button {
+  float: right;
+  margin: 10px;
+}
+
+.video-chat {
+  margin: 50px;
+ }
 /* Dark mode base styles */
 .darkmode {
   background-color: #232323;
