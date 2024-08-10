@@ -1,4 +1,6 @@
-# Dicer
+<p align="center">
+[dicer-sm](https://github.com/user-attachments/assets/b238ef3e-f798-4f7e-a688-97db402ad7a5)
+</p>!
 
 Welcome to ***Dicer*** – the premier platform for tabletop RPG enthusiasts! 
 
