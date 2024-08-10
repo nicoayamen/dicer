@@ -1,4 +1,7 @@
 # Dicer
+<p align="center">
+  <img width="200" height="200" src="frontend/public/dicer-2.png">
+</p>
 
 Welcome to ***Dicer*** – the premier platform for tabletop RPG enthusiasts! 
 
