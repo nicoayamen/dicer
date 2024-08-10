@@ -45,7 +45,7 @@ const DeleteProfile = ({ setLogin }) => {
       .then(() => {
         // Clear the login state and local storage
         setLogin(false);
-        localStorage.removeItem('userId'); // Assuming you store the user ID in localStorage
+        localStorage.removeItem('userId'); 
         navigate('/signup'); // Navigate to the sign-up page
       })
       .catch(err => {
@@ -65,7 +65,7 @@ const DeleteProfile = ({ setLogin }) => {
     <div className="delete-profile-container">
       <div className="delete-profile-header">
         <img 
-          src={profileUser.photo ? profileUser.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'} // Added the default stock photo URL provided by you
+          src={profileUser.photo ? profileUser.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'}
           className="delete-profile-photo" 
           alt="Profile" 
         />
