@@ -42,6 +42,9 @@ To set up the project, please follow the specific setup instructions in the resp
 - [Backend Setup Instructions](./backend/README.md)
 - [Frontend Setup Instructions](./frontend/README.md)
 
+#### Set up the Database
+- [Database Setup Instructions](./backend/db/README.md)
+
 #### Install dependencies for both frontend and backend
 ```
 cd dicer
@@ -117,10 +120,10 @@ Delete Profile
 
 Thank you to all the contributors who have helped make this project great:
 
-- [Charley Smith-Schofield](https://github.com/charleysmithschofield)
 - [Kim O'Dell](https://github.com/kimodell)
-- [Lani]()
 - [Nicolas Ayala](https://github.com/nicoayamen)
+- [Leilani Graham](https://github.com/oatmilkies)
+- [Charley Smith-Schofield](https://github.com/charleysmithschofield)
 
 
 
