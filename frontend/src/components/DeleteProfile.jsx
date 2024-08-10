@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/deleteprofile.css';
 
-
 const DeleteProfile = ({ setLogin }) => {
   const { userId } = useParams(); // Extract userId from the URL
   const navigate = useNavigate(); // Hook to handle navigation
   const [isLoading, setIsLoading] = useState(true);
   const [profileUser, setProfileUser] = useState({});
-
 
   useEffect(() => {
     if (!userId) {
@@ -66,7 +64,11 @@ const DeleteProfile = ({ setLogin }) => {
   return (
     <div className="delete-profile-container">
       <div className="delete-profile-header">
-        <img src={profileUser.photo} className="delete-profile-photo" alt="Profile" />
+        <img 
+          src={profileUser.photo ? profileUser.photo : 'https://github.com/nicoayamen/dicer/blob/dev/frontend/public/dicer-2.png?raw=true'} // Added the default stock photo URL provided by you
+          className="delete-profile-photo" 
+          alt="Profile" 
+        />
         <h1>{profileUser.fullName}, are you sure you want to delete your account?</h1>
       </div>
       <div className="delete-profile-actions">
