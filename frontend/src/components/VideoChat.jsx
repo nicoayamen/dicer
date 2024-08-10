@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import '../styles/videoChat.css';
 import io from 'socket.io-client';
 
 const VideoChat = ({ socket }) => {
@@ -123,10 +124,15 @@ const VideoChat = ({ socket }) => {
 
   return (
     <div>
-      <video ref={localVideoRef} autoPlay muted />
-      <video ref={remoteVideoRef} autoPlay />
-      <button onClick={startVideoChat}>Start Video Chat</button>
-      <button onClick={endVideoChat}>End Video Chat</button>
+      <div className='video-chats'>
+        <video className='local_video' ref={localVideoRef} autoPlay muted />
+        <video className='remote_video' ref={remoteVideoRef} autoPlay />
+      </div>
+
+      <div className='video-chat-btns'>
+        <button className='sendBtn' onClick={startVideoChat}>Launch Video</button>
+        <button className='leaveChat__btn' onClick={endVideoChat}>Disconnect Video</button>
+      </div>
     </div>
   );
 };

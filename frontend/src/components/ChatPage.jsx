@@ -58,8 +58,8 @@ const ChatPage = ({ socket }) => {
       <div className='chat__main'>
       <ChatBody messages={messages} lastMessageRef={lastMessageRef} typingStatus={typingStatus} />
         <ChatFooter socket={socket} />
-        <button onClick={handleStartVideoChat}>Start Video Chat</button>
-        {videoChatActive && <VideoChat socket={socket} roomId={roomId} onEndCall={handleEndVideoChat} />}
+        <button className='start-video-button' onClick={handleStartVideoChat}>Start Video Chat</button>
+        {videoChatActive && <VideoChat className='video-chat' socket={socket} roomId={roomId} onEndCall={handleEndVideoChat} />}
       </div>
     </div>
   );
