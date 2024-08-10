@@ -36,6 +36,11 @@ Step into the world of tabletop RPGs with ***Dicer*** and let the adventures beg
 git clone git@github.com:nicoayamen/dicer.git
 ```
 
+#### Create the `.env` File for Both Frontend and Backend
+To set up the project, please follow the specific setup instructions in the respective directories:
+
+- [Backend Setup Instructions](./backend/README.md)
+- [Frontend Setup Instructions](./frontend/README.md)
 
 #### Install dependencies for both frontend and backend
 ```
@@ -113,9 +118,9 @@ Delete Profile
 Thank you to all the contributors who have helped make this project great:
 
 - [Charley Smith-Schofield](https://github.com/charleysmithschofield)
-- [Nicolas Ayala](https://github.com/nicoayamen)
 - [Kim O'Dell](https://github.com/kimodell)
 - [Lani]()
+- [Nicolas Ayala](https://github.com/nicoayamen)
 
 
 
