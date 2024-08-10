@@ -56,12 +56,11 @@ const ChatPage = ({ socket }) => {
   return (
     <div className="chat">
       <div className='chat__main'>
-        <ChatBody messages={messages} lastMessageRef={lastMessageRef} />
+      <ChatBody messages={messages} lastMessageRef={lastMessageRef} typingStatus={typingStatus} />
         <ChatFooter socket={socket} />
         <button onClick={handleStartVideoChat}>Start Video Chat</button>
         {videoChatActive && <VideoChat socket={socket} roomId={roomId} onEndCall={handleEndVideoChat} />}
       </div>
-      {typingStatus && <p className='typingStatus'>{typingStatus}</p>}
     </div>
   );
 };
