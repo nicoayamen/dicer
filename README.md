@@ -10,6 +10,8 @@ Seamlessly match with others and start planning your next epic adventure using o
 
 Step into the world of tabletop RPGs with ***Dicer*** and let the adventures begin!
 
+![dicer](https://github.com/user-attachments/assets/1871d4b8-7524-4bd6-a4db-a4920993c5c6)
+
 ## Project Description
 ***Dicer*** is a web app that helps Players and Dungeon Master's connect with each other for future adventures!
 
