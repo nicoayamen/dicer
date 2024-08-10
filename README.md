@@ -1,5 +1,7 @@
 # Dicer
 
+![dicer-sm](https://github.com/user-attachments/assets/62cf63f6-05f4-4412-9586-41a9e2df198f)
+
 Welcome to ***Dicer*** – the premier platform for tabletop RPG enthusiasts! 
 
 Whether you're a player hunting for your next quest or a Dungeon Master seeking new adventurers for your campaign, Dicer connects you with like-minded people effortlessly.
