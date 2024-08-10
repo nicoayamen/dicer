@@ -15,10 +15,10 @@ Step into the world of tabletop RPGs with ***Dicer*** and let the adventures beg
 
 ## Features
 * Match with Players and Dungeon Masters
-* Filter matches 
-* Peer-to-peer messaging
-* Video chat
-* Profile management
+* Filter Matches
+* Peer-to-Peer Messaging
+* Video Chat
+* Profile Management
 * Dark Mode
 
 
